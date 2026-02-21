@@ -23,7 +23,7 @@ const deals = [
     date: "2025",
     allocation: "Confidential",
     category: "Hospitality",
-    description: "An exclusive members-only social club redefining nightlife and hospitality. Tercer offers a curated experience blending premium dining, entertainment, and community in a sophisticated setting.",
+    description: "An exclusive members-only social club redefining nightlife and hospitality. Tercer offers a curated experience blending wellness, entertainment, and community in a sophisticated setting.",
     status: "Active",
     link: "https://www.tercerclub.com/",
   },
