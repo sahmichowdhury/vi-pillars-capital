@@ -1,6 +1,5 @@
 /*
- * Pipeline Page: Detailed deal cards with revenue model, industry, sub-category, icons, status
- * Statuses: Active, Currently Closed, Sold
+ * Pipeline Page: Enhanced with summary stats, trust section, detailed deal cards
  * Deals: 4-Plex Newark, Montague NJ SFH, Tercer, Whoop, SpaceX
  */
 import { useState, useRef } from "react";
@@ -13,7 +12,6 @@ import {
   Rocket,
   Watch,
   Sparkles,
-  Home,
   Hammer,
   TrendingUp,
   DollarSign,
@@ -22,7 +20,14 @@ import {
   Target,
   Users,
   CircleDot,
+  CheckCircle2,
+  ArrowRight,
+  Briefcase,
+  Globe,
+  Scale,
+  FileSearch,
 } from "lucide-react";
+import { Link } from "wouter";
 import CTASection from "@/components/CTASection";
 
 interface Deal {
@@ -34,7 +39,7 @@ interface Deal {
   revenueModel: string;
   date: string;
   allocation: string;
-    status: "Active" | "Deployed";
+  status: "Active" | "Deployed";
   link?: string;
   icon: React.ElementType;
   highlights: string[];
@@ -135,12 +140,7 @@ const deals: Deal[] = [
   },
 ];
 
-const categories = [
-  "All Pipeline",
-  "Pre-IPO",
-  "Real Estate",
-  "Hospitality",
-];
+const categories = ["All Pipeline", "Pre-IPO", "Real Estate", "Hospitality"];
 
 const statusConfig: Record<
   string,
@@ -166,6 +166,133 @@ const categoryColors: Record<string, string> = {
   "Pre-IPO": "text-warm-mid bg-warm-mid/8",
 };
 
+/* ---------- Pipeline Summary Stats ---------- */
+function PipelineStats() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  const stats = [
+    { label: "Total Deals", value: "5", icon: Briefcase },
+    { label: "Active Deals", value: "2", icon: TrendingUp },
+    { label: "Deployed", value: "3", icon: CheckCircle2 },
+    { label: "Asset Classes", value: "3", icon: Layers },
+  ];
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
+    >
+      {stats.map((stat, i) => (
+        <div
+          key={stat.label}
+          className="bg-tan-light/40 rounded-xl border border-gold/10 p-5 flex items-center gap-4"
+        >
+          <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
+            <stat.icon className="w-5 h-5 text-gold-dark" />
+          </div>
+          <div>
+            <div className="font-serif text-2xl font-bold text-warm-dark">{stat.value}</div>
+            <p className="text-foreground/50 text-xs">{stat.label}</p>
+          </div>
+        </div>
+      ))}
+    </motion.div>
+  );
+}
+
+/* ---------- Why Invest With Us ---------- */
+function WhyInvestSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  const reasons = [
+    {
+      icon: Shield,
+      title: "Ethically Screened",
+      desc: "Every deal passes through rigorous Shariah compliance and ethical screening before it reaches our investors.",
+    },
+    {
+      icon: FileSearch,
+      title: "Thorough Due Diligence",
+      desc: "Our team conducts comprehensive analysis covering financials, market positioning, management quality, and risk factors.",
+    },
+    {
+      icon: Scale,
+      title: "Transparent Structures",
+      desc: "Clear SPV structures with no hidden fees. You know exactly what you're investing in, how much it costs, and what the terms are.",
+    },
+    {
+      icon: Globe,
+      title: "Diverse Opportunities",
+      desc: "From real estate to pre-IPO tech to hospitality — access a diversified pipeline of opportunities across multiple asset classes.",
+    },
+    {
+      icon: Users,
+      title: "Accessible Entry",
+      desc: "With minimums starting at $1,000, institutional-quality deals are now accessible to individual investors at every level.",
+    },
+    {
+      icon: BarChart3,
+      title: "Deal-by-Deal Choice",
+      desc: "No blind pools. Review each opportunity independently and invest only in the deals that align with your personal goals.",
+    },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 bg-warm-dark relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-gold/5 rounded-full" />
+        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-gold/5 rounded-full" />
+      </div>
+
+      <div ref={ref} className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+            <Shield className="w-3.5 h-3.5" />
+            Why Invest With Us
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
+            Your capital,{" "}
+            <span className="italic text-gold">our commitment.</span>
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
+            We treat every dollar entrusted to us as a responsibility. Here's why investors
+            choose VI Pillars Capital for their ethical investment journey.
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {reasons.map((r, i) => (
+            <motion.div
+              key={r.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="p-6 rounded-xl bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm hover:bg-white/[0.07] transition-colors duration-300"
+            >
+              <div className="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center mb-4">
+                <r.icon className="w-5 h-5 text-gold" />
+              </div>
+              <h3 className="text-white text-sm font-semibold mb-2">{r.title}</h3>
+              <p className="text-white/40 text-sm leading-relaxed">{r.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Pipeline Page ---------- */
 export default function PipelinePage() {
   const [activeFilter, setActiveFilter] = useState("All Pipeline");
   const headerRef = useRef(null);
@@ -182,21 +309,37 @@ export default function PipelinePage() {
     <>
       {/* Hero Header */}
       <section className="pt-[72px] bg-warm-dark">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 text-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
           <motion.div
             ref={headerRef}
             initial={{ opacity: 0, y: 24 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
+            className="text-center"
           >
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+              <Briefcase className="w-3.5 h-3.5" />
+              Investment Pipeline
+            </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
               Our <span className="italic text-gold">Pipeline</span>
             </h1>
-            <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
               Explore our curated selection of ethically-screened investment
               opportunities across private equity, real estate, hospitality, and
-              pre-IPO ventures.
+              pre-IPO ventures. Every deal has been rigorously vetted for both
+              financial merit and ethical compliance.
             </p>
+            <div className="flex flex-wrap justify-center gap-6 text-white/40 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Active — Currently accepting investors
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-500" />
+                Deployed — Capital has been allocated
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -204,6 +347,9 @@ export default function PipelinePage() {
       {/* Filter & Cards */}
       <section className="py-16 lg:py-20 bg-white">
         <div ref={cardsRef} className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Summary Stats */}
+          <PipelineStats />
+
           {/* Filter Tabs */}
           <div className="flex flex-wrap items-center gap-2 mb-10">
             {categories.map((cat) => (
@@ -242,12 +388,9 @@ export default function PipelinePage() {
                   <div className="p-6 lg:p-8">
                     {/* Top Row: Icon + Name + Status */}
                     <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-5">
-                      {/* Icon */}
                       <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center shrink-0">
                         <Icon className="w-7 h-7 text-gold" />
                       </div>
-
-                      {/* Name + Category */}
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-2 mb-1">
                           <h3 className="font-serif text-xl lg:text-2xl font-bold text-warm-dark">
@@ -274,8 +417,6 @@ export default function PipelinePage() {
                           {deal.category}
                         </span>
                       </div>
-
-                      {/* Status Badge */}
                       <span
                         className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full shrink-0 ${status.bg} ${status.text}`}
                       >
@@ -353,10 +494,35 @@ export default function PipelinePage() {
         </div>
       </section>
 
+      {/* Why Invest Section */}
+      <WhyInvestSection />
+
+      {/* Disclaimer */}
+      <section className="py-12 bg-tan-light/40">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="bg-white rounded-xl border border-gold/10 p-6 lg:p-8">
+            <div className="flex items-start gap-3">
+              <Shield className="w-5 h-5 text-gold-dark shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-warm-dark text-sm font-semibold mb-2">Important Disclosure</h3>
+                <p className="text-foreground/50 text-xs leading-relaxed">
+                  All investments carry risk, including the potential loss of principal. Past performance
+                  does not guarantee future results. The information presented here is for informational
+                  purposes only and does not constitute an offer to sell or a solicitation of an offer to
+                  buy any securities. Prospective investors should conduct their own due diligence and
+                  consult with their financial, legal, and tax advisors before making any investment decisions.
+                  VI Pillars Capital operates in compliance with applicable securities regulations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CTASection
         headline="Interested in our"
         accentWord="pipeline?"
-        description="Connect with our team to learn more about current and upcoming investment opportunities. New deals are sourced regularly."
+        description="Connect with our team to learn more about current and upcoming investment opportunities. New deals are sourced regularly and we'd love to discuss how they align with your goals."
         buttonText="Contact Us"
         buttonHref="/contact"
       />
