@@ -1,6 +1,6 @@
 /*
  * Contact Page: Header + contact form + info sidebar cards
- * Matches Xirge Contact page structure
+ * Warm tan/gold color scheme
  */
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -40,7 +40,7 @@ export default function ContactPage() {
             <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
               Contact Us
             </p>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-5 max-w-2xl">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5 max-w-2xl">
               Let's start a{" "}
               <span className="italic text-gold-dark">conversation.</span>
             </h1>
@@ -71,7 +71,7 @@ export default function ContactPage() {
             >
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-forest-dark mb-2">
+                  <label className="block text-sm font-medium text-warm-dark mb-2">
                     Full Name <span className="text-copper">*</span>
                   </label>
                   <input
@@ -80,11 +80,11 @@ export default function ContactPage() {
                     placeholder="Your full name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition-all placeholder:text-foreground/30"
+                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all placeholder:text-foreground/30"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-forest-dark mb-2">
+                  <label className="block text-sm font-medium text-warm-dark mb-2">
                     Email Address <span className="text-copper">*</span>
                   </label>
                   <input
@@ -93,13 +93,13 @@ export default function ContactPage() {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition-all placeholder:text-foreground/30"
+                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all placeholder:text-foreground/30"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-forest-dark mb-2">
+                <label className="block text-sm font-medium text-warm-dark mb-2">
                   Subject
                 </label>
                 <input
@@ -107,12 +107,12 @@ export default function ContactPage() {
                   placeholder="What would you like to discuss?"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition-all placeholder:text-foreground/30"
+                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all placeholder:text-foreground/30"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-forest-dark mb-2">
+                <label className="block text-sm font-medium text-warm-dark mb-2">
                   Message <span className="text-copper">*</span>
                 </label>
                 <textarea
@@ -121,13 +121,13 @@ export default function ContactPage() {
                   placeholder="Tell us about your investment goals, questions, or how we can help..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition-all resize-none placeholder:text-foreground/30"
+                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none placeholder:text-foreground/30"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-forest-dark text-white text-sm font-semibold rounded-md hover:bg-forest transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-warm-dark text-sm font-semibold rounded-md hover:bg-gold-light transition-colors duration-200"
               >
                 <Send className="w-4 h-4" />
                 Send Message
@@ -141,14 +141,14 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="space-y-5"
             >
-              <div className="p-6 rounded-xl border border-gold/10 bg-cream/40">
-                <div className="w-10 h-10 rounded-lg bg-forest-dark/8 flex items-center justify-center mb-4">
-                  <Mail className="w-5 h-5 text-forest-dark" />
+              <div className="p-6 rounded-2xl border border-gold/10 bg-tan-light/30">
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
+                  <Mail className="w-5 h-5 text-gold-dark" />
                 </div>
-                <h3 className="text-forest-dark text-sm font-semibold mb-1">Email Us</h3>
+                <h3 className="text-warm-dark text-sm font-semibold mb-1">Email Us</h3>
                 <a
                   href="mailto:info@vipillarscapital.com"
-                  className="text-forest text-sm font-medium hover:underline"
+                  className="text-gold-dark text-sm font-medium hover:underline"
                 >
                   info@vipillarscapital.com
                 </a>
@@ -157,11 +157,11 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl border border-gold/10 bg-cream/40">
-                <div className="w-10 h-10 rounded-lg bg-forest-dark/8 flex items-center justify-center mb-4">
-                  <Clock className="w-5 h-5 text-forest-dark" />
+              <div className="p-6 rounded-2xl border border-gold/10 bg-tan-light/30">
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
+                  <Clock className="w-5 h-5 text-gold-dark" />
                 </div>
-                <h3 className="text-forest-dark text-sm font-semibold mb-1">Response Time</h3>
+                <h3 className="text-warm-dark text-sm font-semibold mb-1">Response Time</h3>
                 <p className="text-copper text-sm font-medium">24-48 business hours</p>
                 <p className="text-foreground/50 text-sm mt-3 leading-relaxed">
                   Our team reviews every inquiry personally and will respond with a

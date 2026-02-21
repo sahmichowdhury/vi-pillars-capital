@@ -1,7 +1,7 @@
 /*
- * Team Page: Header with mint/cream bg, team member cards
+ * Team Page: Header with warm tan bg, team member card
  * Only Sahmi Chowdhury per user request
- * Matches Xirge Team page structure with skill tags and LinkedIn
+ * Warm gold/tan color scheme
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -29,7 +29,7 @@ export default function TeamPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-[72px] bg-cream">
+      <section className="pt-[72px] bg-tan-light/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
           <motion.div
             ref={headerRef}
@@ -40,7 +40,7 @@ export default function TeamPage() {
             <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
               Our Team
             </p>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-6 max-w-2xl">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-6 max-w-2xl">
               The people behind{" "}
               <span className="italic text-gold-dark">VIP.</span>
             </h1>
@@ -62,17 +62,17 @@ export default function TeamPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={isCardsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="bg-white rounded-xl border border-gold/10 p-8 lg:p-10 text-center"
+              className="bg-white rounded-2xl border border-gold/10 p-8 lg:p-10 text-center shadow-sm"
             >
               {/* Avatar */}
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-forest to-forest-light flex items-center justify-center mx-auto mb-5">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold-dark to-gold flex items-center justify-center mx-auto mb-5">
                 <span className="text-white font-serif text-2xl font-bold">
                   {member.initials}
                 </span>
               </div>
 
               {/* Name & Role */}
-              <h3 className="font-serif text-2xl font-bold text-forest-dark mb-1">
+              <h3 className="font-serif text-2xl font-bold text-warm-dark mb-1">
                 {member.name}
               </h3>
               <p className="text-copper text-sm font-medium mb-6">{member.role}</p>
@@ -92,7 +92,7 @@ export default function TeamPage() {
                 {member.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-medium text-forest-dark/70 bg-cream border border-gold/15 px-3 py-1.5 rounded-full uppercase tracking-wider"
+                    className="text-xs font-medium text-gold-dark/80 bg-tan-light border border-gold/15 px-3 py-1.5 rounded-full uppercase tracking-wider"
                   >
                     {tag}
                   </span>
@@ -115,7 +115,7 @@ export default function TeamPage() {
               <a
                 href="#"
                 onClick={(e) => { e.preventDefault(); }}
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold/15 text-forest-dark/50 hover:text-forest-dark hover:border-forest-dark/30 transition-colors duration-200"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold/15 text-gold-dark/50 hover:text-gold-dark hover:border-gold/30 transition-colors duration-200"
               >
                 <Linkedin className="w-4 h-4" />
               </a>

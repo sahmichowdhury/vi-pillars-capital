@@ -1,25 +1,24 @@
 /*
  * About Page: What We Do, How We Invest (SPV), Ethical Differentiator, Core Values
- * White/cream alternating sections, centered headers with italic accent words
- * Matches Xirge About page structure
+ * Warm tan/gold color scheme throughout
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Shield, CheckCircle2, DollarSign, Building2, Rocket,
-  ArrowRight, Ban, Eye, Handshake, Star, Users
+  Ban, Eye, Handshake, Star, Users
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
 
 /* ---------- What We Do Hero ---------- */
 function AboutHero() {
   return (
-    <section className="pt-[72px] bg-cream">
+    <section className="pt-[72px] bg-tan-light/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
           About Us
         </p>
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-6 max-w-2xl">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-6 max-w-2xl">
           Ethical investing for{" "}
           <span className="italic text-gold-dark">everyone.</span>
         </h1>
@@ -48,7 +47,7 @@ function MissionVision() {
             },
             {
               title: "How We Do It",
-              text: "We invest deal-by-deal through Special Purpose Vehicles (SPVs), backing compelling opportunities with strategic capital from our unique investor base of socially conscious capital providers. We typically deploy a check size commensurate to the opportunity, with a preference for compelling businesses that have clear product-market fit, and non-traditional investments such as sports teams and media productions.",
+              text: "We invest deal-by-deal through Special Purpose Vehicles (SPVs), backing compelling opportunities with strategic capital from our unique investor base of socially conscious capital providers. We typically deploy a check size commensurate to the opportunity, with a preference for compelling businesses that have clear product-market fit, and non-traditional investments.",
             },
           ].map((card, i) => (
             <motion.div
@@ -56,9 +55,9 @@ function MissionVision() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-8 lg:p-10 rounded-xl border border-gold/10 bg-cream/40"
+              className="p-8 lg:p-10 rounded-2xl border border-gold/10 bg-tan-light/30"
             >
-              <h3 className="font-serif text-xl font-bold text-forest-dark mb-4">
+              <h3 className="font-serif text-xl font-bold text-warm-dark mb-4">
                 {card.title}
               </h3>
               <p className="text-foreground/60 text-[15px] leading-relaxed">
@@ -102,8 +101,8 @@ function InvestmentPhilosophy() {
       icon: Rocket,
       title: "Non-Traditional Assets",
       items: [
-        "Sports teams and media productions",
-        "Venture capital opportunities",
+        "Pre-IPO venture opportunities",
+        "Hospitality and lifestyle brands",
         "Unique high-growth investments",
         "Strategic sector positioning",
       ],
@@ -111,7 +110,7 @@ function InvestmentPhilosophy() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-cream">
+    <section className="py-20 lg:py-28 bg-tan-light/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -122,7 +121,7 @@ function InvestmentPhilosophy() {
           <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Investment Philosophy
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
             How we{" "}
             <span className="italic text-gold-dark">invest.</span>
           </h2>
@@ -139,18 +138,18 @@ function InvestmentPhilosophy() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-xl border border-gold/10 p-7"
+              className="bg-white rounded-2xl border border-gold/10 p-7 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-forest-dark/8 flex items-center justify-center mb-5">
-                <cat.icon className="w-5 h-5 text-forest-dark" />
+              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-5">
+                <cat.icon className="w-5 h-5 text-gold-dark" />
               </div>
-              <h3 className="font-serif text-lg font-bold text-forest-dark mb-4">
+              <h3 className="font-serif text-lg font-bold text-warm-dark mb-4">
                 {cat.title}
               </h3>
               <ul className="space-y-3">
                 {cat.items.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-gold-dark shrink-0 mt-0.5" />
                     <span className="text-foreground/60 text-sm leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -177,11 +176,11 @@ function EthicalDifferentiator() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-forest-dark/5 border border-forest-dark/10 rounded-full text-forest-dark text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/8 border border-gold/15 rounded-full text-gold-dark text-xs font-medium tracking-wider uppercase mb-6">
             <Shield className="w-3.5 h-3.5" />
             Our Differentiator
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
             Ethical investing for{" "}
             <span className="italic text-gold-dark">everyone.</span>
           </h2>
@@ -211,13 +210,13 @@ function EthicalDifferentiator() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-start gap-4 p-6 rounded-xl border border-gold/10 bg-cream/30"
+              className="flex items-start gap-4 p-6 rounded-2xl border border-gold/10 bg-tan-light/30"
             >
-              <div className="w-9 h-9 rounded-lg bg-forest-dark/8 flex items-center justify-center shrink-0">
-                <card.icon className="w-4.5 h-4.5 text-forest-dark" />
+              <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
+                <card.icon className="w-4.5 h-4.5 text-gold-dark" />
               </div>
               <div>
-                <h3 className="text-forest-dark text-sm font-semibold mb-1.5">{card.title}</h3>
+                <h3 className="text-warm-dark text-sm font-semibold mb-1.5">{card.title}</h3>
                 <p className="text-foreground/55 text-sm leading-relaxed">{card.desc}</p>
               </div>
             </motion.div>
@@ -262,7 +261,7 @@ function CoreValues() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-cream">
+    <section className="py-20 lg:py-28 bg-tan-light/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -273,7 +272,7 @@ function CoreValues() {
           <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Our Foundation
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
             Core{" "}
             <span className="italic text-gold-dark">Values.</span>
           </h2>
@@ -290,14 +289,14 @@ function CoreValues() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`bg-white rounded-xl border border-gold/10 p-6 ${
+              className={`bg-white rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300 ${
                 i === 4 ? "sm:col-span-2 lg:col-span-1 sm:max-w-md sm:mx-auto lg:max-w-none" : ""
               }`}
             >
-              <div className="w-9 h-9 rounded-lg bg-forest-dark/8 flex items-center justify-center mb-4">
-                <value.icon className="w-4.5 h-4.5 text-forest-dark" />
+              <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
+                <value.icon className="w-4.5 h-4.5 text-gold-dark" />
               </div>
-              <h3 className="text-forest-dark text-sm font-semibold mb-2">{value.title}</h3>
+              <h3 className="text-warm-dark text-sm font-semibold mb-2">{value.title}</h3>
               <p className="text-foreground/55 text-sm leading-relaxed">{value.desc}</p>
             </motion.div>
           ))}

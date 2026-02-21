@@ -1,6 +1,6 @@
 /*
- * Navbar: Clean white sticky nav, logo left, centered links, LP Login right
- * Matches Xirge Capital navigation pattern with VI Pillars branding
+ * Navbar: Clean white sticky nav with warm gold accents
+ * Logo left, centered links, LP Login right
  */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
@@ -56,8 +56,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
                     isActive
-                      ? "text-forest-dark"
-                      : "text-foreground/60 hover:text-forest-dark"
+                      ? "text-warm-dark"
+                      : "text-foreground/50 hover:text-warm-dark"
                   }`}
                 >
                   {link.label}
@@ -77,7 +77,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center">
             <a
               href="mailto:info@vipillarscapital.com"
-              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-forest-dark border border-forest-dark/20 rounded-md hover:bg-forest-dark hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-warm-dark border border-gold/30 rounded-md hover:bg-gold hover:text-warm-dark transition-all duration-200"
             >
               <LogIn className="w-4 h-4" />
               LP Login
@@ -87,7 +87,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-forest-dark"
+            className="md:hidden p-2 text-warm-dark"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -112,8 +112,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`block px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                       isActive
-                        ? "text-forest-dark bg-cream"
-                        : "text-foreground/60 hover:text-forest-dark hover:bg-cream/50"
+                        ? "text-warm-dark bg-tan-light"
+                        : "text-foreground/60 hover:text-warm-dark hover:bg-tan-light/50"
                     }`}
                   >
                     {link.label}
@@ -122,7 +122,7 @@ export default function Navbar() {
               })}
               <a
                 href="mailto:info@vipillarscapital.com"
-                className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-forest-dark"
+                className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-warm-dark"
               >
                 <LogIn className="w-4 h-4" />
                 LP Login

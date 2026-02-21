@@ -1,8 +1,8 @@
 /*
  * WhySection: Two-column layout on home page
  * Left: headline + paragraphs + CTA link
- * Right: Four stacked feature cards with icons
- * Matches Xirge "WHY XIRGE CAPITAL" section pattern
+ * Right: Four stacked feature cards with warm gold accents
+ * Warm tan/gold color scheme
  */
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
@@ -49,7 +49,7 @@ export default function WhySection() {
             <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
               Why VI Pillars Capital
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-dark leading-tight mb-6">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-6">
               Your path to the{" "}
               <span className="italic text-gold-dark">next level.</span>
             </h2>
@@ -66,7 +66,7 @@ export default function WhySection() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-forest-dark border border-forest-dark/20 rounded-md hover:bg-forest-dark hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-warm-dark border border-gold/30 rounded-md hover:bg-gold hover:text-warm-dark hover:border-gold transition-all duration-200"
             >
               Learn About Our Approach
               <ArrowRight className="w-4 h-4" />
@@ -81,13 +81,13 @@ export default function WhySection() {
                 initial={{ opacity: 0, x: 24 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex gap-4 p-5 rounded-lg border border-gold/10 hover:border-gold/25 bg-cream/30 hover:bg-cream/60 transition-all duration-200"
+                className="flex gap-4 p-5 rounded-xl border border-gold/10 hover:border-gold/25 bg-tan-light/30 hover:bg-tan-light/60 transition-all duration-200"
               >
-                <div className="w-10 h-10 rounded-lg bg-forest-dark/8 flex items-center justify-center shrink-0">
-                  <feature.icon className="w-5 h-5 text-forest-dark" />
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
+                  <feature.icon className="w-5 h-5 text-gold-dark" />
                 </div>
                 <div>
-                  <h3 className="text-forest-dark text-sm font-semibold mb-1">
+                  <h3 className="text-warm-dark text-sm font-semibold mb-1">
                     {feature.title}
                   </h3>
                   <p className="text-foreground/55 text-sm leading-relaxed">
