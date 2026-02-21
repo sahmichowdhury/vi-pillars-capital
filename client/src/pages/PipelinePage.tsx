@@ -12,7 +12,7 @@ import {
   Building2,
   Rocket,
   Watch,
-  Wine,
+  Sparkles,
   Home,
   Hammer,
   TrendingUp,
@@ -34,7 +34,7 @@ interface Deal {
   revenueModel: string;
   date: string;
   allocation: string;
-  status: "Active" | "Currently Closed" | "Sold";
+    status: "Active" | "Deployed";
   link?: string;
   icon: React.ElementType;
   highlights: string[];
@@ -51,7 +51,7 @@ const deals: Deal[] = [
     revenueModel: "Rental Income & Appreciation",
     date: "2025",
     allocation: "Confidential",
-    status: "Active",
+    status: "Deployed",
     icon: Building2,
     highlights: [
       "4-unit residential property",
@@ -80,16 +80,16 @@ const deals: Deal[] = [
   {
     name: "Tercer",
     description:
-      "An exclusive members-only social club redefining nightlife and hospitality. Tercer offers a curated experience blending wellness, entertainment, and community in a sophisticated setting.",
+      "An exclusive members-only social club redefining hospitality and leisure. Tercer offers a curated experience blending wellness, entertainment, and community in a sophisticated setting.",
     category: "Hospitality",
     industry: "Hospitality & Leisure",
     subIndustry: "Members-Only Club",
     revenueModel: "Membership Fees & Event Revenue",
     date: "2025",
     allocation: "Confidential",
-    status: "Currently Closed",
+    status: "Deployed",
     link: "https://www.tercerclub.com/",
-    icon: Wine,
+    icon: Sparkles,
     highlights: [
       "Exclusive membership model",
       "Wellness & entertainment blend",
@@ -125,7 +125,7 @@ const deals: Deal[] = [
     revenueModel: "Launch Services & Satellite Subscriptions",
     date: "February 2024",
     allocation: "Confidential",
-    status: "Sold",
+    status: "Deployed",
     icon: Rocket,
     highlights: [
       "Reusable rocket technology",
@@ -152,17 +152,11 @@ const statusConfig: Record<
     dot: "bg-emerald-500",
     label: "Active",
   },
-  "Currently Closed": {
-    bg: "bg-amber-50",
-    text: "text-amber-700",
-    dot: "bg-amber-500",
-    label: "Currently Closed",
-  },
-  Sold: {
-    bg: "bg-stone-100",
-    text: "text-stone-600",
-    dot: "bg-stone-400",
-    label: "Sold",
+  Deployed: {
+    bg: "bg-blue-50",
+    text: "text-blue-700",
+    dot: "bg-blue-500",
+    label: "Deployed",
   },
 };
 
