@@ -13,6 +13,7 @@ const team = [
     name: "Sahmi Chowdhury",
     role: "Founder",
     initials: "SC",
+    photo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663361696775/kehEUkmbrxHxxoJn.jpg",
     bio: "Mr. Chowdhury serves as a Product Manager at Mastercard on the New Payment Platforms team. He also serves as a mentor for interns and new hires to help them set career goals as they both interview and join the company. Previously Co-Founder and CEO of JORE, a South Asian Digital Media platform, successfully sold in 2024. Before JORE, he served as a Product Researcher at ValueChampion, an Asia-focused FinTech company, and as an Investment Analyst at True Capital Management, a boutique Wealth Management firm. His career began as a Sales & Trading Analyst at Brown Brothers Harriman. Sahmi leads deal sourcing and investor relations at VI Pillars Capital, leveraging his experience across the finance and technology sectors and bringing a global perspective to every deal.",
     tags: ["Deal Sourcing", "Investor Relations", "Capital Markets", "Product Strategy"],
     companies: ["Mastercard", "JORE", "True Capital Mgmt", "Brown Brothers Harriman"],
@@ -62,13 +63,23 @@ export default function TeamPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={isCardsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="bg-white rounded-2xl border border-gold/10 p-8 lg:p-10 text-center shadow-sm"
+              className="bg-white rounded-2xl p-8 lg:p-10 text-center"
             >
               {/* Avatar */}
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold-dark to-gold flex items-center justify-center mx-auto mb-5">
-                <span className="text-white font-serif text-2xl font-bold">
-                  {member.initials}
-                </span>
+              <div className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-5">
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gold-dark to-gold flex items-center justify-center">
+                    <span className="text-white font-serif text-2xl font-bold">
+                      {member.initials}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Name & Role */}
