@@ -43,7 +43,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <Logo variant="dark" />
+            <Logo variant="dark" size="sm" />
           </Link>
 
           {/* Desktop Nav Links */}

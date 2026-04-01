@@ -1,66 +1,100 @@
 /*
- * Logo: Clean text-based logo matching VI Pillars Capital branding
- * "VI" is large (same height as the pillar), warm tan/gold tones
- * Supports light (for dark backgrounds) and dark (for light backgrounds) variants
+ * Logo: Bold Doric Fluted — All Luxe Gold
+ * "V" is large serif, "I" is a detailed Doric column with fluting
+ * All elements in unified deep gold. Supports light (on dark bg) and dark (on light bg) variants.
  */
 
 interface LogoProps {
   variant?: "dark" | "light";
   className?: string;
+  size?: "sm" | "md" | "lg";
 }
 
-export default function Logo({ variant = "dark", className = "" }: LogoProps) {
-  // Use warm tan/copper tones instead of green
-  const viColor = variant === "dark" ? "text-[#8B7355]" : "text-[#D4C4A8]";
-  const labelColor = variant === "dark" ? "text-[#5C4A32]" : "text-white/90";
-  const pillarFill = variant === "dark" ? "#8B7355" : "#D4C4A8";
+export default function Logo({ variant = "dark", className = "", size = "md" }: LogoProps) {
+  // Unified gold colors
+  const goldOnDark = "#b8935a";
+  const goldOnLight = "#8a6d3b";
+  const gold = variant === "light" ? goldOnDark : goldOnLight;
+  const flutingColor = variant === "light" ? "#0f0b08" : "#f5f0eb";
+
+  // Size scaling
+  const scale = size === "sm" ? 0.6 : size === "lg" ? 1.4 : 1;
+  const svgW = Math.round(360 * scale);
+  const svgH = Math.round(110 * scale);
 
   return (
-    <div className={`flex items-center gap-0.5 select-none ${className}`}>
-      {/* VI text - large, matching pillar height */}
-      <span
-        className={`font-serif text-[34px] font-bold leading-none tracking-[-0.02em] ${viColor}`}
-        style={{ lineHeight: "38px" }}
-      >
-        VI
-      </span>
-
-      {/* Pillar SVG - same height as VI text */}
+    <div className={`flex items-center select-none ${className}`}>
       <svg
-        width="16"
-        height="38"
-        viewBox="0 0 16 38"
+        width={svgW}
+        height={svgH}
+        viewBox="0 0 360 110"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="shrink-0"
       >
-        {/* Capital (top plate) */}
-        <rect x="1" y="0" width="14" height="2.5" rx="0.5" fill={pillarFill} />
-        {/* Abacus */}
-        <rect x="3" y="2.5" width="10" height="1.5" rx="0.3" fill={pillarFill} />
-        {/* Shaft */}
-        <rect x="4.5" y="4" width="7" height="27" rx="0.5" fill={pillarFill} />
-        {/* Fluting */}
-        <line x1="6" y1="5" x2="6" y2="30" stroke={variant === "dark" ? "#f5f0e8" : "rgba(58,90,64,0.25)"} strokeWidth="0.5" opacity="0.5" />
-        <line x1="8" y1="5" x2="8" y2="30" stroke={variant === "dark" ? "#f5f0e8" : "rgba(58,90,64,0.25)"} strokeWidth="0.5" opacity="0.5" />
-        <line x1="10" y1="5" x2="10" y2="30" stroke={variant === "dark" ? "#f5f0e8" : "rgba(58,90,64,0.25)"} strokeWidth="0.5" opacity="0.5" />
-        {/* Bottom decoration */}
-        <rect x="3" y="31" width="10" height="1.5" rx="0.3" fill={pillarFill} />
-        {/* Base */}
-        <rect x="1" y="32.5" width="14" height="2.5" rx="0.5" fill={pillarFill} />
-        {/* Platform */}
-        <rect x="0" y="35" width="16" height="3" rx="0.5" fill={pillarFill} />
-      </svg>
+        {/* Large bold "V" */}
+        <text
+          x="2"
+          y="82"
+          fontFamily="'Playfair Display', Georgia, serif"
+          fontSize="90"
+          fontWeight="900"
+          fill={gold}
+          letterSpacing="-4"
+        >
+          V
+        </text>
 
-      {/* Pillars Capital text */}
-      <div className="flex flex-col leading-none ml-1">
-        <span className={`font-serif text-[14px] font-bold tracking-wide ${labelColor}`}>
+        {/* Bold Doric Fluted Pillar as "I" */}
+        <g transform="translate(70, 5)">
+          {/* Capital - wide flat top */}
+          <rect x="-13" y="0" width="26" height="4" rx="1.5" fill={gold} />
+          {/* Echinus (middle tier) */}
+          <rect x="-10" y="4" width="20" height="3" fill={gold} opacity="0.9" />
+          {/* Necking */}
+          <rect x="-7" y="7" width="14" height="2.5" fill={gold} opacity="0.85" />
+          {/* Fluted shaft */}
+          <path d="M-6,9.5 L-5,66 L5,66 L6,9.5 Z" fill={gold} />
+          {/* Prominent fluting channels */}
+          <path d="M-4,11 Q-3.5,38 -3.2,64" fill="none" stroke={flutingColor} strokeWidth="1.2" opacity="0.2" strokeLinecap="round" />
+          <path d="M-1.5,11 Q-1.3,38 -1.2,64" fill="none" stroke={flutingColor} strokeWidth="1.2" opacity="0.2" strokeLinecap="round" />
+          <path d="M1.5,11 Q1.3,38 1.2,64" fill="none" stroke={flutingColor} strokeWidth="1.2" opacity="0.2" strokeLinecap="round" />
+          <path d="M4,11 Q3.5,38 3.2,64" fill="none" stroke={flutingColor} strokeWidth="1.2" opacity="0.2" strokeLinecap="round" />
+          {/* Base - necking */}
+          <rect x="-7" y="66" width="14" height="2.5" fill={gold} opacity="0.85" />
+          {/* Base - torus */}
+          <rect x="-10" y="68.5" width="20" height="3" fill={gold} opacity="0.9" />
+          {/* Base - plinth */}
+          <rect x="-13" y="71.5" width="26" height="4" rx="1.5" fill={gold} />
+        </g>
+
+        {/* "Pillars" text */}
+        <text
+          x="108"
+          y="44"
+          fontFamily="'Playfair Display', Georgia, serif"
+          fontSize="30"
+          fontWeight="800"
+          fill={gold}
+          letterSpacing="0.5"
+        >
           Pillars
-        </span>
-        <span className={`font-serif text-[14px] font-bold tracking-wide ${labelColor}`}>
+        </text>
+        {/* "Capital" text */}
+        <text
+          x="108"
+          y="76"
+          fontFamily="'Playfair Display', Georgia, serif"
+          fontSize="30"
+          fontWeight="800"
+          fill={gold}
+          letterSpacing="0.5"
+        >
           Capital
-        </span>
-      </div>
+        </text>
+        {/* Gold underline rule */}
+        <line x1="108" y1="84" x2="260" y2="84" stroke={gold} strokeWidth="1.8" />
+      </svg>
     </div>
   );
 }

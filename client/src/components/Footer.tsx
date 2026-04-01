@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo & Description */}
           <div className="lg:col-span-1">
-            <Logo variant="light" className="mb-5" />
+            <Logo variant="light" size="sm" className="mb-5" />
             <p className="text-white/45 text-sm leading-relaxed mb-5">
               A purpose-built Syndicate Lead pairing ethical capital with exclusive 
               private markets investment opportunities.
