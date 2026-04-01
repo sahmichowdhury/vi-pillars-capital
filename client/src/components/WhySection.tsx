@@ -18,7 +18,7 @@ const features = [
   {
     icon: Shield,
     title: "Ethical Investing",
-    desc: "Our Shariah-compliant approach means we invest ethically — no harmful industries, no excessive risk, and full transparency.",
+    desc: "Our principled approach means we invest ethically — no harmful industries, no excessive risk, and full transparency in every deal we structure.",
   },
   {
     icon: TrendingUp,

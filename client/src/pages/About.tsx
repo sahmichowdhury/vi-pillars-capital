@@ -1,7 +1,7 @@
 /*
- * About Page: Enhanced with more sections, icons, graphics, and compelling copy
- * Sections: Hero, Mission/Vision, Investment Philosophy, Ethical Differentiator,
- *           What We Avoid, Investor Journey, Core Values, FAQ, CTA
+ * About Page: Enhanced with SPV education diagram, community focus,
+ * ethical investing emphasis, investor journey, core values, FAQ
+ * Shariah language softened — focus on ethics, structure, due diligence
  */
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
@@ -10,7 +10,8 @@ import {
   Ban, Eye, Handshake, Star, Users, ChevronDown,
   Target, Scale, Heart, Globe, Leaf, Lock,
   TrendingUp, BarChart3, FileSearch, Briefcase,
-  CircleDot, ArrowRight, Zap, Award,
+  ArrowRight, Award, BookOpen, Lightbulb, GraduationCap,
+  ArrowDown, CircleDot, Layers,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
 
@@ -18,7 +19,6 @@ import CTASection from "@/components/CTASection";
 function AboutHero() {
   return (
     <section className="pt-[72px] bg-warm-dark relative overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-warm-dark via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
@@ -47,8 +47,8 @@ function AboutHero() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
             >
-              Ethical investing for{" "}
-              <span className="italic text-gold">everyone.</span>
+              Principled investing,{" "}
+              <span className="italic text-gold">purposeful returns.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -56,13 +56,12 @@ function AboutHero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/55 text-lg leading-relaxed max-w-xl"
             >
-              VI Pillars Capital is a purpose-built Syndicate Lead aiming to pair socially
+              VI Pillars Capital is a purpose-built Syndicate Lead pairing socially
               conscious capital with exclusive private markets investment opportunities.
-              We believe that wealth creation and ethical responsibility are not mutually exclusive.
+              We believe that wealth creation and ethical responsibility go hand in hand.
             </motion.p>
           </div>
 
-          {/* Right side stats */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -104,7 +103,7 @@ function MissionVision() {
             {
               icon: Target,
               title: "What We Do",
-              text: "VI Pillars provides ethical, Shariah-compliant investment opportunities through strategic syndications across a range of opportunistic deals that span private equity, venture capital, real estate, and hospitality.",
+              text: "VI Pillars provides ethically screened investment opportunities through strategic syndications across a range of deals spanning private equity, venture capital, real estate, and hospitality — all structured with integrity and transparency.",
             },
             {
               icon: Briefcase,
@@ -114,7 +113,7 @@ function MissionVision() {
             {
               icon: FileSearch,
               title: "What We Look For",
-              text: "Compelling businesses with clear product-market fit, non-traditional investments with strong upside potential, and real estate opportunities in high-growth markets — all ethically screened.",
+              text: "Compelling businesses with clear product-market fit, non-traditional investments with strong upside potential, and real estate opportunities in high-growth markets — all rigorously vetted and ethically screened.",
             },
           ].map((card, i) => (
             <motion.div
@@ -136,6 +135,226 @@ function MissionVision() {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- SPV Education Diagram ---------- */
+function SPVDiagram() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <section className="py-20 lg:py-28 bg-tan-light/40">
+      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/8 border border-gold/15 rounded-full text-gold-dark text-xs font-medium tracking-wider uppercase mb-6">
+            <GraduationCap className="w-3.5 h-3.5" />
+            Investor Education
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+            Understanding{" "}
+            <span className="italic text-gold-dark">SPVs.</span>
+          </h2>
+          <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
+            A Special Purpose Vehicle (SPV) is a dedicated legal entity created for a single investment.
+            It's the backbone of how VI Pillars Capital structures every deal — giving you transparency,
+            control, and direct exposure.
+          </p>
+        </motion.div>
+
+        {/* Interactive SPV Flow Diagram */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-4xl mx-auto mb-16"
+        >
+          <div className="bg-white rounded-2xl border border-gold/15 p-8 lg:p-10 shadow-sm">
+            {/* Flow: Investors → SPV → Deal */}
+            <div className="flex flex-col items-center gap-4">
+              {/* Investors Row */}
+              <div className="flex flex-wrap justify-center gap-3">
+                {["Investor A", "Investor B", "Investor C", "You"].map((inv, i) => (
+                  <motion.div
+                    key={inv}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                    className={`px-5 py-3 rounded-xl border text-sm font-semibold text-center ${
+                      inv === "You"
+                        ? "bg-gold/15 border-gold/40 text-gold-dark"
+                        : "bg-tan-light/50 border-gold/10 text-warm-dark/70"
+                    }`}
+                  >
+                    <Users className="w-4 h-4 mx-auto mb-1.5 opacity-60" />
+                    {inv}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Arrow Down */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.7 }}
+                className="flex flex-col items-center gap-1"
+              >
+                <div className="w-px h-8 bg-gradient-to-b from-gold/40 to-gold" />
+                <ArrowDown className="w-5 h-5 text-gold" />
+                <span className="text-xs text-foreground/40 font-medium">Capital Pooled</span>
+              </motion.div>
+
+              {/* SPV Box */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="w-full max-w-sm bg-warm-dark rounded-2xl p-6 text-center"
+              >
+                <Layers className="w-8 h-8 text-gold mx-auto mb-3" />
+                <h4 className="text-white font-serif text-lg font-bold mb-1">Special Purpose Vehicle</h4>
+                <p className="text-white/40 text-xs">Dedicated legal entity for this deal</p>
+              </motion.div>
+
+              {/* Arrow Down */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.3, delay: 1.0 }}
+                className="flex flex-col items-center gap-1"
+              >
+                <div className="w-px h-8 bg-gradient-to-b from-gold/40 to-gold" />
+                <ArrowDown className="w-5 h-5 text-gold" />
+                <span className="text-xs text-foreground/40 font-medium">Capital Deployed</span>
+              </motion.div>
+
+              {/* Deal Box */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 1.1 }}
+                className="w-full max-w-sm bg-gold/10 border border-gold/25 rounded-2xl p-6 text-center"
+              >
+                <TrendingUp className="w-8 h-8 text-gold-dark mx-auto mb-3" />
+                <h4 className="text-warm-dark font-serif text-lg font-bold mb-1">The Investment</h4>
+                <p className="text-foreground/50 text-xs">Real estate, venture, hospitality, etc.</p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* SPV Pros & Cons Table */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-white rounded-2xl border border-gold/10 p-7"
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+              </div>
+              <h3 className="font-serif text-lg font-bold text-warm-dark">Advantages of SPVs</h3>
+            </div>
+            <ul className="space-y-3">
+              {[
+                "Choose exactly which deals to invest in — no blind pool",
+                "Full transparency into each investment's structure and terms",
+                "Limited liability — your risk is capped at your investment",
+                "Direct ownership exposure to the underlying asset",
+                "Professional management and reporting per deal",
+                "Flexible — invest in one deal or many, on your terms",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span className="text-foreground/60 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-white rounded-2xl border border-gold/10 p-7"
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center">
+                <Lightbulb className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="font-serif text-lg font-bold text-warm-dark">Things to Consider</h3>
+            </div>
+            <ul className="space-y-3">
+              {[
+                "Investments are typically illiquid — capital is locked until exit",
+                "Each deal carries its own risk profile and timeline",
+                "Returns are not guaranteed and depend on deal performance",
+                "Due diligence is critical — always review the deal memo",
+                "Minimum investment amounts apply per deal ($20,000)",
+                "Tax implications vary — consult your advisor",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CircleDot className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                  <span className="text-foreground/60 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Why SPVs? */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-12 max-w-4xl mx-auto bg-warm-dark rounded-2xl p-8 lg:p-10"
+        >
+          <h3 className="font-serif text-2xl font-bold text-white mb-4 text-center">
+            Why does VI Pillars use <span className="italic text-gold">SPVs?</span>
+          </h3>
+          <div className="grid sm:grid-cols-3 gap-6 mt-6">
+            {[
+              {
+                icon: Eye,
+                title: "Transparency",
+                desc: "Each SPV is a single deal — you know exactly where your money goes and how it's performing.",
+              },
+              {
+                icon: Shield,
+                title: "Alignment",
+                desc: "SPVs ensure our interests are aligned with yours. We invest alongside you and succeed only when you do.",
+              },
+              {
+                icon: Scale,
+                title: "Ethical Structure",
+                desc: "SPVs allow us to structure each deal to meet our ethical standards — no interest-based debt, no harmful industries.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="w-6 h-6 text-gold" />
+                </div>
+                <h4 className="text-white text-sm font-semibold mb-2">{item.title}</h4>
+                <p className="text-white/40 text-xs leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -183,7 +402,7 @@ function InvestmentPhilosophy() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-white">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -200,7 +419,7 @@ function InvestmentPhilosophy() {
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Our approach is built on ethical screening, rigorous due diligence, and
-            Shariah compliance. Every investment must pass through all three filters before
+            principled deal structuring. Every investment must pass through all three filters before
             it reaches our investors.
           </p>
         </motion.div>
@@ -212,7 +431,7 @@ function InvestmentPhilosophy() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl border border-gold/10 p-7 hover:shadow-md transition-shadow duration-300"
+              className="bg-tan-light/30 rounded-2xl border border-gold/10 p-7 hover:shadow-md transition-shadow duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center mb-5">
                 <cat.icon className="w-6 h-6 text-gold" />
@@ -243,7 +462,7 @@ function EthicalDifferentiator() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-20 lg:py-28 bg-tan-light/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -256,14 +475,13 @@ function EthicalDifferentiator() {
             Our Differentiator
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
-            Ethical investing for{" "}
-            <span className="italic text-gold-dark">everyone.</span>
+            Investing with{" "}
+            <span className="italic text-gold-dark">intention.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-3xl mx-auto">
-            VI Pillars Capital is a Shariah-compliant syndicate, which means we adhere to
-            the principles of Islamic finance. But Shariah compliance is more than a religious
-            framework — it's a commitment to ethical, transparent, and socially responsible
-            investing that benefits all communities and all investors, regardless of background.
+            VI Pillars Capital operates under a principled investment framework rooted in ethical
+            finance. This means every deal is structured for transparency, fairness, and social
+            responsibility — creating value for investors and communities alike.
           </p>
         </motion.div>
 
@@ -282,7 +500,7 @@ function EthicalDifferentiator() {
             {
               icon: Lock,
               title: "No Excessive Debt",
-              desc: "We avoid highly leveraged companies and interest-based financing structures.",
+              desc: "We avoid highly leveraged companies and interest-based financing structures that create systemic risk.",
             },
             {
               icon: Heart,
@@ -295,7 +513,7 @@ function EthicalDifferentiator() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 rounded-xl border border-gold/10 bg-tan-light/30 hover:shadow-md transition-shadow duration-300"
+              className="p-6 rounded-xl border border-gold/10 bg-white hover:shadow-md transition-shadow duration-300"
             >
               <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
                 <card.icon className="w-5 h-5 text-gold-dark" />
@@ -310,19 +528,10 @@ function EthicalDifferentiator() {
   );
 }
 
-/* ---------- What We Avoid ---------- */
-function WhatWeAvoid() {
+/* ---------- Community & Purpose ---------- */
+function CommunityPurpose() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
-
-  const excluded = [
-    "Alcohol & Tobacco",
-    "Gambling & Speculation",
-    "Weapons & Defense",
-    "Adult Entertainment",
-    "Interest-Based Finance",
-    "Excessive Leverage",
-  ];
 
   return (
     <section className="py-20 lg:py-28 bg-warm-dark relative overflow-hidden">
@@ -338,40 +547,79 @@ function WhatWeAvoid() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 border border-red-500/20 rounded-full text-red-400 text-xs font-medium tracking-wider uppercase mb-6">
-              <Ban className="w-3.5 h-3.5" />
-              Excluded Industries
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+              <Globe className="w-3.5 h-3.5" />
+              Community & Purpose
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-              What we{" "}
-              <span className="italic text-gold">don't invest in.</span>
+              Building wealth that{" "}
+              <span className="italic text-gold">uplifts.</span>
             </h2>
-            <p className="text-white/50 text-base leading-relaxed mb-8">
-              Ethical investing starts with knowing where not to put your money. We maintain
-              a strict exclusion list to ensure every dollar deployed aligns with our values
-              and the principles of Shariah compliance. This isn't just about avoiding harm —
-              it's about directing capital toward industries that build a better world.
+            <p className="text-white/55 text-base leading-relaxed mb-6">
+              At VI Pillars Capital, we believe investing should be more than a transaction — it should
+              be a force for positive change. Our commitment extends beyond returns to financial literacy,
+              community empowerment, and equitable access to wealth-building opportunities.
             </p>
+            <p className="text-white/55 text-base leading-relaxed mb-8">
+              We are dedicated to democratizing access to private markets, educating our investor community,
+              and ensuring that every dollar deployed creates value not just for investors, but for the
+              broader communities our investments touch.
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                "Financial Literacy",
+                "Community Empowerment",
+                "Equitable Access",
+                "Sustainable Impact",
+              ].map((tag) => (
+                <div
+                  key={tag}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-xl"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                  <span className="text-white/70 text-sm font-medium">{tag}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 gap-3"
+            className="space-y-4"
           >
-            {excluded.map((item, i) => (
+            {[
+              {
+                icon: BookOpen,
+                title: "Investor Education",
+                desc: "We publish insights, guides, and articles to help our community make informed investment decisions — whether you're a first-time investor or a seasoned allocator.",
+              },
+              {
+                icon: Users,
+                title: "Inclusive by Design",
+                desc: "Our $20,000 minimum opens doors to opportunities traditionally reserved for institutions and ultra-high-net-worth individuals. We believe great deals should be accessible.",
+              },
+              {
+                icon: Leaf,
+                title: "Sustainable Value Creation",
+                desc: "Every investment we make is evaluated not just on financial merit, but on its potential to create lasting, positive impact in the communities it serves.",
+              },
+            ].map((item, i) => (
               <motion.div
-                key={item}
+                key={item.title}
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.06 }}
-                className="flex items-center gap-3 p-4 bg-white/[0.04] border border-white/[0.08] rounded-xl"
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                className="flex items-start gap-4 p-5 bg-white/[0.04] border border-white/[0.08] rounded-xl"
               >
-                <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0">
-                  <Ban className="w-4 h-4 text-red-400" />
+                <div className="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-gold" />
                 </div>
-                <span className="text-white/70 text-sm font-medium">{item}</span>
+                <div>
+                  <h3 className="text-white text-sm font-semibold mb-1">{item.title}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -414,7 +662,7 @@ function InvestorJourney() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-white">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -441,7 +689,7 @@ function InvestorJourney() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="relative bg-white rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
+              className="relative bg-tan-light/30 rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
             >
               <div className="text-gold/20 font-serif text-4xl font-bold absolute top-4 right-5">
                 {step.num}
@@ -476,23 +724,23 @@ function CoreValues() {
     },
     {
       icon: Shield,
-      title: "Shariah Compliance",
-      desc: "Every opportunity is screened and structured to avoid riba (interest), gharar (excessive uncertainty), and haram industries.",
+      title: "Principled Standards",
+      desc: "Every opportunity is screened against our ethical framework — avoiding harmful industries, excessive leverage, and opaque structures.",
     },
     {
       icon: Users,
       title: "Community & Inclusivity",
-      desc: "We welcome both seasoned and first-time investors, striving to educate and uplift communities through financial literacy.",
+      desc: "We welcome both seasoned and first-time investors, striving to educate and uplift communities through financial literacy and equitable access.",
     },
     {
       icon: Handshake,
       title: "Partnership & Shared Risk",
-      desc: "In line with Islamic principles, we prioritize profit-and-loss sharing over debt-based returns.",
+      desc: "We prioritize profit-and-loss sharing over debt-based returns — aligning our interests with yours in every deal.",
     },
     {
       icon: Star,
       title: "Excellence & Accountability",
-      desc: "We hold ourselves to high standards in due diligence, deal selection, and investor relations.",
+      desc: "We hold ourselves to the highest standards in due diligence, deal selection, and investor relations — because your trust is earned, not given.",
     },
     {
       icon: Award,
@@ -502,7 +750,7 @@ function CoreValues() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-20 lg:py-28 bg-tan-light/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -514,8 +762,8 @@ function CoreValues() {
             Our Foundation
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
-            Core{" "}
-            <span className="italic text-gold-dark">Values.</span>
+            Built on{" "}
+            <span className="italic text-gold-dark">values.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Our values are the pillars upon which every investment decision is built,
@@ -530,7 +778,7 @@ function CoreValues() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-tan-light/30 rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
             >
               <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
                 <value.icon className="w-5 h-5 text-gold-dark" />
@@ -557,8 +805,8 @@ function FAQ() {
       a: "A Special Purpose Vehicle (SPV) is a legal entity created specifically for a single investment. When you invest through an SPV with VI Pillars Capital, your capital is pooled with other investors into a dedicated entity that holds a specific asset or deal. This gives you direct ownership exposure, full transparency, and the flexibility to choose which deals you participate in.",
     },
     {
-      q: "Do I need to be Muslim to invest with VI Pillars Capital?",
-      a: "Absolutely not. While our investments are Shariah-compliant, our ethical framework appeals to anyone who values transparent, socially responsible investing. Many of our investors simply appreciate that we exclude harmful industries and maintain clear, honest deal structures.",
+      q: "Do I need a specific background to invest with VI Pillars Capital?",
+      a: "Not at all. While our investments follow ethical and principled standards, our framework appeals to anyone who values transparent, socially responsible investing. Many of our investors simply appreciate that we exclude harmful industries and maintain clear, honest deal structures — regardless of their personal background.",
     },
     {
       q: "What is the minimum investment amount?",
@@ -566,11 +814,11 @@ function FAQ() {
     },
     {
       q: "How are deals sourced and vetted?",
-      a: "Our team leverages deep industry networks and rigorous analysis to identify compelling opportunities. Every deal undergoes comprehensive due diligence covering financial performance, market positioning, management quality, and Shariah compliance before being presented to investors.",
+      a: "Our team leverages deep industry networks and rigorous analysis to identify compelling opportunities. Every deal undergoes comprehensive due diligence covering financial performance, market positioning, management quality, and ethical compliance before being presented to investors.",
     },
     {
       q: "What types of returns can I expect?",
-      a: "Returns vary by deal type and asset class. Real estate investments may generate rental income and appreciation, while pre-IPO investments target capital gains upon exit. We provide detailed projections and risk assessments for each opportunity so you can make informed decisions.",
+      a: "Returns vary by deal type and asset class. Real estate investments may generate rental income and appreciation, while venture investments target capital gains upon exit. We provide detailed projections and risk assessments for each opportunity so you can make informed decisions.",
     },
     {
       q: "How do I stay updated on my investments?",
@@ -579,7 +827,7 @@ function FAQ() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-white">
       <div ref={ref} className="max-w-3xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -603,11 +851,11 @@ function FAQ() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="bg-white rounded-xl border border-gold/10 overflow-hidden"
+              className="bg-tan-light/30 rounded-xl border border-gold/10 overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-tan-light/30 transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left hover:bg-tan-light/50 transition-colors"
               >
                 <span className="text-warm-dark text-sm font-semibold pr-4">{faq.q}</span>
                 <ChevronDown
@@ -639,16 +887,17 @@ export default function About() {
     <>
       <AboutHero />
       <MissionVision />
+      <SPVDiagram />
       <InvestmentPhilosophy />
       <EthicalDifferentiator />
-      <WhatWeAvoid />
+      <CommunityPurpose />
       <InvestorJourney />
       <CoreValues />
       <FAQ />
       <CTASection
         headline="Want to learn"
         accentWord="more?"
-        description="Knowledge is the foundation of smart investing. Connect with our team to discuss your investment goals and learn about ethical investing with VI Pillars Capital."
+        description="Knowledge is the foundation of smart investing. Connect with our team to discuss your investment goals and learn about principled investing with VI Pillars Capital."
         buttonText="Contact Us"
         buttonHref="/contact"
       />

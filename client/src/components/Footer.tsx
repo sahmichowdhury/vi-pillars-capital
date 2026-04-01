@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2 text-gold/80 text-xs font-medium">
               <Shield className="w-3.5 h-3.5" />
-              Ethical & Shariah Compliant
+              Principled & Ethically Screened
             </div>
           </div>
 
@@ -33,7 +33,8 @@ export default function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Our Team", href: "/team" },
-                { label: "Pipeline", href: "/pipeline" },
+                { label: "Dealflow", href: "/dealflow" },
+                { label: "News & Insights", href: "/news" },
                 { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>

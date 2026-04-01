@@ -63,7 +63,7 @@ function StatsBar() {
   const stats = [
     { value: 5, suffix: "+", label: "Deals Deployed" },
     { value: 3, suffix: "", label: "Asset Classes" },
-    { value: 1000, prefix: "$", suffix: "", label: "Minimum Investment" },
+    { value: 20000, prefix: "$", suffix: "", label: "Minimum Investment" },
     { value: 100, suffix: "%", label: "Ethically Screened" },
   ];
 
@@ -78,7 +78,7 @@ function StatsBar() {
           className="bg-white rounded-2xl border border-gold/15 shadow-lg p-8 lg:p-10"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {stats.map((stat, i) => (
+            {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="font-serif text-3xl lg:text-4xl font-bold text-warm-dark mb-1">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
@@ -103,13 +103,13 @@ function HowItWorks() {
       num: "01",
       icon: FileSearch,
       title: "We Source the Deal",
-      desc: "Our team identifies high-quality, ethically-screened investment opportunities across private equity, real estate, hospitality, and pre-IPO ventures.",
+      desc: "Our team identifies high-quality, ethically screened investment opportunities across private equity, real estate, hospitality, and pre-IPO ventures.",
     },
     {
       num: "02",
       icon: Shield,
-      title: "We Vet for Compliance",
-      desc: "Every opportunity undergoes rigorous due diligence and Shariah compliance screening. We exclude harmful industries and ensure transparent deal structures.",
+      title: "Rigorous Due Diligence",
+      desc: "Every opportunity undergoes comprehensive analysis — financial performance, market positioning, management quality, and ethical compliance. We exclude harmful industries and ensure transparent structures.",
     },
     {
       num: "03",
@@ -136,7 +136,7 @@ function HowItWorks() {
             <span className="italic text-gold-dark">works.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
-            Investing with VI Pillars Capital is straightforward. We handle the complexity so you can focus on building wealth ethically.
+            Investing with VI Pillars Capital is straightforward. We handle the complexity so you can focus on building wealth with purpose.
           </p>
         </motion.div>
 
@@ -149,7 +149,6 @@ function HowItWorks() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="relative"
             >
-              {/* Connector line */}
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-12 left-[calc(50%+40px)] right-[calc(-50%+40px)] h-px bg-gradient-to-r from-gold/30 to-gold/10" />
               )}
@@ -205,14 +204,14 @@ function FeaturedDeals() {
     {
       icon: Watch,
       name: "Whoop",
-      category: "Pre-IPO",
-      status: "Active",
-      statusColor: "bg-emerald-50 text-emerald-700",
+      category: "Venture",
+      status: "Passed",
+      statusColor: "bg-amber-50 text-amber-700",
     },
     {
       icon: Rocket,
       name: "SpaceX",
-      category: "Pre-IPO",
+      category: "Venture",
       status: "Deployed",
       statusColor: "bg-blue-50 text-blue-700",
     },
@@ -237,10 +236,10 @@ function FeaturedDeals() {
             </h2>
           </div>
           <Link
-            href="/pipeline"
+            href="/dealflow"
             className="inline-flex items-center gap-2 text-sm font-medium text-gold-dark hover:text-copper transition-colors"
           >
-            View Full Pipeline
+            View Full Dealflow
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -253,7 +252,7 @@ function FeaturedDeals() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
             >
-              <Link href="/pipeline" className="block">
+              <Link href="/dealflow" className="block">
                 <div className="group p-5 rounded-xl border border-gold/10 bg-tan-light/20 hover:bg-tan-light/50 hover:border-gold/25 transition-all duration-200">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-lg bg-warm-dark flex items-center justify-center shrink-0">
@@ -267,7 +266,11 @@ function FeaturedDeals() {
                     </div>
                   </div>
                   <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full ${deal.statusColor}`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${deal.status === "Active" ? "bg-emerald-500 animate-pulse" : "bg-blue-500"}`} />
+                    <span className={`w-1.5 h-1.5 rounded-full ${
+                      deal.status === "Active" ? "bg-emerald-500 animate-pulse" :
+                      deal.status === "Passed" ? "bg-amber-500" :
+                      "bg-blue-500"
+                    }`} />
                     {deal.status}
                   </span>
                 </div>
@@ -313,14 +316,13 @@ function EthicsBanner() {
     },
     {
       icon: Shield,
-      title: "Shariah Compliant",
-      desc: "Every investment is screened for compliance with Islamic finance principles — no riba, no gharar, no haram.",
+      title: "Principled Standards",
+      desc: "Every investment is screened against our ethical framework — ensuring integrity, transparency, and accountability in every deal.",
     },
   ];
 
   return (
     <section className="py-20 lg:py-28 bg-warm-dark relative overflow-hidden">
-      {/* Decorative circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-gold/5 rounded-full" />
         <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-gold/5 rounded-full" />
@@ -342,8 +344,9 @@ function EthicsBanner() {
             <span className="italic text-gold">purpose.</span>
           </h2>
           <p className="text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
-            Shariah compliance is more than a religious framework — it's a commitment to ethical,
-            transparent, and socially responsible investing that benefits all communities.
+            Ethical investing is more than a label — it's a commitment to transparent,
+            principled, and socially responsible capital deployment that uplifts communities
+            and creates lasting value.
           </p>
         </motion.div>
 
@@ -406,7 +409,7 @@ function TrustSection() {
               {
                 icon: TrendingUp,
                 stat: "Multi-Asset",
-                label: "Real estate, pre-IPO, hospitality & more",
+                label: "Real estate, venture, hospitality & more",
               },
             ].map((item, i) => (
               <motion.div
@@ -419,8 +422,8 @@ function TrustSection() {
                 <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mx-auto mb-3">
                   <item.icon className="w-5 h-5 text-gold-dark" />
                 </div>
-                <h3 className="text-warm-dark font-semibold text-sm mb-1">{item.stat}</h3>
-                <p className="text-foreground/50 text-xs leading-relaxed">{item.label}</p>
+                <div className="font-serif text-xl font-bold text-warm-dark mb-1">{item.stat}</div>
+                <p className="text-foreground/50 text-sm">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -433,7 +436,7 @@ function TrustSection() {
 /* ---------- Home Page ---------- */
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen">
       <Hero />
       <StatsBar />
       <WhySection />
@@ -442,6 +445,6 @@ export default function Home() {
       <EthicsBanner />
       <TrustSection />
       <CTASection />
-    </>
+    </div>
   );
 }

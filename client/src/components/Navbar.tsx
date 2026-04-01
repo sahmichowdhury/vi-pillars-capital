@@ -12,7 +12,8 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Team", href: "/team" },
-  { label: "Pipeline", href: "/pipeline" },
+  { label: "Dealflow", href: "/dealflow" },
+  { label: "News & Insights", href: "/news" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -47,14 +48,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive = location === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md whitespace-nowrap ${
                     isActive
                       ? "text-warm-dark"
                       : "text-foreground/50 hover:text-warm-dark"
@@ -64,7 +65,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-gold"
+                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -74,20 +75,20 @@ export default function Navbar() {
           </div>
 
           {/* LP Login Button */}
-          <div className="hidden md:flex items-center">
-            <a
-              href="mailto:info@vipillarscapital.com"
+          <div className="hidden lg:flex items-center">
+            <Link
+              href="/lp-login"
               className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-warm-dark border border-gold/30 rounded-md hover:bg-gold hover:text-warm-dark transition-all duration-200"
             >
               <LogIn className="w-4 h-4" />
               LP Login
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-warm-dark"
+            className="lg:hidden p-2 text-warm-dark"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -101,7 +102,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-border overflow-hidden"
+            className="lg:hidden bg-white border-t border-border overflow-hidden"
           >
             <div className="px-6 py-4 space-y-1">
               {navLinks.map((link) => {
@@ -120,13 +121,13 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <a
-                href="mailto:info@vipillarscapital.com"
+              <Link
+                href="/lp-login"
                 className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-warm-dark"
               >
                 <LogIn className="w-4 h-4" />
                 LP Login
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

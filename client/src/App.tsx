@@ -8,8 +8,10 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import TeamPage from "./pages/TeamPage";
-import PipelinePage from "./pages/PipelinePage";
+import DealflowPage from "./pages/DealflowPage";
 import ContactPage from "./pages/ContactPage";
+import NewsPage from "./pages/NewsPage";
+import LPLoginPage from "./pages/LPLoginPage";
 
 function Router() {
   return (
@@ -17,8 +19,10 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/about"} component={About} />
       <Route path={"/team"} component={TeamPage} />
-      <Route path={"/pipeline"} component={PipelinePage} />
+      <Route path={"/dealflow"} component={DealflowPage} />
+      <Route path={"/news"} component={NewsPage} />
       <Route path={"/contact"} component={ContactPage} />
+      <Route path={"/lp-login"} component={LPLoginPage} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
