@@ -71,7 +71,7 @@ function AboutHero() {
           >
             {[
               { label: "Asset Classes", value: "3+", icon: BarChart3 },
-              { label: "Min. Investment", value: "$1K", icon: DollarSign },
+              { label: "Min. Investment", value: "$20K", icon: DollarSign },
               { label: "Ethically Screened", value: "100%", icon: Shield },
               { label: "Investor Access", value: "Open", icon: Users },
             ].map((stat) => (
@@ -562,7 +562,7 @@ function FAQ() {
     },
     {
       q: "What is the minimum investment amount?",
-      a: "Our minimum investment starts at $1,000 per deal, making high-quality private market opportunities accessible to a broader range of investors. Specific minimums may vary by deal.",
+      a: "Our minimum investment starts at $20,000 per deal, providing access to high-quality private market opportunities with meaningful allocation sizes. Specific minimums may vary by deal.",
     },
     {
       q: "How are deals sourced and vetted?",

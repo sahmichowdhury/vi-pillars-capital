@@ -233,7 +233,7 @@ function WhyInvestSection() {
     {
       icon: Users,
       title: "Accessible Entry",
-      desc: "With minimums starting at $1,000, institutional-quality deals are now accessible to individual investors at every level.",
+      desc: "With minimums starting at $20,000, institutional-quality deals are now accessible to individual investors at every level.",
     },
     {
       icon: BarChart3,

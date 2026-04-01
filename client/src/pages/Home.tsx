@@ -304,7 +304,7 @@ function EthicsBanner() {
     {
       icon: Globe,
       title: "Inclusive Access",
-      desc: "Opportunities once reserved for institutions are now accessible to individual investors starting at $1,000.",
+      desc: "Opportunities once reserved for institutions are now accessible to individual investors starting at $20,000.",
     },
     {
       icon: Leaf,

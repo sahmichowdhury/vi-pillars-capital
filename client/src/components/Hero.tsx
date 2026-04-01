@@ -99,7 +99,7 @@ export default function Hero() {
               {
                 icon: TrendingUp,
                 title: "Deal-by-Deal SPVs",
-                desc: "Invest in individual opportunities starting at $1,000 with full transparency",
+                desc: "Invest in individual opportunities starting at $20,000 with full transparency",
               },
               {
                 icon: Target,
