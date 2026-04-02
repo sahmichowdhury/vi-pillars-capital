@@ -108,7 +108,7 @@ const deals: Deal[] = [
     allocation: "Confidential",
     valuation: "$2,500,000",
     vipAllocation: "Confidential",
-    status: "Deployed",
+    status: "Active",
     link: "https://www.tercerclub.com/",
     icon: Sparkles,
     highlights: [
@@ -502,7 +502,7 @@ export default function DealflowPage() {
                       <div className="bg-stone-50 rounded-lg p-3">
                         <div className="flex items-center gap-1.5 text-foreground/40 text-[10px] uppercase tracking-wider font-semibold mb-1">
                           <DollarSign className="w-3 h-3" />
-                          Valuation
+                          Valuation When Offered
                         </div>
                         <p className="text-warm-dark text-sm font-semibold">{deal.valuation}</p>
                       </div>
@@ -568,6 +568,46 @@ export default function DealflowPage() {
                   consult with their financial, legal, and tax advisors before making any investment decisions.
                   VI Pillars Capital operates in compliance with applicable securities regulations.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Status Key Legend */}
+      <section className="py-8 bg-stone-50 border-t border-stone-200">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Target className="w-4 h-4 text-foreground/40" />
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground/50">Status Key</h4>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mt-1 shrink-0" />
+              <div>
+                <p className="text-xs font-semibold text-emerald-700">Active</p>
+                <p className="text-[11px] text-foreground/45 leading-snug">Deal is currently active and VIP is still fundraising.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 mt-1 shrink-0" />
+              <div>
+                <p className="text-xs font-semibold text-blue-700">Deployed</p>
+                <p className="text-[11px] text-foreground/45 leading-snug">The deal is closed. VIP has deployed the capital and is invested.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500 mt-1 shrink-0" />
+              <div>
+                <p className="text-xs font-semibold text-red-700">Exited</p>
+                <p className="text-[11px] text-foreground/45 leading-snug">VIP has exited the deal.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 mt-1 shrink-0" />
+              <div>
+                <p className="text-xs font-semibold text-amber-700">Passed</p>
+                <p className="text-[11px] text-foreground/45 leading-snug">VIP has passed on the deal.</p>
               </div>
             </div>
           </div>
