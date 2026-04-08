@@ -1,7 +1,7 @@
 /*
  * LP Login Portal — Real OAuth authentication
  */
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn } from "lucide-react";
 import Logo from "@/components/Logo";
@@ -21,10 +21,11 @@ export default function LPLoginPage() {
     retry: false,
   });
 
-  if (user && portalMe.data?.user.approvalStatus === "approved") {
-    setLocation("/portal");
-    return null;
-  }
+  useEffect(() => {
+    if (user && portalMe.data?.user.approvalStatus === "approved") {
+      setLocation("/portal");
+    }
+  }, [user, portalMe.data?.user.approvalStatus, setLocation]);
 
   const approvalStatus = portalMe.data?.user.approvalStatus;
 
