@@ -64,7 +64,7 @@ export default function TeamPage() {
                   <img
                     src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/sahmi-headshot_1e2f0f77.png"
                     alt="Sahmi Chowdhury"
-                    className="w-full h-full object-cover object-top scale-125 origin-top"
+                    className="w-full h-full object-cover scale-110" style={{ objectPosition: '50% 18%' }}
                   />
                 </div>
               </div>
