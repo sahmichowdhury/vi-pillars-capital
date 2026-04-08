@@ -824,6 +824,10 @@ function FAQ() {
       q: "How do I stay updated on my investments?",
       a: "Investors receive regular updates including quarterly reports, material event notifications, and exit summaries. Our team is also available for direct communication regarding any questions about your portfolio.",
     },
+    {
+      q: "What is Shariah finance?",
+      a: "Shariah finance is a system of financial principles rooted in Islamic law that emphasizes fairness, transparency, and shared risk. It prohibits interest (riba), excessive uncertainty (gharar), and investment in harmful industries such as alcohol, gambling, and weapons. Instead, it favors asset-backed transactions and profit-and-loss sharing structures like Musharakah (joint ventures) and Murabaha (cost-plus financing). At VI Pillars Capital, our investment framework is deeply informed by these principles — ensuring every deal is structured with integrity, transparency, and ethical accountability.",
+    },
   ];
 
   return (
