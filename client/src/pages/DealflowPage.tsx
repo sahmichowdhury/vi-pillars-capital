@@ -59,7 +59,7 @@ interface Deal {
 }
 
 const deals: Deal[] = [
-  /* ========== ACTIVE — Venture, Hospitality, Real Estate (largest first) ========== */
+  /* ========== ACTIVE — Venture, Real Estate, Hospitality (largest first) ========== */
   {
     name: "InnerLens Media",
     description:
@@ -79,6 +79,26 @@ const deals: Deal[] = [
       "Creative storytelling focus",
       "Brand strategy expertise",
       "High-impact media production",
+    ],
+  },
+  {
+    name: "Single Family Home — Montague, NJ",
+    description:
+      "Ground-up construction of a single-family home in Montague, NJ, targeting the growing demand for new residential builds in Northern New Jersey. The property will be sold upon completion for a projected profit.",
+    category: "Real Estate",
+    industry: "Real Estate",
+    subIndustry: "Residential Construction",
+    revenueModel: "Build-to-Sell (Flip)",
+    date: "Q2 2025",
+    allocation: "Confidential",
+    valuation: "$23,000",
+    vipAllocation: "Confidential",
+    status: "Active",
+    icon: Hammer,
+    highlights: [
+      "New construction build",
+      "Build-to-sell strategy",
+      "Northern NJ market",
     ],
   },
   {
@@ -102,27 +122,7 @@ const deals: Deal[] = [
       "Recurring revenue base",
     ],
   },
-  {
-    name: "Single Family Home — Montague, NJ",
-    description:
-      "Ground-up construction of a single-family home in Montague, NJ, targeting the growing demand for new residential builds in Northern New Jersey. The property will be sold upon completion for a projected profit.",
-    category: "Real Estate",
-    industry: "Real Estate",
-    subIndustry: "Residential Construction",
-    revenueModel: "Build-to-Sell (Flip)",
-    date: "Q2 2025",
-    allocation: "Confidential",
-    valuation: "$23,000",
-    vipAllocation: "Confidential",
-    status: "Active",
-    icon: Hammer,
-    highlights: [
-      "New construction build",
-      "Build-to-sell strategy",
-      "Northern NJ market",
-    ],
-  },
-  /* ========== DEPLOYED — Venture, Hospitality, Real Estate (largest first) ========== */
+  /* ========== DEPLOYED — Venture, Real Estate, Hospitality (largest first) ========== */
   {
     name: "SpaceX",
     description:
@@ -233,7 +233,7 @@ const deals: Deal[] = [
   },
 ];
 
-const categories = ["All Dealflow", "Venture", "Hospitality", "Real Estate"];
+const categories = ["All Dealflow", "Venture", "Real Estate", "Hospitality"];
 
 const statusConfig: Record<
   DealStatus,
