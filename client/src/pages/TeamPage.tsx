@@ -62,7 +62,7 @@ export default function TeamPage() {
               <div className="md:w-64 shrink-0">
                 <div className="aspect-square md:h-full w-full overflow-hidden">
                   <img
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361696775/kehEUkmbrxHxxoJn.jpg"
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/sahmi-headshot_1e2f0f77.png"
                     alt="Sahmi Chowdhury"
                     className="w-full h-full object-cover"
                   />
