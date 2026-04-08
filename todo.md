@@ -38,3 +38,10 @@
 
 ## SPV Diagram Arrow Fix
 - [ ] Add centered directional arrows to SPV flow diagram (desktop + mobile)
+
+## Targeted Fixes (Apr 8 - Round 2)
+- [ ] SPV diagram: fix Investor icon vertical alignment with other icons
+- [ ] Dealflow: rename "Aston Martin F1 Team" to "Aston Martin Formula 1", change icon to F1 car
+- [ ] About: move Community & Purpose above Investing with Intention
+- [ ] Team: rewrite bio to reflect syndicate network and shared deal exposure
+- [ ] Dealflow: change InnerLens Media category from Venture to Consumer

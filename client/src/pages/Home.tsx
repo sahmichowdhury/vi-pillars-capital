@@ -180,25 +180,25 @@ function HowItWorks() {
           <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-10">SPV Structure — How Your Investment is Held</p>
 
           {/* Desktop: single horizontal row with long arrows */}
-          <div className="hidden lg:flex flex-row items-center justify-center gap-0">
+          <div className="hidden lg:flex flex-row items-start justify-center gap-0">
             {[
               { label: "Investor", sub: "You commit capital", color: "bg-flint", icon: "👤" },
               { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", icon: "🏛" },
               { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", icon: "📈" },
               { label: "Returns", sub: "Distributed to investors", color: "bg-moss", icon: "💰" },
             ].map((node, i, arr) => (
-              <div key={node.label} className="flex flex-row items-center">
+              <div key={node.label} className="flex flex-row items-start">
                 {/* Node */}
                 <div className="flex flex-col items-center w-28">
                   <div className={`w-20 h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
-                    <span className="text-2xl">{node.icon}</span>
+                    <span className="text-2xl leading-none">{node.icon}</span>
                   </div>
                   <p className="mt-3 text-xs font-bold text-flint text-center">{node.label}</p>
                   <p className="text-[10px] text-foreground/40 text-center max-w-[90px] mt-0.5">{node.sub}</p>
                 </div>
-                {/* Arrow between nodes */}
+                {/* Arrow between nodes — vertically centered on the icon box (h-20 = 80px, arrow is 16px, so mt = (80-16)/2 = 32px) */}
                 {i < arr.length - 1 && (
-                  <div className="flex flex-row items-center mx-2">
+                  <div className="flex flex-row items-center mt-[32px] mx-2">
                     <div className="w-16 h-[2px] bg-sandstone/40" />
                     <svg className="w-4 h-4 text-sandstone shrink-0 -ml-0.5" viewBox="0 0 16 16" fill="currentColor">
                       <path d="M8 0l8 8-8 8v-5H0V5h8V0z"/>
@@ -299,7 +299,7 @@ function FeaturedDeals() {
     {
       icon: Sparkles,
       name: "InnerLens Media",
-      category: "Venture",
+      category: "Consumer",
       status: "Active",
       statusColor: "bg-emerald-50 text-emerald-700",
     },
@@ -326,10 +326,11 @@ function FeaturedDeals() {
     },
     {
       icon: TrendingUp,
-      name: "Aston Martin F1 Team",
+      name: "Aston Martin Formula 1",
       category: "Venture",
       status: "Passed",
       statusColor: "bg-amber-50 text-amber-700",
+      customIcon: true,
     },
   ];
 
@@ -372,7 +373,17 @@ function FeaturedDeals() {
                 <div className="group p-5 rounded-xl border border-sandstone/10 bg-cream/20 hover:bg-cream/50 hover:border-sandstone/25 transition-all duration-200">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-lg bg-flint flex items-center justify-center shrink-0">
-                      <deal.icon className="w-5 h-5 text-sandstone" />
+                      {deal.customIcon ? (
+                        <svg className="w-6 h-6 text-sandstone" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 12h1l2-4h12l2 4h1a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"/>
+                          <circle cx="7" cy="16" r="2"/>
+                          <circle cx="17" cy="16" r="2"/>
+                          <path d="M5 12V9l1-1h4l2 4"/>
+                          <path d="M15 8h2l2 4"/>
+                        </svg>
+                      ) : (
+                        <deal.icon className="w-5 h-5 text-sandstone" />
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-flint text-sm font-semibold truncate group-hover:text-leather transition-colors">

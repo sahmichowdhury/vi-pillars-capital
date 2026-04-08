@@ -18,7 +18,7 @@ export interface DealSummary {
  */
 export const DEALS: DealSummary[] = [
   // Active — Venture
-  { name: "InnerLens Media", category: "Venture", status: "Active", link: "https://www.innerlensmedia.com/" },
+  { name: "InnerLens Media", category: "Consumer", status: "Active", link: "https://www.innerlensmedia.com/" },
   // Active — Real Estate
   { name: "Single Family Home — Montague, NJ", category: "Real Estate", status: "Active" },
   // Active — Hospitality
@@ -29,7 +29,7 @@ export const DEALS: DealSummary[] = [
   { name: "4-Plex Newark Property", category: "Real Estate", status: "Deployed" },
   // Passed — Venture
   { name: "Whoop", category: "Venture", status: "Passed", link: "https://www.whoop.com/" },
-  { name: "Aston Martin F1 Team", category: "Venture", status: "Passed", link: "https://www.astonmartinf1.com/en-GB" },
+  { name: "Aston Martin Formula 1", category: "Venture", status: "Passed", link: "https://www.astonmartinf1.com/en-GB" },
   { name: "CoreWeave", category: "Venture", status: "Passed", link: "https://www.coreweave.com/" },
 ];
 

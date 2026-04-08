@@ -931,8 +931,8 @@ export default function About() {
       <AboutHero />
       <MissionVision />
       <InvestmentPhilosophy />
-      <EthicalDifferentiator />
       <CommunityPurpose />
+      <EthicalDifferentiator />
       <SPVDiagram />
       <InvestorJourney />
       <CoreValues />

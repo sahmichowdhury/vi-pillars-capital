@@ -38,9 +38,10 @@ export default function TeamPage() {
               <span className="italic text-sandstone">VI Pillars.</span>
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl">
-              A unique blend of investing, product, and advisory experience equips the
-              VI Pillars team with the network and expertise to source and identify compelling
-              investment opportunities.
+              VI Pillars Capital is a syndicate built on relationships. Through a carefully
+              cultivated network, we gain early exposure to deals and capital that most
+              investors never see — and we share that access with those who align with
+              our vision and values.
             </p>
           </motion.div>
         </div>
@@ -83,17 +84,19 @@ export default function TeamPage() {
             {/* Bio */}
             <div className="px-8 lg:px-10 pb-10">
               <div className="border-t border-sandstone/10 pt-7">
+                <p className="text-foreground/60 text-[15px] leading-relaxed mb-4">
+                  Sahmi founded VI Pillars Capital to bridge the gap between exclusive deal flow
+                  and principled investors. Through years of building relationships across finance,
+                  technology, and media, he has cultivated a network that provides early exposure
+                  to high-quality investment opportunities — from pre-IPO ventures to real estate
+                  and beyond.
+                </p>
                 <p className="text-foreground/60 text-[15px] leading-relaxed">
-                  Sahmi has deep expertise in investment analysis and evaluating opportunities
-                  across multiple asset classes, with comprehensive exposure to capital markets
-                  infrastructure, digital payments, and financial technology platforms. Sahmi
-                  also owns and operates a global media and marketing agency headquartered in
-                  New York City. His analytical skills and strategic insight provide VI Pillars
-                  Capital with a critical edge in identifying investment opportunities, structuring
-                  deals, and building strong investor relationships. Sahmi leads deal sourcing and
-                  investor relations at VI Pillars Capital, leveraging his experience across the
-                  finance and technology sectors and bringing a global perspective to every deal,
-                  shaped by his international upbringing.
+                  VI Pillars operates as a syndicate: Sahmi and his network identify, vet, and
+                  structure each deal, then open participation to investors who share the same
+                  commitment to ethical, transparent investing. The goal is simple — to give
+                  like-minded people access to the same calibre of opportunities that have
+                  historically been reserved for institutional players and insiders.
                 </p>
               </div>
             </div>

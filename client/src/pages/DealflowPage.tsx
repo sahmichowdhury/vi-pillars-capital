@@ -64,7 +64,7 @@ const deals: Deal[] = [
     name: "InnerLens Media",
     description:
       "A creative media company specializing in storytelling, content production, and brand strategy. InnerLens Media delivers compelling visual narratives for brands, organizations, and individuals seeking authentic, high-impact media.",
-    category: "Venture",
+    category: "Consumer",
     industry: "Media & Entertainment",
     subIndustry: "Creative Media & Production",
     revenueModel: "Production Services & Brand Partnerships",
@@ -188,7 +188,7 @@ const deals: Deal[] = [
     ],
   },
   {
-    name: "Aston Martin F1 Team",
+    name: "Aston Martin Formula 1",
     description:
       "One of the most iconic names in motorsport, the Aston Martin Aramco Formula One Team competes at the pinnacle of global racing. The team combines cutting-edge engineering, world-class talent, and a legendary brand heritage.",
     category: "Venture",
