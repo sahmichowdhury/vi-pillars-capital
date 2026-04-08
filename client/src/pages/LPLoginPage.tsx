@@ -3,7 +3,7 @@
  */
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn, UserPlus, CheckCircle, LayoutDashboard } from "lucide-react";
+import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn, UserPlus, CheckCircle, LayoutDashboard, ScanSearch } from "lucide-react";
 import Logo from "@/components/Logo";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
@@ -19,9 +19,10 @@ const steps = [
   },
   {
     number: "02",
-    icon: Clock,
+    icon: ScanSearch,
     title: "Await Approval",
     desc: "The VI Pillars Capital team reviews your application within 1–2 business days and will notify you once a decision is made.",
+    pending: true,
   },
   {
     number: "03",
@@ -189,9 +190,22 @@ export default function LPLoginPage() {
                 </div>
 
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-sandstone/10 border border-sandstone/20 flex items-center justify-center mb-5 mt-3">
-                  <step.icon className="w-6 h-6 text-sandstone" />
-                </div>
+                {'pending' in step && step.pending ? (
+                  <div className="relative flex items-center justify-center mb-5 mt-3">
+                    {/* Outer pulse ring */}
+                    <span className="absolute inline-flex w-16 h-16 rounded-full bg-amber-400/20 animate-ping" />
+                    {/* Inner ring */}
+                    <span className="absolute inline-flex w-14 h-14 rounded-full bg-amber-400/10 border border-amber-400/30" />
+                    {/* Icon box */}
+                    <div className="relative w-14 h-14 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center">
+                      <step.icon className="w-6 h-6 text-amber-400" />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-14 h-14 rounded-xl bg-sandstone/10 border border-sandstone/20 flex items-center justify-center mb-5 mt-3">
+                    <step.icon className="w-6 h-6 text-sandstone" />
+                  </div>
+                )}
 
                 {/* Content */}
                 <h3 className="font-serif text-lg font-bold text-white mb-3">{step.title}</h3>
