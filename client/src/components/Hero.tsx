@@ -8,16 +8,16 @@ import { Shield, ArrowRight, TrendingUp, Target, Users } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative bg-warm-dark pt-[72px] overflow-hidden">
+    <section className="relative bg-flint pt-[72px] overflow-hidden">
       {/* Subtle decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-warm-dark via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
-          <div className="absolute top-20 right-20 w-[400px] h-[400px] border border-gold rounded-full" />
-          <div className="absolute top-40 right-40 w-[300px] h-[300px] border border-gold rounded-full" />
-          <div className="absolute top-60 right-60 w-[200px] h-[200px] border border-gold rounded-full" />
+          <div className="absolute top-20 right-20 w-[400px] h-[400px] border border-sandstone rounded-full" />
+          <div className="absolute top-40 right-40 w-[300px] h-[300px] border border-sandstone rounded-full" />
+          <div className="absolute top-60 right-60 w-[200px] h-[200px] border border-sandstone rounded-full" />
         </div>
-        <div className="absolute left-[15%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
+        <div className="absolute left-[15%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-sandstone/10 to-transparent" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-16 lg:pt-28 lg:pb-24">
@@ -29,7 +29,7 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase">
                 <Shield className="w-3.5 h-3.5" />
                 Principled Investing, Proven Structure
               </div>
@@ -42,7 +42,7 @@ export default function Hero() {
               className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold text-white leading-[1.08] mb-6"
             >
               Pairing Ethical Capital with{" "}
-              <span className="italic text-gold">Exclusive Opportunities.</span>
+              <span className="italic text-sandstone">Exclusive Opportunities.</span>
             </motion.h1>
 
             <motion.p
@@ -64,7 +64,7 @@ export default function Hero() {
             >
               <Link
                 href="/dealflow"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-warm-dark text-sm font-semibold rounded-md hover:bg-gold-light transition-all duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-sandstone text-flint text-sm font-semibold rounded-md hover:bg-sandstone-light transition-all duration-200"
               >
                 View Our Dealflow
                 <ArrowRight className="w-4 h-4" />
@@ -108,8 +108,8 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
                 className="flex items-start gap-4 p-5 bg-white/[0.04] border border-white/[0.08] rounded-xl backdrop-blur-sm hover:bg-white/[0.07] transition-colors duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center shrink-0">
-                  <card.icon className="w-5 h-5 text-gold" />
+                <div className="w-10 h-10 rounded-lg bg-sandstone/15 flex items-center justify-center shrink-0">
+                  <card.icon className="w-5 h-5 text-sandstone" />
                 </div>
                 <div>
                   <h3 className="text-white text-sm font-semibold mb-1">{card.title}</h3>
@@ -124,7 +124,7 @@ export default function Hero() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent origin-center"
+          className="mt-16 h-px bg-gradient-to-r from-transparent via-sandstone/30 to-transparent origin-center"
         />
       </div>
     </section>

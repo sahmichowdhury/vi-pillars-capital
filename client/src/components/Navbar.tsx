@@ -1,5 +1,5 @@
 /*
- * Navbar: Clean white sticky nav with warm gold accents
+ * Navbar: Clean white sticky nav with sandstone accents
  * Logo left, centered links, LP Login right
  */
 import { useState, useEffect } from "react";
@@ -57,15 +57,15 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md whitespace-nowrap ${
                     isActive
-                      ? "text-warm-dark"
-                      : "text-foreground/50 hover:text-warm-dark"
+                      ? "text-flint"
+                      : "text-foreground/50 hover:text-flint"
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-gold"
+                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-sandstone"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center">
             <Link
               href="/lp-login"
-              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-warm-dark border border-gold/30 rounded-md hover:bg-gold hover:text-warm-dark transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-flint border border-sandstone/30 rounded-md hover:bg-sandstone hover:text-flint transition-all duration-200"
             >
               <LogIn className="w-4 h-4" />
               LP Login
@@ -88,7 +88,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-warm-dark"
+            className="lg:hidden p-2 text-flint"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -113,8 +113,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`block px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                       isActive
-                        ? "text-warm-dark bg-tan-light"
-                        : "text-foreground/60 hover:text-warm-dark hover:bg-tan-light/50"
+                        ? "text-flint bg-cream"
+                        : "text-foreground/60 hover:text-flint hover:bg-cream/50"
                     }`}
                   >
                     {link.label}
@@ -123,7 +123,7 @@ export default function Navbar() {
               })}
               <Link
                 href="/lp-login"
-                className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-warm-dark"
+                className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-flint"
               >
                 <LogIn className="w-4 h-4" />
                 LP Login

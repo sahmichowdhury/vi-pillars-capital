@@ -198,9 +198,9 @@ const statusConfig: Record<
 };
 
 const categoryColors: Record<string, string> = {
-  "Real Estate": "text-copper bg-copper/8",
-  Hospitality: "text-gold-dark bg-gold/10",
-  Venture: "text-warm-mid bg-warm-mid/8",
+  "Real Estate": "text-leather-light bg-leather-light/8",
+  Hospitality: "text-leather bg-sandstone/10",
+  Venture: "text-moss bg-moss/8",
 };
 
 /* ---------- Dealflow Summary Stats ---------- */
@@ -230,13 +230,13 @@ function DealflowStats() {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="bg-tan-light/40 rounded-xl border border-gold/10 p-5 flex items-center gap-4"
+          className="bg-cream/40 rounded-xl border border-sandstone/10 p-5 flex items-center gap-4"
         >
-          <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
-            <stat.icon className="w-5 h-5 text-gold-dark" />
+          <div className="w-10 h-10 rounded-lg bg-sandstone/10 flex items-center justify-center shrink-0">
+            <stat.icon className="w-5 h-5 text-leather" />
           </div>
           <div>
-            <div className="font-serif text-2xl font-bold text-warm-dark">{stat.value}</div>
+            <div className="font-serif text-2xl font-bold text-flint">{stat.value}</div>
             <p className="text-foreground/50 text-xs">{stat.label}</p>
           </div>
         </div>
@@ -284,10 +284,10 @@ function WhyInvestSection() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-warm-dark relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-flint relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-gold/5 rounded-full" />
-        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-gold/5 rounded-full" />
+        <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-sandstone/5 rounded-full" />
+        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-sandstone/5 rounded-full" />
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -297,13 +297,13 @@ function WhyInvestSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase mb-6">
             <Shield className="w-3.5 h-3.5" />
             Why Invest With Us
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
             Your capital,{" "}
-            <span className="italic text-gold">our commitment.</span>
+            <span className="italic text-sandstone">our commitment.</span>
           </h2>
           <p className="text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
             We treat every dollar entrusted to us as a responsibility. Here's why investors
@@ -320,8 +320,8 @@ function WhyInvestSection() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="p-6 rounded-xl bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm hover:bg-white/[0.07] transition-colors duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center mb-4">
-                <r.icon className="w-5 h-5 text-gold" />
+              <div className="w-10 h-10 rounded-lg bg-sandstone/15 flex items-center justify-center mb-4">
+                <r.icon className="w-5 h-5 text-sandstone" />
               </div>
               <h3 className="text-white text-sm font-semibold mb-2">{r.title}</h3>
               <p className="text-white/40 text-sm leading-relaxed">{r.desc}</p>
@@ -349,9 +349,9 @@ export default function DealflowPage() {
   return (
     <>
       {/* Hero Header */}
-      <section className="pt-[72px] bg-warm-dark relative overflow-hidden">
+      <section className="pt-[72px] bg-flint relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-warm-dark via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
           <motion.div
@@ -361,12 +361,12 @@ export default function DealflowPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase mb-6">
               <Briefcase className="w-3.5 h-3.5" />
               Dealflow
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-              Our <span className="italic text-gold">Dealflow</span>
+              Our <span className="italic text-sandstone">Dealflow</span>
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Explore our curated selection of ethically-screened investment
@@ -410,14 +410,14 @@ export default function DealflowPage() {
                 onClick={() => setActiveFilter(cat)}
                 className={`px-5 py-2 text-sm font-medium rounded-full border transition-all duration-200 ${
                   activeFilter === cat
-                    ? "bg-warm-dark text-white border-warm-dark"
-                    : "bg-white text-foreground/60 border-border hover:border-gold/40 hover:text-warm-dark"
+                    ? "bg-flint text-white border-flint"
+                    : "bg-white text-foreground/60 border-border hover:border-sandstone/40 hover:text-flint"
                 }`}
               >
                 {cat}
               </button>
             ))}
-            <div className="ml-auto hidden sm:flex items-center gap-2 text-xs text-gold-dark/70 bg-tan-light px-4 py-2 rounded-full">
+            <div className="ml-auto hidden sm:flex items-center gap-2 text-xs text-leather/70 bg-cream px-4 py-2 rounded-full">
               <Shield className="w-3.5 h-3.5" />
               All investments are ethically screened
             </div>
@@ -457,12 +457,12 @@ export default function DealflowPage() {
                   <div className="p-6">
                     {/* Header: Icon + Name */}
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center shrink-0">
-                        <Icon className="w-6 h-6 text-gold" />
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-flint to-flint-light flex items-center justify-center shrink-0">
+                        <Icon className="w-6 h-6 text-sandstone" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-serif text-xl font-bold text-warm-dark">
+                          <h3 className="font-serif text-xl font-bold text-flint">
                             {deal.name}
                           </h3>
                           {deal.link && (
@@ -470,7 +470,7 @@ export default function DealflowPage() {
                               href={deal.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gold-dark hover:text-copper transition-colors"
+                              className="text-leather hover:text-leather-light transition-colors"
                               title="Visit website"
                             >
                               <ExternalLink className="w-4 h-4" />
@@ -504,28 +504,28 @@ export default function DealflowPage() {
                           <DollarSign className="w-3 h-3" />
                           Valuation When Offered
                         </div>
-                        <p className="text-warm-dark text-sm font-semibold">{deal.valuation}</p>
+                        <p className="text-flint text-sm font-semibold">{deal.valuation}</p>
                       </div>
                       <div className="bg-stone-50 rounded-lg p-3">
                         <div className="flex items-center gap-1.5 text-foreground/40 text-[10px] uppercase tracking-wider font-semibold mb-1">
                           <BadgeDollarSign className="w-3 h-3" />
                           VIP Allocation
                         </div>
-                        <p className="text-warm-dark text-sm font-semibold">{deal.vipAllocation}</p>
+                        <p className="text-flint text-sm font-semibold">{deal.vipAllocation}</p>
                       </div>
                       <div className="bg-stone-50 rounded-lg p-3">
                         <div className="flex items-center gap-1.5 text-foreground/40 text-[10px] uppercase tracking-wider font-semibold mb-1">
                           <BarChart3 className="w-3 h-3" />
                           Revenue Model
                         </div>
-                        <p className="text-warm-dark text-xs font-medium">{deal.revenueModel}</p>
+                        <p className="text-flint text-xs font-medium">{deal.revenueModel}</p>
                       </div>
                       <div className="bg-stone-50 rounded-lg p-3">
                         <div className="flex items-center gap-1.5 text-foreground/40 text-[10px] uppercase tracking-wider font-semibold mb-1">
                           <Calendar className="w-3 h-3" />
                           Date
                         </div>
-                        <p className="text-warm-dark text-sm font-medium">{deal.date}</p>
+                        <p className="text-flint text-sm font-medium">{deal.date}</p>
                       </div>
                     </div>
 
@@ -536,7 +536,7 @@ export default function DealflowPage() {
                           key={h}
                           className="inline-flex items-center gap-1.5 text-xs text-foreground/50 bg-stone-50 border border-stone-100 px-3 py-1.5 rounded-full"
                         >
-                          <CircleDot className="w-2.5 h-2.5 text-gold-dark/60" />
+                          <CircleDot className="w-2.5 h-2.5 text-leather/60" />
                           {h}
                         </span>
                       ))}
@@ -553,13 +553,13 @@ export default function DealflowPage() {
       <WhyInvestSection />
 
       {/* Disclaimer */}
-      <section className="py-12 bg-tan-light/40">
+      <section className="py-12 bg-cream/40">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="bg-white rounded-xl border border-gold/10 p-6 lg:p-8">
+          <div className="bg-white rounded-xl border border-sandstone/10 p-6 lg:p-8">
             <div className="flex items-start gap-3">
-              <Shield className="w-5 h-5 text-gold-dark shrink-0 mt-0.5" />
+              <Shield className="w-5 h-5 text-leather shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-warm-dark text-sm font-semibold mb-2">Important Disclosure</h3>
+                <h3 className="text-flint text-sm font-semibold mb-2">Important Disclosure</h3>
                 <p className="text-foreground/50 text-xs leading-relaxed">
                   All investments carry risk, including the potential loss of principal. Past performance
                   does not guarantee future results. The information presented here is for informational

@@ -61,7 +61,7 @@ function StatsBar() {
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   const stats = [
-    { value: 5, suffix: "+", label: "Deals Deployed" },
+    { value: 1, suffix: "+", label: "Deals Deployed" },
     { value: 3, suffix: "", label: "Asset Classes" },
     { value: 20000, prefix: "$", suffix: "", label: "Minimum Investment" },
     { value: 100, suffix: "%", label: "Ethically Screened" },
@@ -75,12 +75,12 @@ function StatsBar() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl border border-gold/15 shadow-lg p-8 lg:p-10"
+          className="bg-white rounded-2xl border border-sandstone/15 shadow-lg p-8 lg:p-10"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="font-serif text-3xl lg:text-4xl font-bold text-warm-dark mb-1">
+                <div className="font-serif text-3xl lg:text-4xl font-bold text-flint mb-1">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
                 </div>
                 <p className="text-foreground/50 text-sm">{stat.label}</p>
@@ -120,7 +120,7 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -128,12 +128,12 @@ function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Simple & Transparent
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
             How it{" "}
-            <span className="italic text-gold-dark">works.</span>
+            <span className="italic text-leather">works.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Investing with VI Pillars Capital is straightforward. We handle the complexity so you can focus on building wealth with purpose.
@@ -150,16 +150,16 @@ function HowItWorks() {
               className="relative"
             >
               {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 left-[calc(50%+40px)] right-[calc(-50%+40px)] h-px bg-gradient-to-r from-gold/30 to-gold/10" />
+                <div className="hidden md:block absolute top-12 left-[calc(50%+40px)] right-[calc(-50%+40px)] h-px bg-gradient-to-r from-sandstone/30 to-sandstone/10" />
               )}
-              <div className="bg-white rounded-2xl border border-gold/10 p-7 text-center hover:shadow-md transition-shadow duration-300 relative">
-                <div className="text-gold/30 font-serif text-5xl font-bold absolute top-4 right-6">
+              <div className="bg-white rounded-2xl border border-sandstone/10 p-7 text-center hover:shadow-md transition-shadow duration-300 relative">
+                <div className="text-sandstone/30 font-serif text-5xl font-bold absolute top-4 right-6">
                   {step.num}
                 </div>
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center mx-auto mb-5">
-                  <step.icon className="w-7 h-7 text-gold" />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-flint to-flint-light flex items-center justify-center mx-auto mb-5">
+                  <step.icon className="w-7 h-7 text-sandstone" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-warm-dark mb-3">
+                <h3 className="font-serif text-lg font-bold text-flint mb-3">
                   {step.title}
                 </h3>
                 <p className="text-foreground/55 text-sm leading-relaxed">
@@ -227,17 +227,17 @@ function FeaturedDeals() {
           className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-4"
         >
           <div>
-            <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+            <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
               Current Opportunities
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight">
               Featured{" "}
-              <span className="italic text-gold-dark">deals.</span>
+              <span className="italic text-leather">deals.</span>
             </h2>
           </div>
           <Link
             href="/dealflow"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gold-dark hover:text-copper transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-leather hover:text-leather-light transition-colors"
           >
             View Full Dealflow
             <ArrowRight className="w-4 h-4" />
@@ -253,13 +253,13 @@ function FeaturedDeals() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
             >
               <Link href="/dealflow" className="block">
-                <div className="group p-5 rounded-xl border border-gold/10 bg-tan-light/20 hover:bg-tan-light/50 hover:border-gold/25 transition-all duration-200">
+                <div className="group p-5 rounded-xl border border-sandstone/10 bg-cream/20 hover:bg-cream/50 hover:border-sandstone/25 transition-all duration-200">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-warm-dark flex items-center justify-center shrink-0">
-                      <deal.icon className="w-5 h-5 text-gold" />
+                    <div className="w-10 h-10 rounded-lg bg-flint flex items-center justify-center shrink-0">
+                      <deal.icon className="w-5 h-5 text-sandstone" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-warm-dark text-sm font-semibold truncate group-hover:text-gold-dark transition-colors">
+                      <h3 className="text-flint text-sm font-semibold truncate group-hover:text-leather transition-colors">
                         {deal.name}
                       </h3>
                       <p className="text-foreground/40 text-xs">{deal.category}</p>
@@ -322,10 +322,10 @@ function EthicsBanner() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-warm-dark relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-flint relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-gold/5 rounded-full" />
-        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-gold/5 rounded-full" />
+        <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-sandstone/5 rounded-full" />
+        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-sandstone/5 rounded-full" />
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -335,13 +335,13 @@ function EthicsBanner() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase mb-6">
             <Shield className="w-3.5 h-3.5" />
             Our Ethical Commitment
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
             Investing with{" "}
-            <span className="italic text-gold">purpose.</span>
+            <span className="italic text-sandstone">purpose.</span>
           </h2>
           <p className="text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
             Ethical investing is more than a label — it's a commitment to transparent,
@@ -359,8 +359,8 @@ function EthicsBanner() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="p-6 rounded-xl bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm hover:bg-white/[0.07] transition-colors duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center mb-4">
-                <p.icon className="w-5 h-5 text-gold" />
+              <div className="w-10 h-10 rounded-lg bg-sandstone/15 flex items-center justify-center mb-4">
+                <p.icon className="w-5 h-5 text-sandstone" />
               </div>
               <h3 className="text-white text-sm font-semibold mb-2">{p.title}</h3>
               <p className="text-white/40 text-sm leading-relaxed">{p.desc}</p>
@@ -378,7 +378,7 @@ function TrustSection() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 lg:py-24 bg-tan-light/40">
+    <section className="py-20 lg:py-24 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -386,12 +386,12 @@ function TrustSection() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Built on Trust
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-warm-dark leading-tight mb-8">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-flint leading-tight mb-8">
             Why investors choose{" "}
-            <span className="italic text-gold-dark">VI Pillars.</span>
+            <span className="italic text-leather">VI Pillars.</span>
           </h2>
 
           <div className="grid sm:grid-cols-3 gap-6">
@@ -417,12 +417,12 @@ function TrustSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white rounded-xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
+                className="bg-white rounded-xl border border-sandstone/10 p-6 hover:shadow-md transition-shadow duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="w-5 h-5 text-gold-dark" />
+                <div className="w-10 h-10 rounded-lg bg-sandstone/10 flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="w-5 h-5 text-leather" />
                 </div>
-                <div className="font-serif text-xl font-bold text-warm-dark mb-1">{item.stat}</div>
+                <div className="font-serif text-xl font-bold text-flint mb-1">{item.stat}</div>
                 <p className="text-foreground/50 text-sm">{item.label}</p>
               </motion.div>
             ))}

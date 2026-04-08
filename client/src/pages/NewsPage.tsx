@@ -449,23 +449,23 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className={`rounded-2xl border border-gold/10 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 ${
+      className={`rounded-2xl border border-sandstone/10 bg-white overflow-hidden hover:shadow-lg transition-all duration-300 ${
         article.featured ? "lg:col-span-2" : ""
       }`}
     >
       {/* Category Bar */}
-      <div className="px-6 py-3 bg-tan-light/40 flex items-center justify-between">
-        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-dark uppercase tracking-wider">
+      <div className="px-6 py-3 bg-cream/40 flex items-center justify-between">
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-leather uppercase tracking-wider">
           <CatIcon className="w-3.5 h-3.5" />
           {article.category}
         </span>
         {article.featured && (
-          <span className="text-[10px] font-bold text-copper uppercase tracking-widest">Featured</span>
+          <span className="text-[10px] font-bold text-leather-light uppercase tracking-widest">Featured</span>
         )}
       </div>
 
       <div className="p-6">
-        <h3 className="font-serif text-lg lg:text-xl font-bold text-warm-dark mb-3 leading-snug">
+        <h3 className="font-serif text-lg lg:text-xl font-bold text-flint mb-3 leading-snug">
           {article.title}
         </h3>
 
@@ -489,7 +489,7 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
             </p>
             <button
               onClick={() => setExpanded(true)}
-              className="inline-flex items-center gap-1.5 text-gold-dark text-sm font-semibold hover:text-copper transition-colors"
+              className="inline-flex items-center gap-1.5 text-leather text-sm font-semibold hover:text-leather-light transition-colors"
             >
               Read Article
               <ArrowRight className="w-3.5 h-3.5" />
@@ -501,7 +501,7 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
               {article.content.split("\n\n").map((paragraph, pi) => {
                 if (paragraph.startsWith("**") && paragraph.endsWith("**")) {
                   return (
-                    <h4 key={pi} className="font-serif text-warm-dark font-bold text-base mt-5 mb-2">
+                    <h4 key={pi} className="font-serif text-flint font-bold text-base mt-5 mb-2">
                       {paragraph.replace(/\*\*/g, "")}
                     </h4>
                   );
@@ -512,11 +512,11 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
                   const dataRows = rows.slice(1).map((r) => r.split("|").filter(Boolean).map((c) => c.trim()));
                   return (
                     <div key={pi} className="overflow-x-auto my-4">
-                      <table className="w-full text-sm border border-gold/10 rounded-lg overflow-hidden">
+                      <table className="w-full text-sm border border-sandstone/10 rounded-lg overflow-hidden">
                         <thead>
-                          <tr className="bg-tan-light/60">
+                          <tr className="bg-cream/60">
                             {headers?.map((h, hi) => (
-                              <th key={hi} className="text-left px-4 py-2 text-warm-dark font-semibold text-xs">
+                              <th key={hi} className="text-left px-4 py-2 text-flint font-semibold text-xs">
                                 {h}
                               </th>
                             ))}
@@ -524,7 +524,7 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
                         </thead>
                         <tbody>
                           {dataRows.map((row, ri) => (
-                            <tr key={ri} className="border-t border-gold/5">
+                            <tr key={ri} className="border-t border-sandstone/5">
                               {row.map((cell, ci) => (
                                 <td key={ci} className="px-4 py-2 text-foreground/60 text-xs">
                                   {cell}
@@ -564,7 +564,7 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
                     {parts.map((part, partI) => {
                       if (part.startsWith("**") && part.endsWith("**")) {
                         return (
-                          <strong key={partI} className="text-warm-dark font-semibold">
+                          <strong key={partI} className="text-flint font-semibold">
                             {part.replace(/\*\*/g, "")}
                           </strong>
                         );
@@ -577,7 +577,7 @@ function ArticleCard({ article, index, isInView }: { article: Article; index: nu
             </div>
             <button
               onClick={() => setExpanded(false)}
-              className="inline-flex items-center gap-1.5 text-gold-dark text-sm font-semibold hover:text-copper transition-colors"
+              className="inline-flex items-center gap-1.5 text-leather text-sm font-semibold hover:text-leather-light transition-colors"
             >
               Collapse
             </button>
@@ -609,9 +609,9 @@ export default function NewsPage() {
   return (
     <>
       {/* Hero Header */}
-      <section className="pt-[72px] bg-warm-dark relative overflow-hidden">
+      <section className="pt-[72px] bg-flint relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-warm-dark via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
           <motion.div
@@ -621,13 +621,13 @@ export default function NewsPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase mb-6">
               <BookOpen className="w-3.5 h-3.5" />
               News & Insights
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
               Knowledge is{" "}
-              <span className="italic text-gold">capital.</span>
+              <span className="italic text-sandstone">capital.</span>
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto">
               Insights on ethical investing, market analysis, real estate, and
@@ -651,7 +651,7 @@ export default function NewsPage() {
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 text-sm border border-border rounded-full bg-white text-warm-dark placeholder:text-foreground/30 focus:outline-none focus:border-gold/40 transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 text-sm border border-border rounded-full bg-white text-flint placeholder:text-foreground/30 focus:outline-none focus:border-sandstone/40 transition-colors"
               />
             </div>
 
@@ -663,8 +663,8 @@ export default function NewsPage() {
                   onClick={() => setActiveFilter(cat)}
                   className={`px-4 py-2 text-xs font-medium rounded-full border transition-all duration-200 ${
                     activeFilter === cat
-                      ? "bg-warm-dark text-white border-warm-dark"
-                      : "bg-white text-foreground/60 border-border hover:border-gold/40 hover:text-warm-dark"
+                      ? "bg-flint text-white border-flint"
+                      : "bg-white text-foreground/60 border-border hover:border-sandstone/40 hover:text-flint"
                   }`}
                 >
                   {cat}

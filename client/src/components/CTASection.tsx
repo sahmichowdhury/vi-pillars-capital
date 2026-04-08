@@ -26,19 +26,19 @@ export default function CTASection({
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/50">
+    <section className="py-20 lg:py-28 bg-cream/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto bg-white rounded-2xl border border-gold/15 p-10 lg:p-14 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm"
+          className="max-w-4xl mx-auto bg-white rounded-2xl border border-sandstone/15 p-10 lg:p-14 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm"
         >
           <div className="lg:max-w-lg">
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-warm-dark leading-tight mb-3">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-flint leading-tight mb-3">
               {headline}{" "}
-              <span className="italic text-gold-dark">{accentWord}</span>
+              <span className="italic text-leather">{accentWord}</span>
             </h2>
             <p className="text-foreground/60 text-[15px] leading-relaxed">
               {description}
@@ -46,7 +46,7 @@ export default function CTASection({
           </div>
           <Link
             href={buttonHref}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-warm-dark text-sm font-semibold rounded-md hover:bg-gold-light transition-colors duration-200 shrink-0"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-sandstone text-flint text-sm font-semibold rounded-md hover:bg-sandstone-light transition-colors duration-200 shrink-0"
           >
             {buttonText}
             <ArrowRight className="w-4 h-4" />

@@ -1,6 +1,6 @@
 /*
  * Contact Page: Header + contact form + info sidebar cards
- * Warm tan/gold color scheme
+ * Earthy moss/sandstone/leather color scheme
  */
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -37,12 +37,12 @@ export default function ContactPage() {
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+            <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
               Contact Us
             </p>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5 max-w-2xl">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5 max-w-2xl">
               Let's start a{" "}
-              <span className="italic text-gold-dark">conversation.</span>
+              <span className="italic text-leather">conversation.</span>
             </h1>
             <p className="text-foreground/60 text-lg leading-relaxed max-w-2xl">
               Whether you're an experienced investor or just starting your journey, our team
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
       {/* Divider */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="border-t border-gold/10" />
+        <div className="border-t border-sandstone/10" />
       </div>
 
       {/* Form + Sidebar */}
@@ -71,8 +71,8 @@ export default function ContactPage() {
             >
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-warm-dark mb-2">
-                    Full Name <span className="text-copper">*</span>
+                  <label className="block text-sm font-medium text-flint mb-2">
+                    Full Name <span className="text-leather-light">*</span>
                   </label>
                   <input
                     type="text"
@@ -80,12 +80,12 @@ export default function ContactPage() {
                     placeholder="Your full name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all placeholder:text-foreground/30"
+                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-sandstone/30 focus:border-sandstone transition-all placeholder:text-foreground/30"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-warm-dark mb-2">
-                    Email Address <span className="text-copper">*</span>
+                  <label className="block text-sm font-medium text-flint mb-2">
+                    Email Address <span className="text-leather-light">*</span>
                   </label>
                   <input
                     type="email"
@@ -93,13 +93,13 @@ export default function ContactPage() {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all placeholder:text-foreground/30"
+                    className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-sandstone/30 focus:border-sandstone transition-all placeholder:text-foreground/30"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-warm-dark mb-2">
+                <label className="block text-sm font-medium text-flint mb-2">
                   Subject
                 </label>
                 <input
@@ -107,13 +107,13 @@ export default function ContactPage() {
                   placeholder="What would you like to discuss?"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all placeholder:text-foreground/30"
+                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-sandstone/30 focus:border-sandstone transition-all placeholder:text-foreground/30"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-warm-dark mb-2">
-                  Message <span className="text-copper">*</span>
+                <label className="block text-sm font-medium text-flint mb-2">
+                  Message <span className="text-leather-light">*</span>
                 </label>
                 <textarea
                   required
@@ -121,13 +121,13 @@ export default function ContactPage() {
                   placeholder="Tell us about your investment goals, questions, or how we can help..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none placeholder:text-foreground/30"
+                  className="w-full px-4 py-3 text-sm bg-white border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-sandstone/30 focus:border-sandstone transition-all resize-none placeholder:text-foreground/30"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-warm-dark text-sm font-semibold rounded-md hover:bg-gold-light transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-sandstone text-flint text-sm font-semibold rounded-md hover:bg-sandstone-light transition-colors duration-200"
               >
                 <Send className="w-4 h-4" />
                 Send Message
@@ -141,14 +141,14 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="space-y-5"
             >
-              <div className="p-6 rounded-2xl border border-gold/10 bg-tan-light/30">
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                  <Mail className="w-5 h-5 text-gold-dark" />
+              <div className="p-6 rounded-2xl border border-sandstone/10 bg-cream/30">
+                <div className="w-10 h-10 rounded-lg bg-sandstone/10 flex items-center justify-center mb-4">
+                  <Mail className="w-5 h-5 text-leather" />
                 </div>
-                <h3 className="text-warm-dark text-sm font-semibold mb-1">Email Us</h3>
+                <h3 className="text-flint text-sm font-semibold mb-1">Email Us</h3>
                 <a
                   href="mailto:info@vipillarscapital.com"
-                  className="text-gold-dark text-sm font-medium hover:underline"
+                  className="text-leather text-sm font-medium hover:underline"
                 >
                   info@vipillarscapital.com
                 </a>
@@ -157,12 +157,12 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-gold/10 bg-tan-light/30">
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                  <Clock className="w-5 h-5 text-gold-dark" />
+              <div className="p-6 rounded-2xl border border-sandstone/10 bg-cream/30">
+                <div className="w-10 h-10 rounded-lg bg-sandstone/10 flex items-center justify-center mb-4">
+                  <Clock className="w-5 h-5 text-leather" />
                 </div>
-                <h3 className="text-warm-dark text-sm font-semibold mb-1">Response Time</h3>
-                <p className="text-copper text-sm font-medium">24-48 business hours</p>
+                <h3 className="text-flint text-sm font-semibold mb-1">Response Time</h3>
+                <p className="text-leather-light text-sm font-medium">24-48 business hours</p>
                 <p className="text-foreground/50 text-sm mt-3 leading-relaxed">
                   Our team reviews every inquiry personally and will respond with a
                   thoughtful, detailed reply.

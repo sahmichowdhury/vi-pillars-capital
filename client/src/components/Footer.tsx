@@ -8,7 +8,7 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="bg-warm-dark text-white">
+    <footer className="bg-flint text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo & Description */}
@@ -18,7 +18,7 @@ export default function Footer() {
               A purpose-built Syndicate Lead pairing ethical capital with exclusive 
               private markets investment opportunities.
             </p>
-            <div className="flex items-center gap-2 text-gold/80 text-xs font-medium">
+            <div className="flex items-center gap-2 text-sandstone/80 text-xs font-medium">
               <Shield className="w-3.5 h-3.5" />
               Principled & Ethically Screened
             </div>
@@ -26,7 +26,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-gold text-sm font-semibold tracking-wider uppercase mb-5">
+            <h4 className="text-sandstone text-sm font-semibold tracking-wider uppercase mb-5">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -40,7 +40,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/45 text-sm hover:text-gold transition-colors duration-200"
+                    className="text-white/45 text-sm hover:text-sandstone transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Investment Focus */}
           <div>
-            <h4 className="text-gold text-sm font-semibold tracking-wider uppercase mb-5">
+            <h4 className="text-sandstone text-sm font-semibold tracking-wider uppercase mb-5">
               Investment Focus
             </h4>
             <ul className="space-y-3">
@@ -70,19 +70,19 @@ export default function Footer() {
 
           {/* Get in Touch */}
           <div>
-            <h4 className="text-gold text-sm font-semibold tracking-wider uppercase mb-5">
+            <h4 className="text-sandstone text-sm font-semibold tracking-wider uppercase mb-5">
               Get in Touch
             </h4>
             <a
               href="mailto:info@vipillarscapital.com"
-              className="flex items-center gap-2 text-white/45 text-sm hover:text-gold transition-colors duration-200 mb-5"
+              className="flex items-center gap-2 text-white/45 text-sm hover:text-sandstone transition-colors duration-200 mb-5"
             >
               <Mail className="w-4 h-4" />
               info@vipillarscapital.com
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-gold/15 border border-gold/25 text-gold rounded-md hover:bg-gold/25 transition-colors duration-200"
+              className="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-sandstone/15 border border-sandstone/25 text-sandstone rounded-md hover:bg-sandstone/25 transition-colors duration-200"
             >
               Contact Us
             </Link>

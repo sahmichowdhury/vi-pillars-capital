@@ -39,11 +39,11 @@ export default function TeamPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-[72px] bg-warm-dark relative overflow-hidden">
+      <section className="pt-[72px] bg-flint relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-warm-dark via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
-            <div className="absolute top-10 right-10 w-[350px] h-[350px] border border-gold rounded-full" />
+            <div className="absolute top-10 right-10 w-[350px] h-[350px] border border-sandstone rounded-full" />
           </div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
@@ -53,12 +53,12 @@ export default function TeamPage() {
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+            <p className="text-sandstone text-xs font-semibold tracking-[0.25em] uppercase mb-4">
               Our Team
             </p>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 max-w-2xl">
               The people behind{" "}
-              <span className="italic text-gold">VIP.</span>
+              <span className="italic text-sandstone">VIP.</span>
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl">
               A unique blend of investing, product, and advisory experience equips the
@@ -78,7 +78,7 @@ export default function TeamPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={isCardsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="bg-white rounded-2xl border border-gold/10 shadow-sm overflow-hidden"
+              className="bg-white rounded-2xl border border-sandstone/10 shadow-sm overflow-hidden"
             >
               {/* Top section with photo and basic info */}
               <div className="flex flex-col md:flex-row">
@@ -92,7 +92,7 @@ export default function TeamPage() {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-gold-dark to-gold flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-leather to-sandstone flex items-center justify-center">
                         <span className="text-white font-serif text-4xl font-bold">
                           {member.initials}
                         </span>
@@ -103,10 +103,10 @@ export default function TeamPage() {
 
                 {/* Info */}
                 <div className="p-8 lg:p-10 flex flex-col justify-center">
-                  <h3 className="font-serif text-2xl lg:text-3xl font-bold text-warm-dark mb-1">
+                  <h3 className="font-serif text-2xl lg:text-3xl font-bold text-flint mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-copper text-sm font-semibold mb-4">{member.role}</p>
+                  <p className="text-leather-light text-sm font-semibold mb-4">{member.role}</p>
 
                   {/* Social Links */}
                   <div className="flex items-center gap-3 mb-6">
@@ -114,7 +114,7 @@ export default function TeamPage() {
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gold/15 text-gold-dark/70 hover:text-gold-dark hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 text-xs font-medium"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-sandstone/15 text-leather/70 hover:text-leather hover:border-sandstone/30 hover:bg-sandstone/5 transition-all duration-200 text-xs font-medium"
                     >
                       <Linkedin className="w-3.5 h-3.5" />
                       LinkedIn
@@ -124,7 +124,7 @@ export default function TeamPage() {
                       href={member.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gold/15 text-gold-dark/70 hover:text-gold-dark hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 text-xs font-medium"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-sandstone/15 text-leather/70 hover:text-leather hover:border-sandstone/30 hover:bg-sandstone/5 transition-all duration-200 text-xs font-medium"
                     >
                       <Instagram className="w-3.5 h-3.5" />
                       Instagram
@@ -142,7 +142,7 @@ export default function TeamPage() {
                     {member.companies.map((company) => (
                       <span
                         key={company}
-                        className="text-xs font-medium text-foreground/50 bg-tan-light/60 border border-gold/10 px-3 py-1.5 rounded-md"
+                        className="text-xs font-medium text-foreground/50 bg-cream/60 border border-sandstone/10 px-3 py-1.5 rounded-md"
                       >
                         {company}
                       </span>
@@ -153,21 +153,21 @@ export default function TeamPage() {
 
               {/* Bio section */}
               <div className="px-8 lg:px-10 pb-8 lg:pb-10">
-                <div className="border-t border-gold/10 pt-6">
+                <div className="border-t border-sandstone/10 pt-6">
                   <p className="text-foreground/60 text-[15px] leading-relaxed mb-6">
                     {member.bio}
                   </p>
 
                   {/* Expertise Tags */}
                   <div>
-                    <p className="text-xs font-semibold text-copper tracking-wider uppercase mb-3">
+                    <p className="text-xs font-semibold text-leather-light tracking-wider uppercase mb-3">
                       Areas of Expertise
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {member.expertise.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs font-medium text-gold-dark bg-gold/8 border border-gold/15 px-3 py-1.5 rounded-full"
+                          className="text-xs font-medium text-leather bg-sandstone/8 border border-sandstone/15 px-3 py-1.5 rounded-full"
                         >
                           {tag}
                         </span>

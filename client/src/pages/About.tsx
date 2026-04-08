@@ -18,12 +18,12 @@ import CTASection from "@/components/CTASection";
 /* ---------- About Hero ---------- */
 function AboutHero() {
   return (
-    <section className="pt-[72px] bg-warm-dark relative overflow-hidden">
+    <section className="pt-[72px] bg-flint relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-warm-dark via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
-          <div className="absolute top-10 right-10 w-[350px] h-[350px] border border-gold rounded-full" />
-          <div className="absolute top-32 right-32 w-[250px] h-[250px] border border-gold rounded-full" />
+          <div className="absolute top-10 right-10 w-[350px] h-[350px] border border-sandstone rounded-full" />
+          <div className="absolute top-32 right-32 w-[250px] h-[250px] border border-sandstone rounded-full" />
         </div>
       </div>
 
@@ -36,7 +36,7 @@ function AboutHero() {
               transition={{ duration: 0.5 }}
               className="mb-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase">
                 <Shield className="w-3.5 h-3.5" />
                 About VI Pillars Capital
               </div>
@@ -48,7 +48,7 @@ function AboutHero() {
               className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
             >
               Principled investing,{" "}
-              <span className="italic text-gold">purposeful returns.</span>
+              <span className="italic text-sandstone">purposeful returns.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ function AboutHero() {
                 key={stat.label}
                 className="p-5 bg-white/[0.04] border border-white/[0.08] rounded-xl backdrop-blur-sm"
               >
-                <stat.icon className="w-5 h-5 text-gold mb-3" />
+                <stat.icon className="w-5 h-5 text-sandstone mb-3" />
                 <div className="font-serif text-2xl font-bold text-white mb-1">{stat.value}</div>
                 <p className="text-white/40 text-xs">{stat.label}</p>
               </div>
@@ -121,12 +121,12 @@ function MissionVision() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-8 rounded-2xl border border-gold/10 bg-tan-light/30 hover:shadow-md transition-shadow duration-300"
+              className="p-8 rounded-2xl border border-sandstone/10 bg-cream/30 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center mb-5">
-                <card.icon className="w-6 h-6 text-gold" />
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-flint to-flint-light flex items-center justify-center mb-5">
+                <card.icon className="w-6 h-6 text-sandstone" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-warm-dark mb-4">
+              <h3 className="font-serif text-xl font-bold text-flint mb-4">
                 {card.title}
               </h3>
               <p className="text-foreground/60 text-[15px] leading-relaxed">
@@ -146,7 +146,7 @@ function SPVDiagram() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -154,13 +154,13 @@ function SPVDiagram() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/8 border border-gold/15 rounded-full text-gold-dark text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-sandstone/8 border border-sandstone/15 rounded-full text-leather text-xs font-medium tracking-wider uppercase mb-6">
             <GraduationCap className="w-3.5 h-3.5" />
             Investor Education
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
             Understanding{" "}
-            <span className="italic text-gold-dark">SPVs.</span>
+            <span className="italic text-leather">SPVs.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             A Special Purpose Vehicle (SPV) is a dedicated legal entity created for a single investment.
@@ -176,7 +176,7 @@ function SPVDiagram() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto mb-16"
         >
-          <div className="bg-white rounded-2xl border border-gold/15 p-8 lg:p-10 shadow-sm">
+          <div className="bg-white rounded-2xl border border-sandstone/15 p-8 lg:p-10 shadow-sm">
             {/* Flow: Investors → SPV → Deal */}
             <div className="flex flex-col items-center gap-4">
               {/* Investors Row */}
@@ -189,8 +189,8 @@ function SPVDiagram() {
                     transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                     className={`px-5 py-3 rounded-xl border text-sm font-semibold text-center ${
                       inv === "You"
-                        ? "bg-gold/15 border-gold/40 text-gold-dark"
-                        : "bg-tan-light/50 border-gold/10 text-warm-dark/70"
+                        ? "bg-sandstone/15 border-sandstone/40 text-leather"
+                        : "bg-cream/50 border-sandstone/10 text-flint/70"
                     }`}
                   >
                     <Users className="w-4 h-4 mx-auto mb-1.5 opacity-60" />
@@ -206,8 +206,8 @@ function SPVDiagram() {
                 transition={{ duration: 0.3, delay: 0.7 }}
                 className="flex flex-col items-center gap-1"
               >
-                <div className="w-px h-8 bg-gradient-to-b from-gold/40 to-gold" />
-                <ArrowDown className="w-5 h-5 text-gold" />
+                <div className="w-px h-8 bg-gradient-to-b from-sandstone/40 to-sandstone" />
+                <ArrowDown className="w-5 h-5 text-sandstone" />
                 <span className="text-xs text-foreground/40 font-medium">Capital Pooled</span>
               </motion.div>
 
@@ -216,9 +216,9 @@ function SPVDiagram() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="w-full max-w-sm bg-warm-dark rounded-2xl p-6 text-center"
+                className="w-full max-w-sm bg-flint rounded-2xl p-6 text-center"
               >
-                <Layers className="w-8 h-8 text-gold mx-auto mb-3" />
+                <Layers className="w-8 h-8 text-sandstone mx-auto mb-3" />
                 <h4 className="text-white font-serif text-lg font-bold mb-1">Special Purpose Vehicle</h4>
                 <p className="text-white/40 text-xs">Dedicated legal entity for this deal</p>
               </motion.div>
@@ -230,8 +230,8 @@ function SPVDiagram() {
                 transition={{ duration: 0.3, delay: 1.0 }}
                 className="flex flex-col items-center gap-1"
               >
-                <div className="w-px h-8 bg-gradient-to-b from-gold/40 to-gold" />
-                <ArrowDown className="w-5 h-5 text-gold" />
+                <div className="w-px h-8 bg-gradient-to-b from-sandstone/40 to-sandstone" />
+                <ArrowDown className="w-5 h-5 text-sandstone" />
                 <span className="text-xs text-foreground/40 font-medium">Capital Deployed</span>
               </motion.div>
 
@@ -240,10 +240,10 @@ function SPVDiagram() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 1.1 }}
-                className="w-full max-w-sm bg-gold/10 border border-gold/25 rounded-2xl p-6 text-center"
+                className="w-full max-w-sm bg-sandstone/10 border border-sandstone/25 rounded-2xl p-6 text-center"
               >
-                <TrendingUp className="w-8 h-8 text-gold-dark mx-auto mb-3" />
-                <h4 className="text-warm-dark font-serif text-lg font-bold mb-1">The Investment</h4>
+                <TrendingUp className="w-8 h-8 text-leather mx-auto mb-3" />
+                <h4 className="text-flint font-serif text-lg font-bold mb-1">The Investment</h4>
                 <p className="text-foreground/50 text-xs">Real estate, venture, hospitality, etc.</p>
               </motion.div>
             </div>
@@ -256,13 +256,13 @@ function SPVDiagram() {
             initial={{ opacity: 0, x: -24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white rounded-2xl border border-gold/10 p-7"
+            className="bg-white rounded-2xl border border-sandstone/10 p-7"
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600" />
               </div>
-              <h3 className="font-serif text-lg font-bold text-warm-dark">Advantages of SPVs</h3>
+              <h3 className="font-serif text-lg font-bold text-flint">Advantages of SPVs</h3>
             </div>
             <ul className="space-y-3">
               {[
@@ -285,13 +285,13 @@ function SPVDiagram() {
             initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="bg-white rounded-2xl border border-gold/10 p-7"
+            className="bg-white rounded-2xl border border-sandstone/10 p-7"
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center">
                 <Lightbulb className="w-5 h-5 text-amber-600" />
               </div>
-              <h3 className="font-serif text-lg font-bold text-warm-dark">Things to Consider</h3>
+              <h3 className="font-serif text-lg font-bold text-flint">Things to Consider</h3>
             </div>
             <ul className="space-y-3">
               {[
@@ -316,10 +316,10 @@ function SPVDiagram() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 max-w-4xl mx-auto bg-warm-dark rounded-2xl p-8 lg:p-10"
+          className="mt-12 max-w-4xl mx-auto bg-flint rounded-2xl p-8 lg:p-10"
         >
           <h3 className="font-serif text-2xl font-bold text-white mb-4 text-center">
-            Why does VI Pillars use <span className="italic text-gold">SPVs?</span>
+            Why does VI Pillars use <span className="italic text-sandstone">SPVs?</span>
           </h3>
           <div className="grid sm:grid-cols-3 gap-6 mt-6">
             {[
@@ -346,8 +346,8 @@ function SPVDiagram() {
                 transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="w-6 h-6 text-gold" />
+                <div className="w-12 h-12 rounded-xl bg-sandstone/15 flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="w-6 h-6 text-sandstone" />
                 </div>
                 <h4 className="text-white text-sm font-semibold mb-2">{item.title}</h4>
                 <p className="text-white/40 text-xs leading-relaxed">{item.desc}</p>
@@ -410,12 +410,12 @@ function InvestmentPhilosophy() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Investment Philosophy
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
             How we{" "}
-            <span className="italic text-gold-dark">invest.</span>
+            <span className="italic text-leather">invest.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Our approach is built on ethical screening, rigorous due diligence, and
@@ -431,19 +431,19 @@ function InvestmentPhilosophy() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-tan-light/30 rounded-2xl border border-gold/10 p-7 hover:shadow-md transition-shadow duration-300"
+              className="bg-cream/30 rounded-2xl border border-sandstone/10 p-7 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center mb-5">
-                <cat.icon className="w-6 h-6 text-gold" />
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-flint to-flint-light flex items-center justify-center mb-5">
+                <cat.icon className="w-6 h-6 text-sandstone" />
               </div>
-              <h3 className="font-serif text-lg font-bold text-warm-dark mb-2">
+              <h3 className="font-serif text-lg font-bold text-flint mb-2">
                 {cat.title}
               </h3>
               <p className="text-foreground/50 text-sm mb-5">{cat.desc}</p>
               <ul className="space-y-3">
                 {cat.items.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-gold-dark shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-leather shrink-0 mt-0.5" />
                     <span className="text-foreground/60 text-sm leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -462,7 +462,7 @@ function EthicalDifferentiator() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -470,13 +470,13 @@ function EthicalDifferentiator() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gold/8 border border-gold/15 rounded-full text-gold-dark text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-sandstone/8 border border-sandstone/15 rounded-full text-leather text-xs font-medium tracking-wider uppercase mb-6">
             <Shield className="w-3.5 h-3.5" />
             Our Differentiator
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
             Investing with{" "}
-            <span className="italic text-gold-dark">intention.</span>
+            <span className="italic text-leather">intention.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-3xl mx-auto">
             VI Pillars Capital operates under a principled investment framework rooted in ethical
@@ -513,12 +513,12 @@ function EthicalDifferentiator() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 rounded-xl border border-gold/10 bg-white hover:shadow-md transition-shadow duration-300"
+              className="p-6 rounded-xl border border-sandstone/10 bg-white hover:shadow-md transition-shadow duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                <card.icon className="w-5 h-5 text-gold-dark" />
+              <div className="w-10 h-10 rounded-lg bg-sandstone/10 flex items-center justify-center mb-4">
+                <card.icon className="w-5 h-5 text-leather" />
               </div>
-              <h3 className="text-warm-dark text-sm font-semibold mb-2">{card.title}</h3>
+              <h3 className="text-flint text-sm font-semibold mb-2">{card.title}</h3>
               <p className="text-foreground/55 text-sm leading-relaxed">{card.desc}</p>
             </motion.div>
           ))}
@@ -534,10 +534,10 @@ function CommunityPurpose() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-warm-dark relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-flint relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] border border-gold/5 rounded-full" />
-        <div className="absolute -bottom-20 -right-20 w-[300px] h-[300px] border border-gold/5 rounded-full" />
+        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] border border-sandstone/5 rounded-full" />
+        <div className="absolute -bottom-20 -right-20 w-[300px] h-[300px] border border-sandstone/5 rounded-full" />
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -547,13 +547,13 @@ function CommunityPurpose() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-medium tracking-wider uppercase mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase mb-6">
               <Globe className="w-3.5 h-3.5" />
               Community & Purpose
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
               Building wealth that{" "}
-              <span className="italic text-gold">uplifts.</span>
+              <span className="italic text-sandstone">uplifts.</span>
             </h2>
             <p className="text-white/55 text-base leading-relaxed mb-6">
               At VI Pillars Capital, we believe investing should be more than a transaction — it should
@@ -576,7 +576,7 @@ function CommunityPurpose() {
                   key={tag}
                   className="flex items-center gap-2 px-4 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-xl"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-sandstone shrink-0" />
                   <span className="text-white/70 text-sm font-medium">{tag}</span>
                 </div>
               ))}
@@ -613,8 +613,8 @@ function CommunityPurpose() {
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                 className="flex items-start gap-4 p-5 bg-white/[0.04] border border-white/[0.08] rounded-xl"
               >
-                <div className="w-10 h-10 rounded-lg bg-gold/15 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-gold" />
+                <div className="w-10 h-10 rounded-lg bg-sandstone/15 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-sandstone" />
                 </div>
                 <div>
                   <h3 className="text-white text-sm font-semibold mb-1">{item.title}</h3>
@@ -670,12 +670,12 @@ function InvestorJourney() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Your Journey
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
             From interest to{" "}
-            <span className="italic text-gold-dark">investment.</span>
+            <span className="italic text-leather">investment.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Getting started with VI Pillars Capital is simple and transparent. Here's what your journey looks like.
@@ -689,15 +689,15 @@ function InvestorJourney() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="relative bg-tan-light/30 rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
+              className="relative bg-cream/30 rounded-2xl border border-sandstone/10 p-6 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="text-gold/20 font-serif text-4xl font-bold absolute top-4 right-5">
+              <div className="text-sandstone/20 font-serif text-4xl font-bold absolute top-4 right-5">
                 {step.num}
               </div>
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm-dark to-warm-dark/80 flex items-center justify-center mb-4">
-                <step.icon className="w-6 h-6 text-gold" />
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-flint to-flint-light flex items-center justify-center mb-4">
+                <step.icon className="w-6 h-6 text-sandstone" />
               </div>
-              <h3 className="font-serif text-base font-bold text-warm-dark mb-2">
+              <h3 className="font-serif text-base font-bold text-flint mb-2">
                 {step.title}
               </h3>
               <p className="text-foreground/55 text-sm leading-relaxed">
@@ -750,7 +750,7 @@ function CoreValues() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-tan-light/40">
+    <section className="py-20 lg:py-28 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -758,12 +758,12 @@ function CoreValues() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Our Foundation
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
             Built on{" "}
-            <span className="italic text-gold-dark">values.</span>
+            <span className="italic text-leather">values.</span>
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Our values are the pillars upon which every investment decision is built,
@@ -778,12 +778,12 @@ function CoreValues() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-white rounded-2xl border border-gold/10 p-6 hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-2xl border border-sandstone/10 p-6 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                <value.icon className="w-5 h-5 text-gold-dark" />
+              <div className="w-10 h-10 rounded-lg bg-sandstone/10 flex items-center justify-center mb-4">
+                <value.icon className="w-5 h-5 text-leather" />
               </div>
-              <h3 className="text-warm-dark text-sm font-semibold mb-2">{value.title}</h3>
+              <h3 className="text-flint text-sm font-semibold mb-2">{value.title}</h3>
               <p className="text-foreground/55 text-sm leading-relaxed">{value.desc}</p>
             </motion.div>
           ))}
@@ -835,12 +835,12 @@ function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-copper text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Common Questions
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-warm-dark leading-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-flint leading-tight mb-5">
             Frequently{" "}
-            <span className="italic text-gold-dark">asked.</span>
+            <span className="italic text-leather">asked.</span>
           </h2>
         </motion.div>
 
@@ -851,15 +851,15 @@ function FAQ() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="bg-tan-light/30 rounded-xl border border-gold/10 overflow-hidden"
+              className="bg-cream/30 rounded-xl border border-sandstone/10 overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-tan-light/50 transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left hover:bg-cream/50 transition-colors"
               >
-                <span className="text-warm-dark text-sm font-semibold pr-4">{faq.q}</span>
+                <span className="text-flint text-sm font-semibold pr-4">{faq.q}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-gold-dark shrink-0 transition-transform duration-200 ${
+                  className={`w-5 h-5 text-leather shrink-0 transition-transform duration-200 ${
                     openIndex === i ? "rotate-180" : ""
                   }`}
                 />
