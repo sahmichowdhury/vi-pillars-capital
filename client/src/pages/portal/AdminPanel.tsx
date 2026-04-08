@@ -2,6 +2,7 @@
  * Admin Panel — manage investor applications, deal assignments, documents
  */
 import { useState } from "react";
+import { DEALS, CUSTOM_DEAL_VALUE, type DealSummary } from "@/data/deals";
 import { Users, TrendingUp, FileText, CheckCircle2, XCircle, Clock, Plus, Trash2, Edit3, ChevronDown, ChevronUp } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
@@ -176,15 +177,41 @@ function DealsTab() {
   const [form, setForm] = useState(emptyForm);
   const resetForm = () => setForm(emptyForm);
 
+  // Track whether the user selected a listed deal or a custom one
+  const [selectedDealKey, setSelectedDealKey] = useState<string>("");
+
+  const handleDealSelect = (value: string) => {
+    setSelectedDealKey(value);
+    if (value === CUSTOM_DEAL_VALUE || value === "") {
+      // Clear name/category so user can type their own
+      setForm(f => ({ ...f, dealName: "", dealCategory: "Venture" }));
+    } else {
+      const deal = DEALS.find(d => d.name === value);
+      if (deal) {
+        setForm(f => ({ ...f, dealName: deal.name, dealCategory: deal.category }));
+      }
+    }
+  };
+
+  const isCustomDeal = selectedDealKey === CUSTOM_DEAL_VALUE;
+
   const approvedUsers = (users.data ?? []).filter(u => u.approvalStatus === "approved");
 
   const getUserName = (userId: number) => users.data?.find(u => u.id === userId)?.name ?? `User #${userId}`;
+
+  // Group deals by status for the dropdown
+  const dealsByStatus: Record<string, DealSummary[]> = {};
+  for (const d of DEALS) {
+    if (!dealsByStatus[d.status]) dealsByStatus[d.status] = [];
+    dealsByStatus[d.status].push(d);
+  }
+  const statusOrder = ["Active", "Deployed", "Exited", "Passed"];
 
   return (
     <div>
       <div className="flex justify-end mb-4">
         <button
-          onClick={() => setShowForm(!showForm)}
+          onClick={() => { setShowForm(!showForm); setSelectedDealKey(""); }}
           className="flex items-center gap-2 text-sm bg-sandstone text-flint font-medium px-4 py-2 rounded-lg hover:bg-sandstone/90 transition-colors"
         >
           <Plus className="w-4 h-4" />
@@ -204,8 +231,36 @@ function DealsTab() {
               </select>
             </div>
             <div>
-              <label className="text-xs text-muted-foreground block mb-1">Deal Name *</label>
-              <input type="text" value={form.dealName} onChange={e => setForm(f => ({ ...f, dealName: e.target.value }))} placeholder="e.g. SpaceX" className="w-full text-sm border rounded-lg px-3 py-2 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sandstone/50" />
+              <label className="text-xs text-muted-foreground block mb-1">Deal *</label>
+              <select
+                value={selectedDealKey}
+                onChange={e => handleDealSelect(e.target.value)}
+                className="w-full text-sm border rounded-lg px-3 py-2 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sandstone/50"
+              >
+                <option value="">Select a deal...</option>
+                {statusOrder.map(status =>
+                  dealsByStatus[status] ? (
+                    <optgroup key={status} label={`— ${status} —`}>
+                      {dealsByStatus[status].map(d => (
+                        <option key={d.name} value={d.name}>{d.name} ({d.category})</option>
+                      ))}
+                    </optgroup>
+                  ) : null
+                )}
+                <optgroup label="— Other —">
+                  <option value={CUSTOM_DEAL_VALUE}>Custom / Not Listed...</option>
+                </optgroup>
+              </select>
+              {isCustomDeal && (
+                <input
+                  type="text"
+                  value={form.dealName}
+                  onChange={e => setForm(f => ({ ...f, dealName: e.target.value }))}
+                  placeholder="Enter deal name..."
+                  className="w-full mt-2 text-sm border rounded-lg px-3 py-2 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sandstone/50"
+                  autoFocus
+                />
+              )}
             </div>
             <div>
               <label className="text-xs text-muted-foreground block mb-1">Category *</label>
