@@ -3,7 +3,7 @@
  */
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn, UserPlus, CheckCircle, LayoutDashboard, ScanSearch } from "lucide-react";
+import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn, UserPlus, CheckCircle2, LayoutDashboard, ScanSearch } from "lucide-react";
 import Logo from "@/components/Logo";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
@@ -52,6 +52,7 @@ export default function LPLoginPage() {
   }, [user, portalMe.data?.user.approvalStatus, setLocation]);
 
   const approvalStatus = portalMe.data?.user.approvalStatus;
+  const isApproved = approvalStatus === "approved";
 
   const features = [
     { icon: TrendingUp, label: "Track Your Investments", desc: "Real-time status on every deal you are in" },
@@ -174,63 +175,98 @@ export default function LPLoginPage() {
             {/* Connector line (desktop only) */}
             <div className="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-sandstone/20 via-sandstone/40 to-sandstone/20" />
 
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 20 }}
-                animate={stepsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.15 }}
-                className="relative flex flex-col items-center text-center bg-white/[0.04] border border-white/10 rounded-2xl p-8 hover:border-sandstone/30 transition-colors duration-300"
-              >
-                {/* Step number badge */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-sandstone text-flint text-xs font-bold px-3 py-1 rounded-full tracking-wider">
-                    {step.number}
-                  </span>
-                </div>
+            {steps.map((step, i) => {
+              const isPendingStep = 'pending' in step && step.pending;
+              const showSuccess = isPendingStep && isApproved;
+              const showPending = isPendingStep && !isApproved;
 
-                {/* Icon */}
-                {'pending' in step && step.pending ? (
-                  <div className="relative flex items-center justify-center mb-5 mt-3">
-                    {/* Outer pulse ring */}
-                    <span className="absolute inline-flex w-16 h-16 rounded-full bg-amber-400/20 animate-ping" />
-                    {/* Inner ring */}
-                    <span className="absolute inline-flex w-14 h-14 rounded-full bg-amber-400/10 border border-amber-400/30" />
-                    {/* Icon box */}
-                    <div className="relative w-14 h-14 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-amber-400" />
+              return (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={stepsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.15 }}
+                  className={`relative flex flex-col items-center text-center rounded-2xl p-8 transition-colors duration-300 ${
+                    showSuccess
+                      ? "bg-emerald-500/[0.06] border border-emerald-500/25 hover:border-emerald-500/40"
+                      : "bg-white/[0.04] border border-white/10 hover:border-sandstone/30"
+                  }`}
+                >
+                  {/* Step number badge */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full tracking-wider ${
+                      showSuccess ? "bg-emerald-500 text-white" : "bg-sandstone text-flint"
+                    }`}>
+                      {step.number}
+                    </span>
+                  </div>
+
+                  {/* Icon — three states: success, pending, default */}
+                  {showSuccess ? (
+                    <motion.div
+                      initial={{ scale: 0.6, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.2 }}
+                      className="relative flex items-center justify-center mb-5 mt-3"
+                    >
+                      {/* Soft glow ring */}
+                      <span className="absolute inline-flex w-16 h-16 rounded-full bg-emerald-500/15" />
+                      {/* Icon box */}
+                      <div className="relative w-14 h-14 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-center">
+                        <CheckCircle2 className="w-7 h-7 text-emerald-400" />
+                      </div>
+                    </motion.div>
+                  ) : showPending ? (
+                    <div className="relative flex items-center justify-center mb-5 mt-3">
+                      {/* Outer pulse ring */}
+                      <span className="absolute inline-flex w-16 h-16 rounded-full bg-amber-400/20 animate-ping" />
+                      {/* Inner ring */}
+                      <span className="absolute inline-flex w-14 h-14 rounded-full bg-amber-400/10 border border-amber-400/30" />
+                      {/* Icon box */}
+                      <div className="relative w-14 h-14 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center">
+                        <step.icon className="w-6 h-6 text-amber-400" />
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="w-14 h-14 rounded-xl bg-sandstone/10 border border-sandstone/20 flex items-center justify-center mb-5 mt-3">
-                    <step.icon className="w-6 h-6 text-sandstone" />
-                  </div>
-                )}
+                  ) : (
+                    <div className="w-14 h-14 rounded-xl bg-sandstone/10 border border-sandstone/20 flex items-center justify-center mb-5 mt-3">
+                      <step.icon className="w-6 h-6 text-sandstone" />
+                    </div>
+                  )}
 
-                {/* Content */}
-                <h3 className="font-serif text-lg font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{step.desc}</p>
+                  {/* Content */}
+                  <h3 className={`font-serif text-lg font-bold mb-3 ${showSuccess ? "text-emerald-300" : "text-white"}`}>
+                    {step.title}
+                    {showSuccess && (
+                      <span className="ml-2 text-xs font-sans font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full align-middle">
+                        Approved
+                      </span>
+                    )}
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed">{step.desc}</p>
 
-                {/* Checkmark for completed feel */}
-                {i < steps.length - 1 && (
-                  <div className="md:hidden mt-6 flex items-center justify-center">
-                    <ArrowRight className="w-4 h-4 text-sandstone/40 rotate-90" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
+                  {/* Mobile arrow between steps */}
+                  {i < steps.length - 1 && (
+                    <div className="md:hidden mt-6 flex items-center justify-center">
+                      <ArrowRight className="w-4 h-4 text-sandstone/40 rotate-90" />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* CTA nudge */}
-          <div className="text-center mt-10">
-            <p className="text-white/40 text-sm">
-              Ready to get started?{" "}
-              <a href={getLoginUrl()} className="text-sandstone hover:text-sandstone/80 font-medium transition-colors">
-                Sign in above
-              </a>{" "}
-              to submit your application.
-            </p>
-          </div>
+          {/* CTA nudge — hide once approved */}
+          {!isApproved && (
+            <div className="text-center mt-10">
+              <p className="text-white/40 text-sm">
+                Ready to get started?{" "}
+                <a href={getLoginUrl()} className="text-sandstone hover:text-sandstone/80 font-medium transition-colors">
+                  Sign in above
+                </a>{" "}
+                to submit your application.
+              </p>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
