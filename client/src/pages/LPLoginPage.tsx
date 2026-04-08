@@ -3,16 +3,39 @@
  */
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn } from "lucide-react";
+import { Lock, Shield, FileText, TrendingUp, Clock, XCircle, ArrowRight, LogIn, UserPlus, CheckCircle, LayoutDashboard } from "lucide-react";
 import Logo from "@/components/Logo";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
 
+const steps = [
+  {
+    number: "01",
+    icon: UserPlus,
+    title: "Register",
+    desc: "Sign in with your Google account via the LP Portal button. First-time sign-ins automatically create an access request.",
+  },
+  {
+    number: "02",
+    icon: Clock,
+    title: "Await Approval",
+    desc: "The VI Pillars Capital team reviews your application within 1–2 business days and will notify you once a decision is made.",
+  },
+  {
+    number: "03",
+    icon: LayoutDashboard,
+    title: "Access Portal",
+    desc: "Once approved, sign back in to view your assigned deals, download documents, and track your portfolio in real time.",
+  },
+];
+
 export default function LPLoginPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const stepsRef = useRef(null);
+  const stepsInView = useInView(stepsRef, { once: true, margin: "-40px" });
   const { user, loading } = useAuth();
   const [, setLocation] = useLocation();
 
@@ -36,12 +59,13 @@ export default function LPLoginPage() {
   ];
 
   return (
-    <section className="pt-[72px] min-h-screen bg-flint relative overflow-hidden flex items-center">
+    <section className="pt-[72px] min-h-screen bg-flint relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
       </div>
 
+      {/* ── Main login panel ── */}
       <div ref={ref} className="relative w-full max-w-5xl mx-auto px-6 lg:px-8 py-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -123,6 +147,75 @@ export default function LPLoginPage() {
                 </a>
               </div>
             ) : null}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── How to Apply ── */}
+      <div ref={stepsRef} className="relative w-full max-w-5xl mx-auto px-6 lg:px-8 pb-24">
+        {/* Divider */}
+        <div className="border-t border-white/10 mb-16" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={stepsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <p className="text-sandstone text-xs font-semibold tracking-widest uppercase mb-3">Getting Started</p>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">How to Apply</h2>
+            <p className="text-white/50 text-sm mt-3 max-w-md mx-auto leading-relaxed">
+              Portal access is by invitation or application. Here is what to expect from start to finish.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            {/* Connector line (desktop only) */}
+            <div className="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-sandstone/20 via-sandstone/40 to-sandstone/20" />
+
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 20 }}
+                animate={stepsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.15 }}
+                className="relative flex flex-col items-center text-center bg-white/[0.04] border border-white/10 rounded-2xl p-8 hover:border-sandstone/30 transition-colors duration-300"
+              >
+                {/* Step number badge */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-sandstone text-flint text-xs font-bold px-3 py-1 rounded-full tracking-wider">
+                    {step.number}
+                  </span>
+                </div>
+
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-xl bg-sandstone/10 border border-sandstone/20 flex items-center justify-center mb-5 mt-3">
+                  <step.icon className="w-6 h-6 text-sandstone" />
+                </div>
+
+                {/* Content */}
+                <h3 className="font-serif text-lg font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{step.desc}</p>
+
+                {/* Checkmark for completed feel */}
+                {i < steps.length - 1 && (
+                  <div className="md:hidden mt-6 flex items-center justify-center">
+                    <ArrowRight className="w-4 h-4 text-sandstone/40 rotate-90" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA nudge */}
+          <div className="text-center mt-10">
+            <p className="text-white/40 text-sm">
+              Ready to get started?{" "}
+              <a href={getLoginUrl()} className="text-sandstone hover:text-sandstone/80 font-medium transition-colors">
+                Sign in above
+              </a>{" "}
+              to submit your application.
+            </p>
           </div>
         </motion.div>
       </div>
