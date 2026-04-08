@@ -59,7 +59,7 @@ export default function Footer() {
                 "Private Equity",
                 "Venture Capital",
                 "Real Estate",
-                "Hospitality",
+                "Consumer",
               ].map((item) => (
                 <li key={item} className="text-white/45 text-sm">
                   {item}

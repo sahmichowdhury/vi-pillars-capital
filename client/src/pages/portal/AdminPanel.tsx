@@ -265,7 +265,7 @@ function DealsTab() {
             <div>
               <label className="text-xs text-muted-foreground block mb-1">Category *</label>
               <select value={form.dealCategory} onChange={e => setForm(f => ({ ...f, dealCategory: e.target.value }))} className="w-full text-sm border rounded-lg px-3 py-2 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sandstone/50">
-                <option>Venture</option><option>Real Estate</option><option>Hospitality</option>
+                <option>Venture</option><option>Real Estate</option><option>Consumer</option>
               </select>
             </div>
             <div>
