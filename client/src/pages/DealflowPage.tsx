@@ -105,8 +105,8 @@ const deals: Deal[] = [
     name: "Tercer",
     description:
       "An exclusive members-only social club redefining hospitality and leisure. Tercer offers a curated experience blending wellness, entertainment, and community in a sophisticated setting.",
-    category: "Hospitality",
-    industry: "Hospitality & Leisure",
+    category: "Consumer",
+    industry: "Consumer & Leisure",
     subIndustry: "Members-Only Club",
     revenueModel: "Membership Fees & Event Revenue",
     date: "Q1 2025",
@@ -233,7 +233,7 @@ const deals: Deal[] = [
   },
 ];
 
-const categories = ["All Dealflow", "Venture", "Real Estate", "Hospitality"];
+const categories = ["All Dealflow", "Venture", "Real Estate", "Consumer"];
 
 const statusConfig: Record<
   DealStatus,
@@ -271,7 +271,7 @@ const statusConfig: Record<
 
 const categoryColors: Record<string, string> = {
   "Real Estate": "text-leather-light bg-leather-light/8",
-  Hospitality: "text-leather bg-sandstone/10",
+  Consumer: "text-leather bg-sandstone/10",
   Venture: "text-moss bg-moss/8",
 };
 
@@ -442,7 +442,7 @@ export default function DealflowPage() {
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Explore our curated selection of ethically-screened investment
-              opportunities across venture, real estate, and hospitality. Every deal
+              opportunities across venture, real estate, and consumer. Every deal
               in our pipeline has been rigorously vetted for both financial merit
               and principled compliance.
             </p>
@@ -468,18 +468,18 @@ export default function DealflowPage() {
         </div>
       </section>
 
-      {/* Portfolio Composition Visual */}
+      {/* Deal Exposure Composition Visual */}
       <section className="py-12 bg-cream/30 border-b border-sandstone/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6 items-center">
             {/* Asset Class Breakdown */}
             <div className="md:col-span-2 bg-white rounded-2xl border border-sandstone/10 p-6 shadow-sm">
-              <p className="text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-5">Portfolio Composition by Asset Class</p>
+              <p className="text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-5">Deal Exposure Composition by Asset Class</p>
               <div className="space-y-4">
                 {[
                   { label: "Venture", count: deals.filter(d => d.category === "Venture").length, color: "bg-flint", pct: Math.round(deals.filter(d => d.category === "Venture").length / deals.length * 100) },
                   { label: "Real Estate", count: deals.filter(d => d.category === "Real Estate").length, color: "bg-sandstone", pct: Math.round(deals.filter(d => d.category === "Real Estate").length / deals.length * 100) },
-                  { label: "Hospitality", count: deals.filter(d => d.category === "Hospitality").length, color: "bg-leather/70", pct: Math.round(deals.filter(d => d.category === "Hospitality").length / deals.length * 100) },
+                  { label: "Consumer", count: deals.filter(d => d.category === "Consumer").length, color: "bg-leather/70", pct: Math.round(deals.filter(d => d.category === "Consumer").length / deals.length * 100) },
                 ].map(bar => (
                   <div key={bar.label}>
                     <div className="flex items-center justify-between mb-1.5">

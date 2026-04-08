@@ -29,33 +29,36 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-[72px] bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <section className="pt-[72px] bg-flint relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
+          <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
+            <div className="absolute top-10 right-10 w-[350px] h-[350px] border border-sandstone rounded-full" />
+            <div className="absolute top-32 right-32 w-[250px] h-[250px] border border-sandstone rounded-full" />
+          </div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
           <motion.div
             ref={headerRef}
             initial={{ opacity: 0, y: 24 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sandstone/10 border border-sandstone/20 rounded-full text-sandstone text-xs font-medium tracking-wider uppercase mb-6">
+              <Mail className="w-3.5 h-3.5" />
               Contact Us
-            </p>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5 max-w-2xl">
+            </div>
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5 max-w-2xl">
               Let's start a{" "}
-              <span className="italic text-leather">conversation.</span>
+              <span className="italic text-sandstone">conversation.</span>
             </h1>
-            <p className="text-foreground/60 text-lg leading-relaxed max-w-2xl">
+            <p className="text-white/55 text-lg leading-relaxed max-w-2xl">
               Whether you're an experienced investor or just starting your journey, our team
               is here to help. Reach out to learn more about ethical investing with VI Pillars Capital.
             </p>
           </motion.div>
         </div>
       </section>
-
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="border-t border-sandstone/10" />
-      </div>
 
       {/* Form + Sidebar */}
       <section className="py-16 lg:py-20 bg-white">

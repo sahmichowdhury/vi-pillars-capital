@@ -178,29 +178,26 @@ function HowItWorks() {
           className="bg-white rounded-2xl border border-sandstone/10 p-8 lg:p-10"
         >
           <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-8">SPV Structure — How Your Investment is Held</p>
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
+          {/* 2-col grid on mobile, single row on lg */}
+          <div className="grid grid-cols-2 lg:flex lg:flex-row items-center justify-between gap-4 lg:gap-0">
             {[
-              { label: "Investor", sub: "You commit capital", color: "bg-flint", textColor: "text-white", icon: "👤" },
-              { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", textColor: "text-flint", icon: "🏛" },
-              { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", textColor: "text-white", icon: "📈" },
-              { label: "Returns", sub: "Distributed to investors", color: "bg-moss", textColor: "text-white", icon: "💰" },
+              { label: "Investor", sub: "You commit capital", color: "bg-flint", icon: "👤" },
+              { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", icon: "🏛" },
+              { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", icon: "📈" },
+              { label: "Returns", sub: "Distributed to investors", color: "bg-moss", icon: "💰" },
             ].map((node, i, arr) => (
-              <div key={node.label} className="flex flex-col lg:flex-row items-center gap-3 lg:gap-0">
+              <div key={node.label} className="flex flex-col lg:flex-row items-center gap-2 lg:gap-0">
                 <div className="flex flex-col items-center">
-                  <div className={`w-20 h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
-                    <span className="text-2xl mb-0.5">{node.icon}</span>
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
+                    <span className="text-xl sm:text-2xl">{node.icon}</span>
                   </div>
-                  <p className={`mt-2 text-xs font-bold text-flint`}>{node.label}</p>
+                  <p className="mt-2 text-xs font-bold text-flint">{node.label}</p>
                   <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">{node.sub}</p>
                 </div>
                 {i < arr.length - 1 && (
-                  <div className="flex lg:flex-row flex-col items-center gap-1 lg:mx-4 my-2 lg:my-0">
-                    <div className="hidden lg:block w-8 h-px bg-sandstone/40" />
-                    <svg className="hidden lg:block w-3 h-3 text-sandstone/60" viewBox="0 0 12 12" fill="currentColor">
-                      <path d="M6 0l6 6-6 6V8H0V4h6V0z"/>
-                    </svg>
-                    <div className="lg:hidden w-px h-6 bg-sandstone/40" />
-                    <svg className="lg:hidden w-3 h-3 text-sandstone/60 rotate-90" viewBox="0 0 12 12" fill="currentColor">
+                  <div className="hidden lg:flex flex-row items-center gap-1 mx-4">
+                    <div className="w-8 h-px bg-sandstone/40" />
+                    <svg className="w-3 h-3 text-sandstone/60" viewBox="0 0 12 12" fill="currentColor">
                       <path d="M6 0l6 6-6 6V8H0V4h6V0z"/>
                     </svg>
                   </div>
@@ -224,6 +221,27 @@ function FeaturedDeals() {
 
   const deals = [
     {
+      icon: Rocket,
+      name: "SpaceX",
+      category: "Venture",
+      status: "Deployed",
+      statusColor: "bg-blue-50 text-blue-700",
+    },
+    {
+      icon: Sparkles,
+      name: "InnerLens Media",
+      category: "Venture",
+      status: "Active",
+      statusColor: "bg-emerald-50 text-emerald-700",
+    },
+    {
+      icon: Watch,
+      name: "Whoop",
+      category: "Venture",
+      status: "Passed",
+      statusColor: "bg-amber-50 text-amber-700",
+    },
+    {
       icon: Building2,
       name: "4-Plex Newark Property",
       category: "Real Estate",
@@ -238,25 +256,11 @@ function FeaturedDeals() {
       statusColor: "bg-emerald-50 text-emerald-700",
     },
     {
-      icon: Sparkles,
-      name: "Tercer",
-      category: "Hospitality",
-      status: "Deployed",
-      statusColor: "bg-blue-50 text-blue-700",
-    },
-    {
-      icon: Watch,
-      name: "Whoop",
+      icon: TrendingUp,
+      name: "Aston Martin F1 Team",
       category: "Venture",
       status: "Passed",
       statusColor: "bg-amber-50 text-amber-700",
-    },
-    {
-      icon: Rocket,
-      name: "SpaceX",
-      category: "Venture",
-      status: "Deployed",
-      statusColor: "bg-blue-50 text-blue-700",
     },
   ];
 

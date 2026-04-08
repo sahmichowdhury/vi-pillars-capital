@@ -22,7 +22,7 @@ export const DEALS: DealSummary[] = [
   // Active — Real Estate
   { name: "Single Family Home — Montague, NJ", category: "Real Estate", status: "Active" },
   // Active — Hospitality
-  { name: "Tercer", category: "Hospitality", status: "Active", link: "https://www.tercerclub.com/" },
+  { name: "Tercer", category: "Consumer", status: "Active", link: "https://www.tercerclub.com/" },
   // Deployed — Venture
   { name: "SpaceX", category: "Venture", status: "Deployed", link: "https://www.spacex.com/" },
   // Deployed — Real Estate

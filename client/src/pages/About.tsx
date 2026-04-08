@@ -103,7 +103,7 @@ function MissionVision() {
             {
               icon: Target,
               title: "What We Do",
-              text: "VI Pillars provides ethically screened investment opportunities through strategic syndications across a range of deals spanning private equity, venture capital, real estate, and hospitality — all structured with integrity and transparency.",
+              text: "VI Pillars provides ethically screened investment opportunities through strategic syndications across a range of deals spanning private equity, venture capital, real estate, and consumer — all structured with integrity and transparency.",
             },
             {
               icon: Briefcase,
@@ -244,7 +244,7 @@ function SPVDiagram() {
               >
                 <TrendingUp className="w-8 h-8 text-leather mx-auto mb-3" />
                 <h4 className="text-flint font-serif text-lg font-bold mb-1">The Investment</h4>
-                <p className="text-foreground/50 text-xs">Real estate, venture, hospitality, etc.</p>
+                <p className="text-foreground/50 text-xs">Real estate, venture, consumer, etc.</p>
               </motion.div>
             </div>
           </div>
@@ -394,7 +394,7 @@ function InvestmentPhilosophy() {
       desc: "Unique opportunities in emerging sectors and pre-IPO ventures.",
       items: [
         "Pre-IPO venture opportunities",
-        "Hospitality and lifestyle brands",
+        "Consumer and lifestyle brands",
         "Unique high-growth investments",
         "Strategic sector positioning",
       ],
@@ -533,26 +533,26 @@ function EthicalDifferentiator() {
         >
           <div className="bg-white rounded-2xl border border-sandstone/10 p-8 lg:p-10 shadow-sm">
             <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-8">Our Deal Screening Funnel</p>
-            <div className="flex flex-col items-center gap-0">
+            <div className="flex flex-col items-center gap-2">
               {[
-                { label: "Deal Universe", sub: "All potential opportunities reviewed", width: "w-full", bg: "bg-flint/5 border-flint/10", text: "text-flint", icon: "🌐" },
-                { label: "Industry Screen", sub: "Exclude harmful sectors", width: "w-5/6", bg: "bg-amber-50 border-amber-200/50", text: "text-amber-800", icon: "🚫" },
-                { label: "Debt & Structure Screen", sub: "No excessive leverage or interest", width: "w-4/6", bg: "bg-sandstone/10 border-sandstone/20", text: "text-leather", icon: "⚖️" },
-                { label: "Due Diligence", sub: "Financial, legal & market analysis", width: "w-3/6", bg: "bg-flint/10 border-flint/20", text: "text-flint", icon: "🔍" },
-                { label: "Approved Deal", sub: "Presented to VI Pillars investors", width: "w-2/6", bg: "bg-moss/15 border-moss/30", text: "text-moss", icon: "✅" },
+                { label: "Deal Universe", sub: "All potential opportunities reviewed", widthPct: 100, gradient: "from-flint to-flint-light", textColor: "text-white", icon: "🌐" },
+                { label: "Industry & Ethical Screen", sub: "Exclude harmful sectors & unethical structures", widthPct: 83, gradient: "from-amber-600 to-amber-500", textColor: "text-white", icon: "🚫" },
+                { label: "Debt & Structure Screen", sub: "No excessive leverage or interest", widthPct: 66, gradient: "from-leather to-sandstone", textColor: "text-white", icon: "⚖️" },
+                { label: "Due Diligence", sub: "Financial, legal & market analysis", widthPct: 50, gradient: "from-flint-light to-flint", textColor: "text-white", icon: "🔍" },
+                { label: "Approved Deal", sub: "Presented to VI Pillars investors", widthPct: 33, gradient: "from-moss to-[oklch(0.42_0.09_155)]", textColor: "text-white", icon: "✅" },
               ].map((tier, i) => (
                 <motion.div
                   key={tier.label}
-                  initial={{ opacity: 0, scaleX: 0.6 }}
+                  initial={{ opacity: 0, scaleX: 0.5 }}
                   animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.6 + i * 0.12 }}
-                  className={`${tier.width} flex items-center justify-center gap-3 px-6 py-4 border rounded-xl mb-1 transition-all`}
-                  style={{ background: undefined }}
+                  transition={{ duration: 0.45, delay: 0.6 + i * 0.13 }}
+                  style={{ width: `${tier.widthPct}%` }}
+                  className={`flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-gradient-to-r ${tier.gradient} shadow-sm`}
                 >
-                  <span className="text-lg">{tier.icon}</span>
+                  <span className="text-lg shrink-0">{tier.icon}</span>
                   <div className="text-center">
-                    <p className={`text-xs font-bold ${tier.text}`}>{tier.label}</p>
-                    <p className="text-[10px] text-foreground/40">{tier.sub}</p>
+                    <p className={`text-xs font-bold ${tier.textColor}`}>{tier.label}</p>
+                    <p className="text-[10px] text-white/60">{tier.sub}</p>
                   </div>
                 </motion.div>
               ))}
@@ -930,10 +930,10 @@ export default function About() {
     <>
       <AboutHero />
       <MissionVision />
-      <SPVDiagram />
       <InvestmentPhilosophy />
       <EthicalDifferentiator />
       <CommunityPurpose />
+      <SPVDiagram />
       <InvestorJourney />
       <CoreValues />
       <FAQ />

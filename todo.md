@@ -24,3 +24,14 @@
 - [ ] Dealflow: portfolio composition chart (donut/bar)
 - [ ] News: featured article hero card redesign
 - [ ] Global: richer section dividers and spacing
+
+## Batch UI Fixes (Apr 8)
+- [ ] Home: SPV diagram — 2-column side-by-side on mobile (less vertical space)
+- [ ] Home: Featured deals — replace Tercer with InnerLens, add Aston Martin (6 total)
+- [ ] About: Screening funnel — improve aesthetics, rename "Industry Screen" to "Industry & Ethical Screen"
+- [ ] About: Move Community & Purpose section above Investor Education / Understanding SPVs
+- [ ] Team: Remove LinkedIn & Instagram links, schooling line, career tabs, area of expertise
+- [ ] Team: Change title to "Founder", simplify page for single-member team
+- [ ] Dealflow: Rename "Portfolio Composition" to "Deal Exposure Composition"
+- [ ] Dealflow: Rename "Hospitality" category to "Consumer"
+- [ ] Contact: Fix hero banner — add dark background, visible navbar and logo
