@@ -175,37 +175,106 @@ function HowItWorks() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="bg-white rounded-2xl border border-sandstone/10 p-8 lg:p-10"
+          className="bg-white rounded-2xl border border-sandstone/10 p-8 lg:p-12"
         >
-          <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-8">SPV Structure — How Your Investment is Held</p>
-          {/* 2-col grid on mobile, single row on lg */}
-          <div className="grid grid-cols-2 lg:flex lg:flex-row items-center justify-between gap-4 lg:gap-0">
+          <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-10">SPV Structure — How Your Investment is Held</p>
+
+          {/* Desktop: single horizontal row with long arrows */}
+          <div className="hidden lg:flex flex-row items-center justify-center gap-0">
             {[
               { label: "Investor", sub: "You commit capital", color: "bg-flint", icon: "👤" },
               { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", icon: "🏛" },
               { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", icon: "📈" },
               { label: "Returns", sub: "Distributed to investors", color: "bg-moss", icon: "💰" },
             ].map((node, i, arr) => (
-              <div key={node.label} className="flex flex-col lg:flex-row items-center gap-2 lg:gap-0">
-                <div className="flex flex-col items-center">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
-                    <span className="text-xl sm:text-2xl">{node.icon}</span>
+              <div key={node.label} className="flex flex-row items-center">
+                {/* Node */}
+                <div className="flex flex-col items-center w-28">
+                  <div className={`w-20 h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
+                    <span className="text-2xl">{node.icon}</span>
                   </div>
-                  <p className="mt-2 text-xs font-bold text-flint">{node.label}</p>
-                  <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">{node.sub}</p>
+                  <p className="mt-3 text-xs font-bold text-flint text-center">{node.label}</p>
+                  <p className="text-[10px] text-foreground/40 text-center max-w-[90px] mt-0.5">{node.sub}</p>
                 </div>
+                {/* Arrow between nodes */}
                 {i < arr.length - 1 && (
-                  <div className="hidden lg:flex flex-row items-center gap-1 mx-4">
-                    <div className="w-8 h-px bg-sandstone/40" />
-                    <svg className="w-3 h-3 text-sandstone/60" viewBox="0 0 12 12" fill="currentColor">
-                      <path d="M6 0l6 6-6 6V8H0V4h6V0z"/>
+                  <div className="flex flex-row items-center mx-2">
+                    <div className="w-16 h-[2px] bg-sandstone/40" />
+                    <svg className="w-4 h-4 text-sandstone shrink-0 -ml-0.5" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M8 0l8 8-8 8v-5H0V5h8V0z"/>
                     </svg>
                   </div>
                 )}
               </div>
             ))}
           </div>
-          <p className="text-center text-foreground/35 text-xs mt-8 max-w-xl mx-auto">
+
+          {/* Mobile: 2×2 grid with down-arrow between rows and right-arrow within rows */}
+          <div className="lg:hidden">
+            {/* Row 1: Investor → SPV */}
+            <div className="flex flex-row items-center justify-center gap-0 mb-2">
+              {/* Investor */}
+              <div className="flex flex-col items-center w-28">
+                <div className="w-16 h-16 rounded-2xl bg-flint flex flex-col items-center justify-center shadow-sm">
+                  <span className="text-xl">👤</span>
+                </div>
+                <p className="mt-2 text-xs font-bold text-flint text-center">Investor</p>
+                <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">You commit capital</p>
+              </div>
+              {/* Right arrow */}
+              <div className="flex flex-row items-center mx-1">
+                <div className="w-10 h-[2px] bg-sandstone/40" />
+                <svg className="w-3.5 h-3.5 text-sandstone shrink-0 -ml-0.5" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 0l8 8-8 8v-5H0V5h8V0z"/>
+                </svg>
+              </div>
+              {/* SPV */}
+              <div className="flex flex-col items-center w-28">
+                <div className="w-16 h-16 rounded-2xl bg-sandstone flex flex-col items-center justify-center shadow-sm">
+                  <span className="text-xl">🏛</span>
+                </div>
+                <p className="mt-2 text-xs font-bold text-flint text-center">SPV</p>
+                <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">Special Purpose Vehicle</p>
+              </div>
+            </div>
+            {/* Down arrow */}
+            <div className="flex justify-center my-1">
+              <div className="flex flex-col items-center">
+                <div className="w-[2px] h-8 bg-sandstone/40" />
+                <svg className="w-3.5 h-3.5 text-sandstone -mt-0.5" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 16L0 8h5V0h6v8h5L8 16z"/>
+                </svg>
+              </div>
+            </div>
+            {/* Row 2: Target Asset → Returns */}
+            <div className="flex flex-row items-center justify-center gap-0 mt-2">
+              {/* Target Asset */}
+              <div className="flex flex-col items-center w-28">
+                <div className="w-16 h-16 rounded-2xl bg-leather/80 flex flex-col items-center justify-center shadow-sm">
+                  <span className="text-xl">📈</span>
+                </div>
+                <p className="mt-2 text-xs font-bold text-flint text-center">Target Asset</p>
+                <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">The deal we execute</p>
+              </div>
+              {/* Right arrow */}
+              <div className="flex flex-row items-center mx-1">
+                <div className="w-10 h-[2px] bg-sandstone/40" />
+                <svg className="w-3.5 h-3.5 text-sandstone shrink-0 -ml-0.5" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 0l8 8-8 8v-5H0V5h8V0z"/>
+                </svg>
+              </div>
+              {/* Returns */}
+              <div className="flex flex-col items-center w-28">
+                <div className="w-16 h-16 rounded-2xl bg-moss flex flex-col items-center justify-center shadow-sm">
+                  <span className="text-xl">💰</span>
+                </div>
+                <p className="mt-2 text-xs font-bold text-flint text-center">Returns</p>
+                <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">Distributed to investors</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-foreground/35 text-xs mt-10 max-w-xl mx-auto">
             Each deal is held in a dedicated SPV — legally separating your investment from other assets, providing clean ownership, and ensuring transparent reporting.
           </p>
         </motion.div>

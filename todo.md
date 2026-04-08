@@ -35,3 +35,6 @@
 - [ ] Dealflow: Rename "Portfolio Composition" to "Deal Exposure Composition"
 - [ ] Dealflow: Rename "Hospitality" category to "Consumer"
 - [ ] Contact: Fix hero banner — add dark background, visible navbar and logo
+
+## SPV Diagram Arrow Fix
+- [ ] Add centered directional arrows to SPV flow diagram (desktop + mobile)
