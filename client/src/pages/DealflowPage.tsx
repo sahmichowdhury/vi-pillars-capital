@@ -59,44 +59,26 @@ interface Deal {
 }
 
 const deals: Deal[] = [
+  /* ========== ACTIVE — Venture, Hospitality, Real Estate (largest first) ========== */
   {
-    name: "4-Plex Newark Property",
+    name: "InnerLens Media",
     description:
-      "A four-unit residential property in Newark, NJ offering strong cash flow potential and long-term appreciation in one of the fastest-growing metro areas on the East Coast.",
-    category: "Real Estate",
-    industry: "Real Estate",
-    subIndustry: "Residential Multi-Family",
-    revenueModel: "Rental Income & Appreciation",
-    date: "Q1 2025",
+      "A creative media company specializing in storytelling, content production, and brand strategy. InnerLens Media delivers compelling visual narratives for brands, organizations, and individuals seeking authentic, high-impact media.",
+    category: "Venture",
+    industry: "Media & Entertainment",
+    subIndustry: "Creative Media & Production",
+    revenueModel: "Production Services & Brand Partnerships",
+    date: "Q4 2025",
     allocation: "Confidential",
-    valuation: "$730,000",
-    vipAllocation: "Confidential",
-    status: "Deployed",
-    icon: Building2,
-    highlights: [
-      "4-unit residential property",
-      "Strong cash flow potential",
-      "High-growth metro area",
-    ],
-  },
-  {
-    name: "Single Family Home — Montague, NJ",
-    description:
-      "Ground-up construction of a single-family home in Montague, NJ, targeting the growing demand for new residential builds in Northern New Jersey. The property will be sold upon completion for a projected profit.",
-    category: "Real Estate",
-    industry: "Real Estate",
-    subIndustry: "Residential Construction",
-    revenueModel: "Build-to-Sell (Flip)",
-    date: "Q2 2025",
-    allocation: "Confidential",
-    valuation: "$23,000",
+    valuation: "Confidential",
     vipAllocation: "Confidential",
     status: "Active",
-    icon: Hammer,
+    link: "https://www.innerlensmedia.com/",
+    icon: Camera,
     highlights: [
-      "New construction build",
-      "Build-to-sell strategy",
-      "Northern NJ market",
+      "Creative storytelling focus",
+      "Brand strategy expertise",
+      "High-impact media production",
     ],
   },
   {
@@ -121,27 +103,26 @@ const deals: Deal[] = [
     ],
   },
   {
-    name: "Whoop",
+    name: "Single Family Home — Montague, NJ",
     description:
-      "A leading wearable health and fitness technology company providing advanced biometric tracking for sleep, recovery, and strain. Whoop has built a loyal subscriber base and is positioned as a top pre-IPO opportunity in the health tech space.",
-    category: "Venture",
-    industry: "Technology",
-    subIndustry: "Wearable Health Tech (Pre-IPO)",
-    revenueModel: "Subscription (SaaS / Hardware)",
-    date: "Q1 2026",
-    allocation: "—",
-    valuation: "$4,350,000,000",
-    vipAllocation: "—",
-    status: "Passed",
-    passReason: "Economic uncertainty regarding the energy and other sectors due to the Israel-Iran conflict.",
-    link: "https://www.whoop.com/",
-    icon: Watch,
+      "Ground-up construction of a single-family home in Montague, NJ, targeting the growing demand for new residential builds in Northern New Jersey. The property will be sold upon completion for a projected profit.",
+    category: "Real Estate",
+    industry: "Real Estate",
+    subIndustry: "Residential Construction",
+    revenueModel: "Build-to-Sell (Flip)",
+    date: "Q2 2025",
+    allocation: "Confidential",
+    valuation: "$23,000",
+    vipAllocation: "Confidential",
+    status: "Active",
+    icon: Hammer,
     highlights: [
-      "Loyal subscriber base",
-      "Biometric tracking leader",
-      "Pre-IPO growth stage",
+      "New construction build",
+      "Build-to-sell strategy",
+      "Northern NJ market",
     ],
   },
+  /* ========== DEPLOYED — Venture, Hospitality, Real Estate (largest first) ========== */
   {
     name: "SpaceX",
     description:
@@ -161,6 +142,49 @@ const deals: Deal[] = [
       "Reusable rocket technology",
       "Starlink satellite internet",
       "Market-leading position",
+    ],
+  },
+  {
+    name: "4-Plex Newark Property",
+    description:
+      "A four-unit residential property in Newark, NJ offering strong cash flow potential and long-term appreciation in one of the fastest-growing metro areas on the East Coast.",
+    category: "Real Estate",
+    industry: "Real Estate",
+    subIndustry: "Residential Multi-Family",
+    revenueModel: "Rental Income & Appreciation",
+    date: "Q1 2025",
+    allocation: "Confidential",
+    valuation: "$730,000",
+    vipAllocation: "Confidential",
+    status: "Deployed",
+    icon: Building2,
+    highlights: [
+      "4-unit residential property",
+      "Strong cash flow potential",
+      "High-growth metro area",
+    ],
+  },
+  /* ========== PASSED — Venture (largest first) ========== */
+  {
+    name: "Whoop",
+    description:
+      "A leading wearable health and fitness technology company providing advanced biometric tracking for sleep, recovery, and strain. Whoop has built a loyal subscriber base and is positioned as a top pre-IPO opportunity in the health tech space.",
+    category: "Venture",
+    industry: "Technology",
+    subIndustry: "Wearable Health Tech (Pre-IPO)",
+    revenueModel: "Subscription (SaaS / Hardware)",
+    date: "Q1 2026",
+    allocation: "—",
+    valuation: "$4,350,000,000",
+    vipAllocation: "—",
+    status: "Passed",
+    passReason: "Economic uncertainty regarding the energy and other sectors due to the Israel-Iran conflict.",
+    link: "https://www.whoop.com/",
+    icon: Watch,
+    highlights: [
+      "Loyal subscriber base",
+      "Biometric tracking leader",
+      "Pre-IPO growth stage",
     ],
   },
   {
@@ -207,30 +231,9 @@ const deals: Deal[] = [
       "Rapid revenue growth",
     ],
   },
-  {
-    name: "InnerLens Media",
-    description:
-      "A creative media company specializing in storytelling, content production, and brand strategy. InnerLens Media delivers compelling visual narratives for brands, organizations, and individuals seeking authentic, high-impact media.",
-    category: "Venture",
-    industry: "Media & Entertainment",
-    subIndustry: "Creative Media & Production",
-    revenueModel: "Production Services & Brand Partnerships",
-    date: "Q4 2025",
-    allocation: "Confidential",
-    valuation: "Confidential",
-    vipAllocation: "Confidential",
-    status: "Active",
-    link: "https://www.innerlensmedia.com/",
-    icon: Camera,
-    highlights: [
-      "Creative storytelling focus",
-      "Brand strategy expertise",
-      "High-impact media production",
-    ],
-  },
 ];
 
-const categories = ["All Dealflow", "Venture", "Real Estate", "Hospitality"];
+const categories = ["All Dealflow", "Venture", "Hospitality", "Real Estate"];
 
 const statusConfig: Record<
   DealStatus,
