@@ -11,6 +11,7 @@ import TeamPage from "./pages/TeamPage";
 import DealflowPage from "./pages/DealflowPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
+import ArticleDetailPage from "./pages/ArticleDetailPage";
 import LPLoginPage from "./pages/LPLoginPage";
 
 function Router() {
@@ -21,6 +22,7 @@ function Router() {
       <Route path={"/team"} component={TeamPage} />
       <Route path={"/dealflow"} component={DealflowPage} />
       <Route path={"/news"} component={NewsPage} />
+      <Route path={"/news/:id"} component={ArticleDetailPage} />
       <Route path={"/contact"} component={ContactPage} />
       <Route path={"/lp-login"} component={LPLoginPage} />
       <Route path={"/404"} component={NotFound} />
