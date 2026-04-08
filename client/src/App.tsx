@@ -13,8 +13,31 @@ import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
 import ArticleDetailPage from "./pages/ArticleDetailPage";
 import LPLoginPage from "./pages/LPLoginPage";
+import PortalLayout from "./components/PortalLayout";
+import PortalDashboard from "./pages/portal/PortalDashboard";
+import PortalInvestments from "./pages/portal/PortalInvestments";
+import PortalDocuments from "./pages/portal/PortalDocuments";
+import PortalProfile from "./pages/portal/PortalProfile";
+import AdminPanel from "./pages/portal/AdminPanel";
+
+function withPortalLayout(Component: React.ComponentType) {
+  return function PortalPage() {
+    return (
+      <PortalLayout>
+        <Component />
+      </PortalLayout>
+    );
+  };
+}
+
+const PortalDashboardPage = withPortalLayout(PortalDashboard);
+const PortalInvestmentsPage = withPortalLayout(PortalInvestments);
+const PortalDocumentsPage = withPortalLayout(PortalDocuments);
+const PortalProfilePage = withPortalLayout(PortalProfile);
+const AdminPanelPage = withPortalLayout(AdminPanel);
 
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -25,6 +48,11 @@ function Router() {
       <Route path={"/news/:id"} component={ArticleDetailPage} />
       <Route path={"/contact"} component={ContactPage} />
       <Route path={"/lp-login"} component={LPLoginPage} />
+      <Route path="/portal" component={PortalDashboardPage} />
+      <Route path="/portal/investments" component={PortalInvestmentsPage} />
+      <Route path="/portal/documents" component={PortalDocumentsPage} />
+      <Route path="/portal/profile" component={PortalProfilePage} />
+      <Route path="/portal/admin" component={AdminPanelPage} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
