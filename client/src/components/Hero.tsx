@@ -1,6 +1,6 @@
 /*
- * Hero: Warm dark gradient (charcoal-brown), asymmetric layout
- * Focus on ethical investing, structure, and due diligence
+ * Hero: Warm dark gradient with architectural grid texture, asymmetric layout
+ * Transparent navbar shows through — no top padding needed for nav bar overlap
  */
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -8,19 +8,37 @@ import { Shield, ArrowRight, TrendingUp, Target, Users } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative bg-flint pt-[72px] overflow-hidden">
-      {/* Subtle decorative elements */}
+    <section className="relative bg-flint pt-0 overflow-hidden min-h-[92vh] flex flex-col justify-center">
+      {/* Rich layered background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
-          <div className="absolute top-20 right-20 w-[400px] h-[400px] border border-sandstone rounded-full" />
-          <div className="absolute top-40 right-40 w-[300px] h-[300px] border border-sandstone rounded-full" />
-          <div className="absolute top-60 right-60 w-[200px] h-[200px] border border-sandstone rounded-full" />
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.22_0.03_60)] via-flint to-[oklch(0.18_0.02_50)]" />
+        {/* Architectural grid lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.035]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#C9A66B" strokeWidth="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+        {/* Concentric rings — top right */}
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] translate-x-1/3 -translate-y-1/4">
+          {[0, 1, 2, 3].map(i => (
+            <div
+              key={i}
+              className="absolute inset-0 rounded-full border border-sandstone/[0.06]"
+              style={{ transform: `scale(${0.4 + i * 0.2})`, transformOrigin: "center" }}
+            />
+          ))}
         </div>
+        {/* Vertical rule */}
         <div className="absolute left-[15%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-sandstone/10 to-transparent" />
+        {/* Diagonal accent line */}
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-sandstone/20 to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-16 lg:pt-28 lg:pb-24">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-28 w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <motion.div
@@ -120,12 +138,22 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* Scroll indicator */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 h-px bg-gradient-to-r from-transparent via-sandstone/30 to-transparent origin-center"
-        />
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="mt-16 flex flex-col items-center gap-2"
+        >
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-sandstone/30 to-transparent" />
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="mt-4 w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5"
+          >
+            <div className="w-1 h-2 rounded-full bg-sandstone/60" />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

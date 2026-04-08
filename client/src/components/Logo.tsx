@@ -13,10 +13,10 @@ interface LogoProps {
 
 export default function Logo({ variant = "dark", className = "", size = "md" }: LogoProps) {
   // Unified sandstone/leather colors matching new palette
-  const colorOnDark = "#C9A66B";   // Sandstone — warm gold-tan on dark backgrounds
+  const colorOnDark = "#FFFFFF";   // White — crisp on dark/hero backgrounds
   const colorOnLight = "#8B6F47";  // Leather — rich brown on light backgrounds
   const mainColor = variant === "light" ? colorOnDark : colorOnLight;
-  const flutingColor = variant === "light" ? "#0f0b08" : "#f5f0eb";
+  const flutingColor = variant === "light" ? "#2C2C2C" : "#f5f0eb";
 
   // Size scaling
   const scale = size === "sm" ? 0.6 : size === "lg" ? 1.4 : 1;

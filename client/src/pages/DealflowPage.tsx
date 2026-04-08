@@ -468,6 +468,60 @@ export default function DealflowPage() {
         </div>
       </section>
 
+      {/* Portfolio Composition Visual */}
+      <section className="py-12 bg-cream/30 border-b border-sandstone/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-6 items-center">
+            {/* Asset Class Breakdown */}
+            <div className="md:col-span-2 bg-white rounded-2xl border border-sandstone/10 p-6 shadow-sm">
+              <p className="text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-5">Portfolio Composition by Asset Class</p>
+              <div className="space-y-4">
+                {[
+                  { label: "Venture", count: deals.filter(d => d.category === "Venture").length, color: "bg-flint", pct: Math.round(deals.filter(d => d.category === "Venture").length / deals.length * 100) },
+                  { label: "Real Estate", count: deals.filter(d => d.category === "Real Estate").length, color: "bg-sandstone", pct: Math.round(deals.filter(d => d.category === "Real Estate").length / deals.length * 100) },
+                  { label: "Hospitality", count: deals.filter(d => d.category === "Hospitality").length, color: "bg-leather/70", pct: Math.round(deals.filter(d => d.category === "Hospitality").length / deals.length * 100) },
+                ].map(bar => (
+                  <div key={bar.label}>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-flint text-xs font-semibold">{bar.label}</span>
+                      <span className="text-foreground/40 text-xs">{bar.count} deal{bar.count !== 1 ? "s" : ""} · {bar.pct}%</span>
+                    </div>
+                    <div className="h-2.5 bg-stone-100 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${bar.pct}%` }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className={`h-full rounded-full ${bar.color}`}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Status Breakdown */}
+            <div className="bg-white rounded-2xl border border-sandstone/10 p-6 shadow-sm">
+              <p className="text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-5">Deal Status</p>
+              <div className="space-y-3">
+                {[
+                  { label: "Active", count: deals.filter(d => d.status === "Active").length, dot: "bg-emerald-500", text: "text-emerald-700" },
+                  { label: "Deployed", count: deals.filter(d => d.status === "Deployed").length, dot: "bg-blue-500", text: "text-blue-700" },
+                  { label: "Exited", count: deals.filter(d => d.status === "Exited").length, dot: "bg-red-500", text: "text-red-700" },
+                  { label: "Passed", count: deals.filter(d => d.status === "Passed").length, dot: "bg-amber-500", text: "text-amber-700" },
+                ].map(s => (
+                  <div key={s.label} className="flex items-center justify-between py-2 border-b border-stone-50 last:border-0">
+                    <div className="flex items-center gap-2">
+                      <span className={`w-2 h-2 rounded-full ${s.dot}`} />
+                      <span className="text-flint text-sm font-medium">{s.label}</span>
+                    </div>
+                    <span className={`text-sm font-bold ${s.text}`}>{s.count}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filter & Cards */}
       <section className="py-16 lg:py-20 bg-white">
         <div ref={cardsRef} className="max-w-7xl mx-auto px-6 lg:px-8">

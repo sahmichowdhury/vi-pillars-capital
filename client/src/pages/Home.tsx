@@ -140,7 +140,7 @@ function HowItWorks() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
@@ -169,6 +169,49 @@ function HowItWorks() {
             </motion.div>
           ))}
         </div>
+
+        {/* SPV Lifecycle Flow Diagram */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="bg-white rounded-2xl border border-sandstone/10 p-8 lg:p-10"
+        >
+          <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-8">SPV Structure — How Your Investment is Held</p>
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
+            {[
+              { label: "Investor", sub: "You commit capital", color: "bg-flint", textColor: "text-white", icon: "👤" },
+              { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", textColor: "text-flint", icon: "🏛" },
+              { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", textColor: "text-white", icon: "📈" },
+              { label: "Returns", sub: "Distributed to investors", color: "bg-moss", textColor: "text-white", icon: "💰" },
+            ].map((node, i, arr) => (
+              <div key={node.label} className="flex flex-col lg:flex-row items-center gap-3 lg:gap-0">
+                <div className="flex flex-col items-center">
+                  <div className={`w-20 h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
+                    <span className="text-2xl mb-0.5">{node.icon}</span>
+                  </div>
+                  <p className={`mt-2 text-xs font-bold text-flint`}>{node.label}</p>
+                  <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">{node.sub}</p>
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="flex lg:flex-row flex-col items-center gap-1 lg:mx-4 my-2 lg:my-0">
+                    <div className="hidden lg:block w-8 h-px bg-sandstone/40" />
+                    <svg className="hidden lg:block w-3 h-3 text-sandstone/60" viewBox="0 0 12 12" fill="currentColor">
+                      <path d="M6 0l6 6-6 6V8H0V4h6V0z"/>
+                    </svg>
+                    <div className="lg:hidden w-px h-6 bg-sandstone/40" />
+                    <svg className="lg:hidden w-3 h-3 text-sandstone/60 rotate-90" viewBox="0 0 12 12" fill="currentColor">
+                      <path d="M6 0l6 6-6 6V8H0V4h6V0z"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-foreground/35 text-xs mt-8 max-w-xl mx-auto">
+            Each deal is held in a dedicated SPV — legally separating your investment from other assets, providing clean ownership, and ensuring transparent reporting.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

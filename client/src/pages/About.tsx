@@ -485,7 +485,7 @@ function EthicalDifferentiator() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto mb-16">
           {[
             {
               icon: Ban,
@@ -523,6 +523,45 @@ function EthicalDifferentiator() {
             </motion.div>
           ))}
         </div>
+
+        {/* Ethical Screening Funnel Diagram */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="max-w-3xl mx-auto"
+        >
+          <div className="bg-white rounded-2xl border border-sandstone/10 p-8 lg:p-10 shadow-sm">
+            <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-8">Our Deal Screening Funnel</p>
+            <div className="flex flex-col items-center gap-0">
+              {[
+                { label: "Deal Universe", sub: "All potential opportunities reviewed", width: "w-full", bg: "bg-flint/5 border-flint/10", text: "text-flint", icon: "🌐" },
+                { label: "Industry Screen", sub: "Exclude harmful sectors", width: "w-5/6", bg: "bg-amber-50 border-amber-200/50", text: "text-amber-800", icon: "🚫" },
+                { label: "Debt & Structure Screen", sub: "No excessive leverage or interest", width: "w-4/6", bg: "bg-sandstone/10 border-sandstone/20", text: "text-leather", icon: "⚖️" },
+                { label: "Due Diligence", sub: "Financial, legal & market analysis", width: "w-3/6", bg: "bg-flint/10 border-flint/20", text: "text-flint", icon: "🔍" },
+                { label: "Approved Deal", sub: "Presented to VI Pillars investors", width: "w-2/6", bg: "bg-moss/15 border-moss/30", text: "text-moss", icon: "✅" },
+              ].map((tier, i) => (
+                <motion.div
+                  key={tier.label}
+                  initial={{ opacity: 0, scaleX: 0.6 }}
+                  animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.6 + i * 0.12 }}
+                  className={`${tier.width} flex items-center justify-center gap-3 px-6 py-4 border rounded-xl mb-1 transition-all`}
+                  style={{ background: undefined }}
+                >
+                  <span className="text-lg">{tier.icon}</span>
+                  <div className="text-center">
+                    <p className={`text-xs font-bold ${tier.text}`}>{tier.label}</p>
+                    <p className="text-[10px] text-foreground/40">{tier.sub}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-center text-foreground/35 text-xs mt-6 max-w-md mx-auto">
+              Only deals that pass every layer of our screening process are presented to investors — ensuring quality, ethics, and transparency at every step.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
