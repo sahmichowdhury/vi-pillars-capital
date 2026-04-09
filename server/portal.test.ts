@@ -2,9 +2,15 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
+// Mock the email module
+vi.mock("./email", () => ({
+  sendApprovalEmail: vi.fn().mockResolvedValue({ success: true }),
+}));
+
 // Mock the db module
 vi.mock("./db", () => ({
   getUserByOpenId: vi.fn(),
+  getUserById: vi.fn(),
   getInvestorProfile: vi.fn(),
   upsertInvestorProfile: vi.fn(),
   getInvestorDeals: vi.fn(),
@@ -19,6 +25,7 @@ vi.mock("./db", () => ({
 }));
 
 import * as db from "./db";
+import * as email from "./email";
 
 function makeCtx(overrides: Partial<TrpcContext["user"]> = {}): TrpcContext {
   return {
@@ -135,9 +142,14 @@ describe("portal.adminListUsers", () => {
 });
 
 describe("portal.adminUpdateApproval", () => {
-  it("updates approval status for admin", async () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
     vi.mocked(db.updateUserApprovalStatus).mockResolvedValue(undefined);
+    vi.mocked(db.getUserById).mockResolvedValue(mockUser);
+    vi.mocked(email.sendApprovalEmail).mockResolvedValue({ success: true });
+  });
 
+  it("updates approval status for admin", async () => {
     const caller = appRouter.createCaller(makeAdminCtx());
     const result = await caller.portal.adminUpdateApproval({
       userId: 1,
@@ -147,6 +159,35 @@ describe("portal.adminUpdateApproval", () => {
 
     expect(result.success).toBe(true);
     expect(db.updateUserApprovalStatus).toHaveBeenCalledWith(1, "approved", "Welcome aboard");
+  });
+
+  it("sends approval email when status is set to approved", async () => {
+    const caller = appRouter.createCaller(makeAdminCtx());
+    await caller.portal.adminUpdateApproval({
+      userId: 1,
+      approvalStatus: "approved",
+      portalOrigin: "https://vipillarscapital.com",
+    });
+
+    // Allow fire-and-forget to settle
+    await new Promise((r) => setTimeout(r, 50));
+
+    expect(email.sendApprovalEmail).toHaveBeenCalledWith({
+      to: mockUser.email,
+      name: mockUser.name,
+      portalUrl: "https://vipillarscapital.com/portal",
+    });
+  });
+
+  it("does not send email when status is set to rejected", async () => {
+    const caller = appRouter.createCaller(makeAdminCtx());
+    await caller.portal.adminUpdateApproval({
+      userId: 1,
+      approvalStatus: "rejected",
+    });
+
+    await new Promise((r) => setTimeout(r, 50));
+    expect(email.sendApprovalEmail).not.toHaveBeenCalled();
   });
 
   it("throws FORBIDDEN for non-admin", async () => {

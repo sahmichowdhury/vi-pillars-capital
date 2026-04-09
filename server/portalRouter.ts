@@ -7,6 +7,7 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { adminProcedure, protectedProcedure, router } from "./_core/trpc";
 import * as db from "./db";
+import { sendApprovalEmail } from "./email";
 
 export const portalRouter = router({
   // ---- Investor: own data ----
@@ -70,10 +71,30 @@ export const portalRouter = router({
         userId: z.number(),
         approvalStatus: z.enum(["pending", "approved", "rejected"]),
         adminNote: z.string().optional(),
+        portalOrigin: z.string().optional(),
       })
     )
     .mutation(async ({ input }) => {
       await db.updateUserApprovalStatus(input.userId, input.approvalStatus, input.adminNote);
+
+      // Send approval email when an investor is approved
+      if (input.approvalStatus === "approved") {
+        const user = await db.getUserById(input.userId);
+        if (user?.email) {
+          const portalUrl = input.portalOrigin
+            ? `${input.portalOrigin}/portal`
+            : "https://vipillarscapital.com/lp-login";
+          // Fire-and-forget — don't block the admin action on email delivery
+          sendApprovalEmail({
+            to: user.email,
+            name: user.name ?? "Investor",
+            portalUrl,
+          }).catch((err) =>
+            console.error("[Email] Approval email failed silently:", err)
+          );
+        }
+      }
+
       return { success: true };
     }),
 

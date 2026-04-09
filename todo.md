@@ -45,3 +45,4 @@
 - [ ] About: move Community & Purpose above Investing with Intention
 - [ ] Team: rewrite bio to reflect syndicate network and shared deal exposure
 - [ ] Dealflow: change InnerLens Media category from Venture to Consumer
+- [x] Integrate Resend email notifications — send approval email to user when admin approves their registration

@@ -64,7 +64,7 @@ function UsersTab() {
   const [noteInput, setNoteInput] = useState<Record<number, string>>({});
 
   const handleApprove = (userId: number) => {
-    updateApproval.mutate({ userId, approvalStatus: "approved", adminNote: noteInput[userId] });
+    updateApproval.mutate({ userId, approvalStatus: "approved", adminNote: noteInput[userId], portalOrigin: window.location.origin });
   };
   const handleReject = (userId: number) => {
     updateApproval.mutate({ userId, approvalStatus: "rejected", adminNote: noteInput[userId] });
