@@ -11,7 +11,7 @@ import {
   Target, Scale, Heart, Globe, Leaf, Lock,
   TrendingUp, BarChart3, FileSearch, Briefcase,
   ArrowRight, Award, BookOpen, Lightbulb, GraduationCap,
-  ArrowDown, CircleDot, Layers,
+  ArrowDown, CircleDot, Layers, Search, CheckSquare,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
 
@@ -535,11 +535,11 @@ function EthicalDifferentiator() {
             <p className="text-center text-leather-light text-xs font-semibold tracking-[0.2em] uppercase mb-8">Our Deal Screening Funnel</p>
             <div className="flex flex-col items-center gap-2">
               {[
-                { label: "Deal Universe", sub: "All potential opportunities reviewed", widthPct: 100, gradient: "from-flint to-flint-light", textColor: "text-white", icon: "🌐" },
-                { label: "Industry & Ethical Screen", sub: "Exclude harmful sectors & unethical structures", widthPct: 83, gradient: "from-amber-600 to-amber-500", textColor: "text-white", icon: "🚫" },
-                { label: "Debt & Structure Screen", sub: "No excessive leverage or interest", widthPct: 66, gradient: "from-leather to-sandstone", textColor: "text-white", icon: "⚖️" },
-                { label: "Due Diligence", sub: "Financial, legal & market analysis", widthPct: 50, gradient: "from-flint-light to-flint", textColor: "text-white", icon: "🔍" },
-                { label: "Approved Deal", sub: "Presented to VI Pillars investors", widthPct: 33, gradient: "from-moss to-[oklch(0.42_0.09_155)]", textColor: "text-white", icon: "✅" },
+                { label: "Deal Universe", sub: "All potential opportunities reviewed", widthPct: 100, gradient: "from-flint to-flint-light", textColor: "text-white", Icon: Globe },
+                { label: "Industry & Ethical Screen", sub: "Exclude harmful sectors & unethical structures", widthPct: 83, gradient: "from-amber-600 to-amber-500", textColor: "text-white", Icon: Ban },
+                { label: "Debt & Structure Screen", sub: "No excessive leverage or interest", widthPct: 66, gradient: "from-leather to-sandstone", textColor: "text-white", Icon: Scale },
+                { label: "Due Diligence", sub: "Financial, legal & market analysis", widthPct: 50, gradient: "from-flint-light to-flint", textColor: "text-white", Icon: Search },
+                { label: "Approved Deal", sub: "Presented to VI Pillars investors", widthPct: 33, gradient: "from-moss to-[oklch(0.42_0.09_155)]", textColor: "text-white", Icon: CheckSquare },
               ].map((tier, i) => (
                 <motion.div
                   key={tier.label}
@@ -549,7 +549,7 @@ function EthicalDifferentiator() {
                   style={{ width: `${tier.widthPct}%` }}
                   className={`flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-gradient-to-r ${tier.gradient} shadow-sm`}
                 >
-                  <span className="text-lg shrink-0">{tier.icon}</span>
+                  <tier.Icon className="w-5 h-5 text-white/90 shrink-0" />
                   <div className="text-center">
                     <p className={`text-xs font-bold ${tier.textColor}`}>{tier.label}</p>
                     <p className="text-[10px] text-white/60">{tier.sub}</p>

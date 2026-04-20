@@ -46,3 +46,7 @@
 - [ ] Team: rewrite bio to reflect syndicate network and shared deal exposure
 - [ ] Dealflow: change InnerLens Media category from Venture to Consumer
 - [x] Integrate Resend email notifications — send approval email to user when admin approves their registration
+- [x] Scroll-to-top on every route change (mobile and desktop)
+- [x] Archive Team page, remove from nav
+- [x] Add Meet the Founder section at bottom of Home page with updated humble bio + background
+- [x] Replace all emojis with Lucide icons site-wide (deal screening diagram and elsewhere)

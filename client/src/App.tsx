@@ -5,9 +5,9 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import TeamPage from "./pages/TeamPage";
 import DealflowPage from "./pages/DealflowPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
@@ -39,10 +39,11 @@ const AdminPanelPage = withPortalLayout(AdminPanel);
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/about"} component={About} />
-      <Route path={"/team"} component={TeamPage} />
       <Route path={"/dealflow"} component={DealflowPage} />
       <Route path={"/news"} component={NewsPage} />
       <Route path={"/news/:id"} component={ArticleDetailPage} />
@@ -56,6 +57,7 @@ function Router() {
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
+    </>
   );
 }
 

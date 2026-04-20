@@ -23,6 +23,12 @@ import {
   Globe,
   Leaf,
   Scale,
+  UserCircle,
+  Landmark,
+  LineChart,
+  Coins,
+  Briefcase,
+  Award,
 } from "lucide-react";
 
 /* ---------- Animated Counter ---------- */
@@ -182,16 +188,16 @@ function HowItWorks() {
           {/* Desktop: single horizontal row with long arrows */}
           <div className="hidden lg:flex flex-row items-start justify-center gap-0">
             {[
-              { label: "Investor", sub: "You commit capital", color: "bg-flint", icon: "👤" },
-              { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", icon: "🏛" },
-              { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", icon: "📈" },
-              { label: "Returns", sub: "Distributed to investors", color: "bg-moss", icon: "💰" },
+              { label: "Investor", sub: "You commit capital", color: "bg-flint", Icon: UserCircle },
+              { label: "SPV", sub: "Special Purpose Vehicle", color: "bg-sandstone", Icon: Landmark },
+              { label: "Target Asset", sub: "The deal we execute", color: "bg-leather/80", Icon: LineChart },
+              { label: "Returns", sub: "Distributed to investors", color: "bg-moss", Icon: Coins },
             ].map((node, i, arr) => (
               <div key={node.label} className="flex flex-row items-start">
                 {/* Node */}
                 <div className="flex flex-col items-center w-28">
                   <div className={`w-20 h-20 rounded-2xl ${node.color} flex flex-col items-center justify-center shadow-sm`}>
-                    <span className="text-2xl leading-none">{node.icon}</span>
+                    <node.Icon className="w-8 h-8 text-white/90" />
                   </div>
                   <p className="mt-3 text-xs font-bold text-flint text-center">{node.label}</p>
                   <p className="text-[10px] text-foreground/40 text-center max-w-[90px] mt-0.5">{node.sub}</p>
@@ -216,7 +222,7 @@ function HowItWorks() {
               {/* Investor */}
               <div className="flex flex-col items-center w-28">
                 <div className="w-16 h-16 rounded-2xl bg-flint flex flex-col items-center justify-center shadow-sm">
-                  <span className="text-xl">👤</span>
+                  <UserCircle className="w-7 h-7 text-white/90" />
                 </div>
                 <p className="mt-2 text-xs font-bold text-flint text-center">Investor</p>
                 <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">You commit capital</p>
@@ -231,7 +237,7 @@ function HowItWorks() {
               {/* SPV */}
               <div className="flex flex-col items-center w-28">
                 <div className="w-16 h-16 rounded-2xl bg-sandstone flex flex-col items-center justify-center shadow-sm">
-                  <span className="text-xl">🏛</span>
+                  <Landmark className="w-7 h-7 text-white/90" />
                 </div>
                 <p className="mt-2 text-xs font-bold text-flint text-center">SPV</p>
                 <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">Special Purpose Vehicle</p>
@@ -251,7 +257,7 @@ function HowItWorks() {
               {/* Target Asset */}
               <div className="flex flex-col items-center w-28">
                 <div className="w-16 h-16 rounded-2xl bg-leather/80 flex flex-col items-center justify-center shadow-sm">
-                  <span className="text-xl">📈</span>
+                  <LineChart className="w-7 h-7 text-white/90" />
                 </div>
                 <p className="mt-2 text-xs font-bold text-flint text-center">Target Asset</p>
                 <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">The deal we execute</p>
@@ -266,7 +272,7 @@ function HowItWorks() {
               {/* Returns */}
               <div className="flex flex-col items-center w-28">
                 <div className="w-16 h-16 rounded-2xl bg-moss flex flex-col items-center justify-center shadow-sm">
-                  <span className="text-xl">💰</span>
+                  <Coins className="w-7 h-7 text-white/90" />
                 </div>
                 <p className="mt-2 text-xs font-bold text-flint text-center">Returns</p>
                 <p className="text-[10px] text-foreground/40 text-center max-w-[80px]">Distributed to investors</p>
@@ -560,6 +566,106 @@ function TrustSection() {
   );
 }
 
+/* ---------- Meet the Founder ---------- */
+function MeetTheFounder() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  const credentials = [
+    { Icon: Briefcase, label: "Product Manager", org: "Mastercard" },
+    { Icon: BarChart3, label: "Investment Analyst", org: "Brown Brothers Harriman" },
+    { Icon: TrendingUp, label: "Investment Analyst", org: "True Capital Management" },
+    { Icon: Award, label: "Founder & Exit", org: "JORE" },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 bg-white">
+      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <p className="text-leather-light text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+            The Person Behind VI Pillars
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight">
+            Meet the{" "}
+            <span className="italic text-leather">Founder.</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Photo */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative"
+          >
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl max-w-md mx-auto lg:mx-0">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/sahmi-headshot_1e2f0f77.png"
+                alt="Sahmi Chowdhury — Founder, VI Pillars Capital"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: '50% 18%' }}
+              />
+            </div>
+            {/* Floating name card */}
+            <div className="absolute bottom-6 left-6 right-6 lg:right-auto lg:max-w-[260px] bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-sandstone/10">
+              <p className="font-serif text-lg font-bold text-flint">Sahmi Chowdhury</p>
+              <p className="text-leather text-xs font-semibold tracking-wider uppercase mt-0.5">Founder</p>
+            </div>
+          </motion.div>
+
+          {/* Bio + Credentials */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <p className="text-foreground/60 text-[15px] leading-relaxed mb-5">
+              Sahmi started VI Pillars Capital out of a genuine belief that high-quality investment
+              opportunities shouldn't be reserved for institutional players and insiders. Over the
+              years, he built relationships across finance, technology, and media — and found himself
+              with access to deals that most individual investors simply never see.
+            </p>
+            <p className="text-foreground/60 text-[15px] leading-relaxed mb-8">
+              His background spans product management at Mastercard, investment analysis at Brown
+              Brothers Harriman and True Capital Management, and the successful exit of JORE — giving
+              him firsthand experience across product, finance, and entrepreneurship. VI Pillars is
+              his way of putting that experience to work for a community of like-minded investors who
+              care as much about how capital is deployed as where it goes.
+            </p>
+
+            {/* Credential chips */}
+            <div className="grid sm:grid-cols-2 gap-3">
+              {credentials.map(({ Icon, label, org }, i) => (
+                <motion.div
+                  key={org}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
+                  className="flex items-center gap-3 p-3.5 rounded-xl bg-cream/60 border border-sandstone/10"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-sandstone/15 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-leather" />
+                  </div>
+                  <div>
+                    <p className="text-flint text-xs font-semibold">{label}</p>
+                    <p className="text-foreground/45 text-[11px]">{org}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Home Page ---------- */
 export default function Home() {
   return (
@@ -571,6 +677,7 @@ export default function Home() {
       <FeaturedDeals />
       <EthicsBanner />
       <TrustSection />
+      <MeetTheFounder />
       <CTASection />
     </div>
   );
