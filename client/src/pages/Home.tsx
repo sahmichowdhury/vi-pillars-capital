@@ -626,17 +626,19 @@ function MeetTheFounder() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-foreground/60 text-[15px] leading-relaxed mb-5">
-              Sahmi started VI Pillars Capital out of a genuine belief that high-quality investment
-              opportunities shouldn't be reserved for institutional players and insiders. Over the
-              years, he built relationships across finance, technology, and media — and found himself
-              with access to deals that most individual investors simply never see.
+              VI Pillars Capital was founded on Sahmi's belief that some of the most compelling
+              investment opportunities should not be reserved for institutions and insiders alone.
+              Over time, his work across finance, technology, and entrepreneurship led to
+              relationships and access that opened the door to opportunities rarely available to
+              individual investors. VI Pillars was created to bring that access to a broader
+              community through a more aligned and intentional approach.
             </p>
             <p className="text-foreground/60 text-[15px] leading-relaxed mb-8">
-              His background spans product management at Mastercard, investment analysis at Brown
-              Brothers Harriman and True Capital Management, and the successful exit of JORE — giving
-              him firsthand experience across product, finance, and entrepreneurship. VI Pillars is
-              his way of putting that experience to work for a community of like-minded investors who
-              care as much about how capital is deployed as where it goes.
+              With experience spanning Mastercard, Brown Brothers Harriman, True Capital Management,
+              and the successful exit of JORE, Sahmi brings a perspective shaped by both
+              institutional rigor and firsthand operating experience. That perspective underpins the
+              firm's philosophy: investing thoughtfully, partnering selectively, and deploying
+              capital with discipline and purpose.
             </p>
 
             {/* Credential chips */}
