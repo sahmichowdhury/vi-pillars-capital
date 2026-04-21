@@ -233,7 +233,7 @@ const deals: Deal[] = [
   },
 ];
 
-const categories = ["All Dealflow", "Venture", "Real Estate", "Consumer"];
+const categories = ["All Dealflow", "Venture", "Real Estate", "Consumer", "Notable Passed"];
 
 const statusConfig: Record<
   DealStatus,
@@ -264,7 +264,7 @@ const statusConfig: Record<
     bg: "bg-amber-50",
     text: "text-amber-700",
     dot: "bg-amber-500",
-    label: "Passed",
+    label: "Notable Passed",
     borderColor: "border-amber-200",
   },
 };
@@ -416,6 +416,8 @@ export default function DealflowPage() {
   const filteredDeals =
     activeFilter === "All Dealflow"
       ? deals
+      : activeFilter === "Notable Passed"
+      ? deals.filter((d) => d.status === "Passed")
       : deals.filter((d) => d.category === activeFilter);
 
   return (
@@ -461,7 +463,7 @@ export default function DealflowPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-500" />
-                Passed
+                Notable Passed
               </div>
             </div>
           </motion.div>
@@ -506,7 +508,7 @@ export default function DealflowPage() {
                   { label: "Active", count: deals.filter(d => d.status === "Active").length, dot: "bg-emerald-500", text: "text-emerald-700" },
                   { label: "Deployed", count: deals.filter(d => d.status === "Deployed").length, dot: "bg-blue-500", text: "text-blue-700" },
                   { label: "Exited", count: deals.filter(d => d.status === "Exited").length, dot: "bg-red-500", text: "text-red-700" },
-                  { label: "Passed", count: deals.filter(d => d.status === "Passed").length, dot: "bg-amber-500", text: "text-amber-700" },
+                  { label: "Notable Passed", count: deals.filter(d => d.status === "Passed").length, dot: "bg-amber-500", text: "text-amber-700" },
                 ].map(s => (
                   <div key={s.label} className="flex items-center justify-between py-2 border-b border-stone-50 last:border-0">
                     <div className="flex items-center gap-2">
@@ -548,6 +550,22 @@ export default function DealflowPage() {
               All investments are ethically screened
             </div>
           </div>
+
+          {/* Notable Passed explanation banner */}
+          {activeFilter === "Notable Passed" && (
+            <div className="mb-8 p-5 rounded-xl bg-amber-50 border border-amber-200/60 flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-amber-800 text-sm font-semibold mb-1">Notable Passed Deals</p>
+                <p className="text-amber-700 text-sm leading-relaxed">
+                  Not every deal that clears our initial screen makes it through full due diligence.
+                  These notable opportunities were reviewed and declined based on valuation, structure,
+                  or strategic fit — a reflection of the rigour we apply to every deal, not the volume
+                  we see.
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Deal Cards — Clean box layout */}
           <div className="grid gap-6 lg:grid-cols-2">
@@ -732,8 +750,8 @@ export default function DealflowPage() {
             <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500 mt-1 shrink-0" />
               <div>
-                <p className="text-xs font-semibold text-amber-700">Passed</p>
-                <p className="text-[11px] text-foreground/45 leading-snug">VIP has passed on the deal.</p>
+                <p className="text-xs font-semibold text-amber-700">Notable Passed</p>
+                <p className="text-[11px] text-foreground/45 leading-snug">Not every deal that clears our initial screen makes it through full due diligence. These notable opportunities were reviewed and declined based on valuation, structure, or strategic fit — a reflection of the rigour we apply to every deal, not the volume we see.</p>
               </div>
             </div>
           </div>
