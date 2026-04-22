@@ -59,3 +59,4 @@
 - [x] Remove repetitive content across pages
 - [x] Update navbar to include Investor Education page link
 - [x] Add real-time search bar to Investor Education page (filter topics, sections, FAQ)
+- [x] Build sticky scroll-aware page navigator (active section highlight, progress bar, click-to-jump) for long pages

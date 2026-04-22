@@ -12,6 +12,7 @@ import {
   BookOpen, DollarSign, Lock, Heart, ArrowRight, X,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
+import ScrollNav from "@/components/ScrollNav";
 import { Link } from "wouter";
 
 /* ---------- Search index ---------- */
@@ -137,7 +138,7 @@ function SearchBar({ query, setQuery }: { query: string; setQuery: (q: string) =
   );
 }
 
-/* ---------- Side Navigation ---------- */
+/* ---------- Scroll Nav sections (also used for side nav pills) ---------- */
 const sections = [
   { id: "spv", label: "What is an SPV?" },
   { id: "screening", label: "Ethical Screening" },
@@ -693,6 +694,9 @@ export default function InvestorEducationPage() {
         buttonText="Contact Us"
         buttonHref="/contact"
       />
+
+      {/* Floating scroll-aware page navigator */}
+      <ScrollNav sections={sections} />
     </>
   );
 }

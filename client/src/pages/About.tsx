@@ -12,6 +12,7 @@ import {
   ArrowRight, Award, BookOpen,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
+import ScrollNav from "@/components/ScrollNav";
 import { Link } from "wouter";
 
 /* ---------- Side Navigation ---------- */
@@ -494,6 +495,9 @@ export default function About() {
         buttonText="Contact Us"
         buttonHref="/contact"
       />
+
+      {/* Floating scroll-aware page navigator */}
+      <ScrollNav sections={aboutSections} />
     </>
   );
 }
