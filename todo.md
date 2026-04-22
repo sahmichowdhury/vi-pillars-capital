@@ -58,3 +58,4 @@
 - [x] Add in-page side navigation (anchor links) to long pages
 - [x] Remove repetitive content across pages
 - [x] Update navbar to include Investor Education page link
+- [x] Add real-time search bar to Investor Education page (filter topics, sections, FAQ)

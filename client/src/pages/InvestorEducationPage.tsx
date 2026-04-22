@@ -1,18 +1,141 @@
 /*
  * Investor Education Page
  * Contains: SPV education, ethical screening, FAQ, investor journey
- * Moved from About.tsx to keep About focused on firm identity
+ * Includes real-time search bar that filters across all topics and FAQ entries
  */
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useMemo } from "react";
 import {
   Shield, CheckCircle2, Ban, Eye, Scale, Users, ChevronDown,
   TrendingUp, FileSearch, ArrowDown, CircleDot, Layers,
   Search, CheckSquare, Globe, GraduationCap, Lightbulb,
-  BookOpen, DollarSign, Lock, Heart, ArrowRight,
+  BookOpen, DollarSign, Lock, Heart, ArrowRight, X,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import { Link } from "wouter";
+
+/* ---------- Search index ---------- */
+// Each entry maps to a section id so clicking a result scrolls there
+const searchIndex = [
+  // SPV section
+  { id: "spv", label: "What is an SPV?", text: "special purpose vehicle spv legal entity single investment pool capital transparency control direct ownership" },
+  { id: "spv", label: "SPV Advantages", text: "choose deals transparency limited liability direct ownership flexible invest" },
+  { id: "spv", label: "SPV Considerations", text: "illiquid capital locked risk timeline returns minimum investment tax" },
+  { id: "spv", label: "Why VI Pillars uses SPVs", text: "transparency alignment ethical structure interests aligned" },
+  // Screening section
+  { id: "screening", label: "Ethical Screening", text: "ethical screening multi-layer process quality ethics transparency" },
+  { id: "screening", label: "No Harmful Industries", text: "alcohol gambling weapons tobacco pornography excluded" },
+  { id: "screening", label: "Full Transparency", text: "clear structures no hidden fees excessive uncertainty" },
+  { id: "screening", label: "No Excessive Debt", text: "leverage interest-based financing avoided" },
+  { id: "screening", label: "Social Impact", text: "real value communities people social impact" },
+  { id: "screening", label: "Deal Screening Funnel", text: "deal universe industry ethical screen debt structure due diligence approved" },
+  // Journey section
+  { id: "journey", label: "Join Our Network", text: "register deal flow upcoming opportunities no commitment" },
+  { id: "journey", label: "Review Opportunities", text: "deal memo opportunity risks terms screening results" },
+  { id: "journey", label: "Choose Your Deals", text: "invest deals align goals blind pool full control allocation" },
+  { id: "journey", label: "Track Your Capital", text: "regular updates quarterly reports management reporting exits" },
+  // FAQ entries
+  { id: "faq", label: "What is an SPV and how does it work?", text: "special purpose vehicle legal entity single investment capital pooled direct ownership transparency flexibility" },
+  { id: "faq", label: "Do I need a specific background to invest?", text: "background invest ethical principled transparent socially responsible harmful industries" },
+  { id: "faq", label: "What is the minimum investment amount?", text: "minimum investment 20000 per deal private market" },
+  { id: "faq", label: "How are deals sourced and vetted?", text: "sourced vetted due diligence financial market management ethical compliance" },
+  { id: "faq", label: "What types of returns can I expect?", text: "returns real estate rental income appreciation venture capital gains exit projections risk" },
+  { id: "faq", label: "How do I stay updated on my investments?", text: "updates quarterly reports material event notifications exit summaries direct communication" },
+  { id: "faq", label: "What is Shariah finance?", text: "shariah finance islamic law fairness transparency shared risk interest riba uncertainty gharar harmful industries integrity" },
+];
+
+const sectionLabels: Record<string, string> = {
+  spv: "What is an SPV?",
+  screening: "Ethical Screening",
+  journey: "Investor Journey",
+  faq: "FAQ",
+};
+
+/* ---------- Search Bar ---------- */
+function SearchBar({ query, setQuery }: { query: string; setQuery: (q: string) => void }) {
+  const results = useMemo(() => {
+    if (!query.trim()) return [];
+    const q = query.toLowerCase();
+    return searchIndex.filter(
+      (entry) =>
+        entry.label.toLowerCase().includes(q) ||
+        entry.text.toLowerCase().includes(q)
+    ).slice(0, 8);
+  }, [query]);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+    setQuery("");
+  };
+
+  return (
+    <div className="relative max-w-xl w-full">
+      <div className="flex items-center gap-3 bg-white/[0.08] border border-white/[0.15] rounded-xl px-4 py-3 focus-within:bg-white/[0.12] focus-within:border-sandstone/50 transition-all duration-200">
+        <Search className="w-4 h-4 text-white/40 shrink-0" />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search topics, questions, concepts…"
+          className="flex-1 bg-transparent text-white text-sm placeholder:text-white/35 outline-none"
+        />
+        {query && (
+          <button onClick={() => setQuery("")} className="text-white/40 hover:text-white/70 transition-colors">
+            <X className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+
+      {/* Dropdown results */}
+      <AnimatePresence>
+        {results.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-sandstone/15 shadow-xl overflow-hidden z-50"
+          >
+            {results.map((result, i) => (
+              <button
+                key={`${result.id}-${i}`}
+                onClick={() => scrollTo(result.id)}
+                className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-cream/60 transition-colors border-b border-sandstone/8 last:border-0"
+              >
+                <div className="w-7 h-7 rounded-lg bg-sandstone/10 flex items-center justify-center shrink-0">
+                  <BookOpen className="w-3.5 h-3.5 text-leather" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-flint text-sm font-medium truncate">{result.label}</p>
+                  <p className="text-foreground/40 text-xs">{sectionLabels[result.id]}</p>
+                </div>
+                <ArrowRight className="w-3.5 h-3.5 text-sandstone/50 shrink-0 ml-auto" />
+              </button>
+            ))}
+          </motion.div>
+        )}
+        {query.trim() && results.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-sandstone/15 shadow-xl overflow-hidden z-50"
+          >
+            <div className="px-4 py-5 text-center">
+              <p className="text-foreground/50 text-sm">No results for <span className="font-medium text-flint">"{query}"</span></p>
+              <p className="text-foreground/35 text-xs mt-1">Try a different term or browse sections below</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 /* ---------- Side Navigation ---------- */
 const sections = [
@@ -468,6 +591,8 @@ function FAQSection() {
 
 /* ---------- Page ---------- */
 export default function InvestorEducationPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <>
       {/* Hero */}
@@ -508,6 +633,17 @@ export default function InvestorEducationPage() {
             From understanding how SPVs work to navigating our ethical screening process,
             this page covers the fundamentals of investing with VI Pillars Capital.
           </motion.p>
+
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="mb-8"
+          >
+            <SearchBar query={searchQuery} setQuery={setSearchQuery} />
+          </motion.div>
+
           {/* Quick nav pills */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
