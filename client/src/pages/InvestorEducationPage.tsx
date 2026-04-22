@@ -12,7 +12,7 @@ import {
   BookOpen, DollarSign, Lock, Heart, ArrowRight, X,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
-import ScrollNav from "@/components/ScrollNav";
+import PageSideNav from "@/components/PageSideNav";
 import { Link } from "wouter";
 
 /* ---------- Search index ---------- */
@@ -146,42 +146,7 @@ const sections = [
   { id: "faq", label: "FAQ" },
 ];
 
-function SideNav() {
-  const [active, setActive] = useState("spv");
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 100;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-      setActive(id);
-    }
-  };
-
-  return (
-    <aside className="hidden lg:block w-52 shrink-0">
-      <div className="sticky top-28 space-y-1">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/35 mb-4 px-3">
-          On this page
-        </p>
-        {sections.map((s) => (
-          <button
-            key={s.id}
-            onClick={() => scrollTo(s.id)}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
-              active === s.id
-                ? "bg-sandstone/10 text-leather font-semibold border-l-2 border-leather"
-                : "text-foreground/50 hover:text-flint hover:bg-cream/60"
-            }`}
-          >
-            {s.label}
-          </button>
-        ))}
-      </div>
-    </aside>
-  );
-}
 
 /* ---------- SPV Section ---------- */
 function SPVSection() {
@@ -676,7 +641,7 @@ export default function InvestorEducationPage() {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="flex gap-16">
-            <SideNav />
+            <PageSideNav sections={sections} width="w-52" />
             <div className="flex-1 min-w-0">
               <SPVSection />
               <ScreeningSection />
@@ -695,8 +660,7 @@ export default function InvestorEducationPage() {
         buttonHref="/contact"
       />
 
-      {/* Floating scroll-aware page navigator */}
-      <ScrollNav sections={sections} />
+
     </>
   );
 }

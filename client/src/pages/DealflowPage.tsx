@@ -37,7 +37,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import CTASection from "@/components/CTASection";
-import ScrollNav from "@/components/ScrollNav";
+
 
 type DealStatus = "Active" | "Deployed" | "Exited" | "Passed";
 
@@ -725,12 +725,7 @@ export default function DealflowPage() {
         buttonText="Contact Us"
         buttonHref="/contact"
       />
-      <ScrollNav sections={[
-        { id: "dealflow-hero", label: "Overview" },
-        { id: "composition", label: "Composition" },
-        { id: "deals", label: "Deals" },
-        { id: "disclosure", label: "Disclosure" },
-      ]} />
+
     </>
   );
 }

@@ -12,7 +12,7 @@ import {
   ArrowRight, Award, BookOpen,
 } from "lucide-react";
 import CTASection from "@/components/CTASection";
-import ScrollNav from "@/components/ScrollNav";
+import PageSideNav from "@/components/PageSideNav";
 import { Link } from "wouter";
 
 /* ---------- Side Navigation ---------- */
@@ -24,41 +24,7 @@ const aboutSections = [
   { id: "values", label: "Core Values" },
 ];
 
-function AboutSideNav() {
-  const [active, setActive] = useState("mission");
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top, behavior: "smooth" });
-      setActive(id);
-    }
-  };
-
-  return (
-    <aside className="hidden lg:block w-48 shrink-0">
-      <div className="sticky top-28 space-y-1">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/35 mb-4 px-3">
-          On this page
-        </p>
-        {aboutSections.map((s) => (
-          <button
-            key={s.id}
-            onClick={() => scrollTo(s.id)}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
-              active === s.id
-                ? "bg-sandstone/10 text-leather font-semibold border-l-2 border-leather"
-                : "text-foreground/50 hover:text-flint hover:bg-cream/60"
-            }`}
-          >
-            {s.label}
-          </button>
-        ))}
-      </div>
-    </aside>
-  );
-}
 
 /* ---------- About Hero ---------- */
 function AboutHero() {
@@ -477,7 +443,7 @@ export default function About() {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="flex gap-16">
-            <AboutSideNav />
+            <PageSideNav sections={aboutSections} />
             <div className="flex-1 min-w-0">
               <MissionVision />
               <InvestmentPhilosophy />
@@ -496,8 +462,7 @@ export default function About() {
         buttonHref="/contact"
       />
 
-      {/* Floating scroll-aware page navigator */}
-      <ScrollNav sections={aboutSections} />
+
     </>
   );
 }

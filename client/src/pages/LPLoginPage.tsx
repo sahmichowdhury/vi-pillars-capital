@@ -9,7 +9,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
-import ScrollNav from "@/components/ScrollNav";
+
 
 const steps = [
   {
@@ -274,10 +274,7 @@ export default function LPLoginPage() {
         </motion.div>
       </div>
       </section>
-      <ScrollNav sections={[
-        { id: "lp-login", label: "Sign In" },
-        { id: "how-to-apply", label: "How to Apply" },
-      ]} />
+
     </>
   );
 }

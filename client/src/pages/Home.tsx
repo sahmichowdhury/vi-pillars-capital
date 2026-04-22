@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import WhySection from "@/components/WhySection";
 import CTASection from "@/components/CTASection";
-import ScrollNav from "@/components/ScrollNav";
+
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
@@ -687,7 +687,7 @@ export default function Home() {
       <TrustSection />
       <MeetTheFounder />
       <CTASection />
-      <ScrollNav sections={homeNavSections} />
+
     </>
   );
 }
