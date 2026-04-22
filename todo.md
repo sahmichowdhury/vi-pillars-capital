@@ -60,3 +60,6 @@
 - [x] Update navbar to include Investor Education page link
 - [x] Add real-time search bar to Investor Education page (filter topics, sections, FAQ)
 - [x] Build sticky scroll-aware page navigator (active section highlight, progress bar, click-to-jump) for long pages
+- [ ] Remove % read counter and progress bar from ScrollNav, keep only section dots + labels
+- [ ] Add ScrollNav to all pages (Home, Dealflow, Contact, News, LP Login)
+- [ ] Remove right-side key/legend table from Dealflow page

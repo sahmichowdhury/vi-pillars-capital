@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Clock, Send } from "lucide-react";
 import { toast } from "sonner";
+import ScrollNav from "@/components/ScrollNav";
 
 export default function ContactPage() {
   const headerRef = useRef(null);
@@ -29,7 +30,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-[72px] bg-flint relative overflow-hidden">
+      <section id="contact-hero" className="pt-[72px] bg-flint relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
@@ -60,7 +61,7 @@ export default function ContactPage() {
       </section>
 
       {/* Form + Sidebar */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section id="contact-form" className="py-16 lg:py-20 bg-white">
         <div ref={formRef} className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Form */}
@@ -174,6 +175,10 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <ScrollNav sections={[
+        { id: "contact-hero", label: "Overview" },
+        { id: "contact-form", label: "Send a Message" },
+      ]} />
     </>
   );
 }

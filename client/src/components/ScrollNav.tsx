@@ -1,8 +1,10 @@
 /**
  * ScrollNav — floating right-side navigation that:
- * - Tracks scroll position and highlights the active section
- * - Shows a vertical progress bar indicating how far through the page the user is
+ * - Tracks scroll position and highlights the active section with an animated dot
+ * - Marks past sections with a filled dot
  * - Lets users click any section label to smooth-scroll there
+ * - Has a collapse/expand toggle
+ * - Appears after the user scrolls 80px down
  *
  * Usage:
  *   <ScrollNav sections={[{ id: "intro", label: "Introduction" }, ...]} />
@@ -26,20 +28,14 @@ interface ScrollNavProps {
 
 export default function ScrollNav({ sections, offset = 120 }: ScrollNavProps) {
   const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "");
-  const [pageProgress, setPageProgress] = useState(0);
   const [visible, setVisible] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
   const update = useCallback(() => {
     const scrollY = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? Math.min(100, (scrollY / docHeight) * 100) : 0;
-    setPageProgress(progress);
-
-    // Show nav only after scrolling past 80px
     setVisible(scrollY > 80);
 
-    // Determine active section: last section whose top is above the offset line
+    // Determine active section: last section whose top is at or above the offset line
     let current = sections[0]?.id ?? "";
     for (const section of sections) {
       const el = document.getElementById(section.id);
@@ -77,17 +73,14 @@ export default function ScrollNav({ sections, offset = 120 }: ScrollNavProps) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 24 }}
           transition={{ duration: 0.25 }}
-          className="fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-end gap-0"
+          className="fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-end"
         >
           <div className="bg-white/95 backdrop-blur-md border border-sandstone/15 rounded-2xl shadow-lg overflow-hidden">
-            {/* Header row: progress % + collapse toggle */}
-            <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-sandstone/10">
-              <span className="text-[10px] font-semibold text-foreground/40 uppercase tracking-[0.15em]">
-                {Math.round(pageProgress)}% read
-              </span>
+            {/* Collapse toggle */}
+            <div className="flex items-center justify-end px-3 pt-2.5 pb-1">
               <button
                 onClick={() => setCollapsed((c) => !c)}
-                className="text-foreground/35 hover:text-leather transition-colors"
+                className="text-foreground/30 hover:text-leather transition-colors"
                 aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
               >
                 {collapsed ? (
@@ -108,47 +101,44 @@ export default function ScrollNav({ sections, offset = 120 }: ScrollNavProps) {
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <div className="flex py-3">
-                    {/* Vertical progress track */}
-                    <div className="flex flex-col items-center pl-4 pr-3 py-0.5 gap-0">
-                      {/* Full-height track */}
-                      <div className="relative flex flex-col items-center h-full">
-                        {sections.map((section, i) => {
-                          const isActive = section.id === activeId;
-                          const isPast = i < activeIndex;
-                          return (
-                            <div key={section.id} className="flex flex-col items-center">
-                              {/* Dot */}
-                              <button
-                                onClick={() => scrollTo(section.id)}
-                                className="relative flex items-center justify-center w-5 h-5 rounded-full transition-all duration-300 focus:outline-none"
-                                aria-label={`Go to ${section.label}`}
-                              >
-                                {isActive ? (
-                                  <>
-                                    <span className="absolute inset-0 rounded-full bg-sandstone/20 animate-ping" />
-                                    <span className="w-3 h-3 rounded-full bg-leather shadow-sm" />
-                                  </>
-                                ) : (
-                                  <span
-                                    className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                                      isPast ? "bg-sandstone/60" : "bg-foreground/15"
-                                    }`}
-                                  />
-                                )}
-                              </button>
-                              {/* Connector line between dots */}
-                              {i < sections.length - 1 && (
-                                <div className="w-px h-8 bg-gradient-to-b from-sandstone/20 to-sandstone/10" />
+                  <div className="flex pb-3 px-0">
+                    {/* Vertical dot track */}
+                    <div className="flex flex-col items-center pl-4 pr-3 py-0.5">
+                      {sections.map((section, i) => {
+                        const isActive = section.id === activeId;
+                        const isPast = i < activeIndex;
+                        return (
+                          <div key={section.id} className="flex flex-col items-center">
+                            {/* Dot */}
+                            <button
+                              onClick={() => scrollTo(section.id)}
+                              className="relative flex items-center justify-center w-5 h-5 rounded-full focus:outline-none"
+                              aria-label={`Go to ${section.label}`}
+                            >
+                              {isActive ? (
+                                <>
+                                  <span className="absolute inset-0 rounded-full bg-sandstone/20 animate-ping" />
+                                  <span className="w-3 h-3 rounded-full bg-leather shadow-sm" />
+                                </>
+                              ) : (
+                                <span
+                                  className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                                    isPast ? "bg-sandstone/60" : "bg-foreground/15"
+                                  }`}
+                                />
                               )}
-                            </div>
-                          );
-                        })}
-                      </div>
+                            </button>
+                            {/* Connector line between dots */}
+                            {i < sections.length - 1 && (
+                              <div className="w-px h-7 bg-gradient-to-b from-sandstone/20 to-sandstone/10" />
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
 
                     {/* Labels */}
-                    <div className="flex flex-col pr-4 gap-0">
+                    <div className="flex flex-col pr-4">
                       {sections.map((section, i) => {
                         const isActive = section.id === activeId;
                         const isPast = i < activeIndex;
@@ -167,7 +157,7 @@ export default function ScrollNav({ sections, offset = 120 }: ScrollNavProps) {
                               {section.label}
                             </button>
                             {/* Spacer matching connector line height */}
-                            {i < sections.length - 1 && <div className="h-8" />}
+                            {i < sections.length - 1 && <div className="h-7" />}
                           </div>
                         );
                       })}
@@ -176,15 +166,6 @@ export default function ScrollNav({ sections, offset = 120 }: ScrollNavProps) {
                 </motion.div>
               )}
             </AnimatePresence>
-
-            {/* Bottom progress bar */}
-            <div className="h-1 bg-sandstone/10 rounded-b-2xl overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-leather to-sandstone rounded-full"
-                style={{ width: `${pageProgress}%` }}
-                transition={{ duration: 0.1 }}
-              />
-            </div>
           </div>
         </motion.div>
       )}

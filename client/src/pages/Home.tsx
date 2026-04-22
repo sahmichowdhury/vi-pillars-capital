@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import WhySection from "@/components/WhySection";
 import CTASection from "@/components/CTASection";
+import ScrollNav from "@/components/ScrollNav";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
@@ -74,7 +75,7 @@ function StatsBar() {
   ];
 
   return (
-    <section className="relative -mt-1 z-10">
+    <section id="overview" className="relative -mt-1 z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -126,7 +127,7 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-cream/40">
+    <section id="how-it-works" className="py-20 lg:py-28 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -453,7 +454,7 @@ function EthicsBanner() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-flint relative overflow-hidden">
+    <section id="ethics" className="py-20 lg:py-28 bg-flint relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-[500px] h-[500px] border border-sandstone/5 rounded-full" />
         <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] border border-sandstone/5 rounded-full" />
@@ -508,7 +509,7 @@ function TrustSection() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 lg:py-24 bg-cream/40">
+    <section id="trust" className="py-20 lg:py-24 bg-cream/40">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -575,7 +576,7 @@ function MeetTheFounder() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section id="founder" className="py-20 lg:py-28 bg-white">
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -664,9 +665,19 @@ function MeetTheFounder() {
 }
 
 /* ---------- Home Page ---------- */
+const homeNavSections = [
+  { id: "overview", label: "Overview" },
+  { id: "why-us", label: "Why VI Pillars" },
+  { id: "how-it-works", label: "How It Works" },
+  { id: "featured-deals", label: "Featured Deals" },
+  { id: "ethics", label: "Our Ethics" },
+  { id: "trust", label: "Why Trust Us" },
+  { id: "founder", label: "Meet the Founder" },
+];
+
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <>
       <Hero />
       <StatsBar />
       <WhySection />
@@ -676,6 +687,7 @@ export default function Home() {
       <TrustSection />
       <MeetTheFounder />
       <CTASection />
-    </div>
+      <ScrollNav sections={homeNavSections} />
+    </>
   );
 }

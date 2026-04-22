@@ -37,7 +37,7 @@ export default function WhySection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section id="why-us" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div ref={ref} className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
           {/* Left Column */}
@@ -51,7 +51,7 @@ export default function WhySection() {
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-6">
               Your path to the{" "}
-              <span className="italic text-leather">next level.</span>
+              <span className="text-leather">next level.</span>
             </h2>
             <p className="text-foreground/60 text-[15px] leading-relaxed mb-5">
               Investing is a time-demanding activity, and picking the best options often 

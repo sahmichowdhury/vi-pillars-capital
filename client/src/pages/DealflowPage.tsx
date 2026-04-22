@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import CTASection from "@/components/CTASection";
+import ScrollNav from "@/components/ScrollNav";
 
 type DealStatus = "Active" | "Deployed" | "Exited" | "Passed";
 
@@ -422,7 +423,7 @@ export default function DealflowPage() {
   return (
     <>
       {/* Hero Header */}
-      <section className="pt-[72px] bg-flint relative overflow-hidden">
+      <section id="dealflow-hero" className="pt-[72px] bg-flint relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         </div>
@@ -470,7 +471,7 @@ export default function DealflowPage() {
       </section>
 
       {/* Deal Exposure Composition Visual */}
-      <section className="py-12 bg-cream/30 border-b border-sandstone/10">
+      <section id="composition" className="py-12 bg-cream/30 border-b border-sandstone/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6 items-center">
             {/* Asset Class Breakdown */}
@@ -524,7 +525,7 @@ export default function DealflowPage() {
       </section>
 
       {/* Filter & Cards */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section id="deals" className="py-16 lg:py-20 bg-white">
         <div ref={cardsRef} className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Summary Stats */}
           <DealflowStats />
@@ -696,7 +697,7 @@ export default function DealflowPage() {
       <WhyInvestSection />
 
       {/* Disclaimer */}
-      <section className="py-12 bg-cream/40">
+      <section id="disclosure" className="py-12 bg-cream/40">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="bg-white rounded-xl border border-sandstone/10 p-6 lg:p-8">
             <div className="flex items-start gap-3">
@@ -717,46 +718,6 @@ export default function DealflowPage() {
         </div>
       </section>
 
-      {/* Status Key Legend */}
-      <section className="py-8 bg-stone-50 border-t border-stone-200">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Target className="w-4 h-4 text-foreground/40" />
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground/50">Status Key</h4>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mt-1 shrink-0" />
-              <div>
-                <p className="text-xs font-semibold text-emerald-700">Active</p>
-                <p className="text-[11px] text-foreground/45 leading-snug">Deal is currently active and VIP is still fundraising.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 mt-1 shrink-0" />
-              <div>
-                <p className="text-xs font-semibold text-blue-700">Deployed</p>
-                <p className="text-[11px] text-foreground/45 leading-snug">The deal is closed. VIP has deployed the capital and is invested.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500 mt-1 shrink-0" />
-              <div>
-                <p className="text-xs font-semibold text-red-700">Exited</p>
-                <p className="text-[11px] text-foreground/45 leading-snug">VIP has exited the deal.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-stone-200">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 mt-1 shrink-0" />
-              <div>
-                <p className="text-xs font-semibold text-amber-700">Notable Passed</p>
-                <p className="text-[11px] text-foreground/45 leading-snug">Not every deal that clears our initial screen makes it through full due diligence. These notable opportunities were reviewed and declined based on valuation, structure, or strategic fit — a reflection of the rigour we apply to every deal, not the volume we see.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <CTASection
         headline="Interested in our"
         accentWord="dealflow?"
@@ -764,6 +725,12 @@ export default function DealflowPage() {
         buttonText="Contact Us"
         buttonHref="/contact"
       />
+      <ScrollNav sections={[
+        { id: "dealflow-hero", label: "Overview" },
+        { id: "composition", label: "Composition" },
+        { id: "deals", label: "Deals" },
+        { id: "disclosure", label: "Disclosure" },
+      ]} />
     </>
   );
 }

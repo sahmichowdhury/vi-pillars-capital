@@ -16,6 +16,7 @@ import { Link } from "wouter";
 import { articles, filterCategories, categoryIcons } from "@/data/articles";
 import type { Article } from "@/data/articles";
 import CTASection from "@/components/CTASection";
+import ScrollNav from "@/components/ScrollNav";
 
 /* ---------- Article Card ---------- */
 function ArticleCard({
@@ -107,7 +108,7 @@ export default function NewsPage() {
   return (
     <>
       {/* Hero Header */}
-      <section className="pt-[72px] bg-flint relative overflow-hidden">
+      <section id="news-hero" className="pt-[72px] bg-flint relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         </div>
@@ -136,7 +137,7 @@ export default function NewsPage() {
       </section>
 
       {/* Articles Section */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section id="articles" className="py-16 lg:py-20 bg-white">
         <div ref={cardsRef} className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Search + Filters */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
@@ -206,6 +207,10 @@ export default function NewsPage() {
         buttonText="Get in Touch"
         buttonHref="/contact"
       />
+      <ScrollNav sections={[
+        { id: "news-hero", label: "Overview" },
+        { id: "articles", label: "Articles" },
+      ]} />
     </>
   );
 }

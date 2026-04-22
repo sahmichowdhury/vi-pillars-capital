@@ -9,6 +9,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
+import ScrollNav from "@/components/ScrollNav";
 
 const steps = [
   {
@@ -61,7 +62,8 @@ export default function LPLoginPage() {
   ];
 
   return (
-    <section className="pt-[72px] min-h-screen bg-flint relative overflow-hidden">
+    <>
+      <section id="lp-login" className="pt-[72px] min-h-screen bg-flint relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-flint via-[oklch(0.25_0.03_55)] to-[oklch(0.20_0.02_70)]" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
@@ -153,7 +155,9 @@ export default function LPLoginPage() {
         </motion.div>
       </div>
 
+      </section>
       {/* ── How to Apply ── */}
+      <section id="how-to-apply" className="bg-flint">
       <div ref={stepsRef} className="relative w-full max-w-5xl mx-auto px-6 lg:px-8 pb-24">
         {/* Divider */}
         <div className="border-t border-white/10 mb-16" />
@@ -269,6 +273,11 @@ export default function LPLoginPage() {
           )}
         </motion.div>
       </div>
-    </section>
+      </section>
+      <ScrollNav sections={[
+        { id: "lp-login", label: "Sign In" },
+        { id: "how-to-apply", label: "How to Apply" },
+      ]} />
+    </>
   );
 }
