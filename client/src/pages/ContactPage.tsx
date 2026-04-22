@@ -49,8 +49,7 @@ export default function ContactPage() {
               Contact Us
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5 max-w-2xl">
-              Let's start a{" "}
-              <span className="italic text-sandstone">conversation.</span>
+              Let's Start a Conversation
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl">
               Whether you're an experienced investor or just starting your journey, our team

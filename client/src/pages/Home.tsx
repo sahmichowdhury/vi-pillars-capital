@@ -138,8 +138,7 @@ function HowItWorks() {
             Simple & Transparent
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight mb-5">
-            How it{" "}
-            <span className="italic text-leather">works.</span>
+            How It Works
           </h2>
           <p className="text-foreground/60 text-base leading-relaxed max-w-2xl mx-auto">
             Investing with VI Pillars Capital is straightforward. We handle the complexity so you can focus on building wealth with purpose.
@@ -354,8 +353,7 @@ function FeaturedDeals() {
               Current Opportunities
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight">
-              Featured{" "}
-              <span className="italic text-leather">deals.</span>
+              Featured Deals
             </h2>
           </div>
           <Link
@@ -473,8 +471,7 @@ function EthicsBanner() {
             Our Ethical Commitment
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-            Investing with{" "}
-            <span className="italic text-sandstone">purpose.</span>
+            Investing with Purpose
           </h2>
           <p className="text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
             Ethical investing is more than a label — it's a commitment to transparent,
@@ -523,8 +520,7 @@ function TrustSection() {
             Built on Trust
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-flint leading-tight mb-8">
-            Why investors choose{" "}
-            <span className="italic text-leather">VI Pillars.</span>
+            Why Investors Choose VI Pillars
           </h2>
 
           <div className="grid sm:grid-cols-3 gap-6">
@@ -591,8 +587,7 @@ function MeetTheFounder() {
             The Person Behind VI Pillars
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flint leading-tight">
-            Meet the{" "}
-            <span className="italic text-leather">Founder.</span>
+            Meet the Founder
           </h2>
         </motion.div>
 
@@ -606,10 +601,10 @@ function MeetTheFounder() {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl max-w-md mx-auto lg:mx-0">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/sahmi-headshot_48ff072e.png"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/sahmi-headshot-cropped_89f50869.png"
                 alt="Sahmi Chowdhury — Founder, VI Pillars Capital"
                 className="w-full h-full object-cover"
-                style={{ objectPosition: '50% 18%' }}
+                style={{ objectPosition: '50% 5%' }}
               />
             </div>
             {/* Floating name card */}

@@ -73,7 +73,7 @@ export default function LPLoginPage() {
           <div>
             <div className="flex justify-start mb-8"><Logo variant="light" size="md" /></div>
             <h1 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
-              Limited Partner <span className="italic text-sandstone">Portal</span>
+              Limited Partner Portal
             </h1>
             <p className="text-white/60 text-lg leading-relaxed mb-10">
               A secure, private portal for VI Pillars Capital investors to track their deals, access documents, and stay informed.

@@ -13,12 +13,13 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Dealflow", href: "/dealflow" },
+  { label: "Education", href: "/investor-education" },
   { label: "News & Insights", href: "/news" },
   { label: "Contact", href: "/contact" },
 ];
 
 // Pages where the hero is dark — navbar starts transparent with white text/logo
-const DARK_HERO_PAGES = ["/", "/about", "/dealflow", "/news", "/contact"];
+const DARK_HERO_PAGES = ["/", "/about", "/dealflow", "/news", "/contact", "/investor-education"];
 
 export default function Navbar() {
   const [location] = useLocation();

@@ -362,7 +362,7 @@ export default function ArticleDetailPage() {
       <section className="py-16 lg:py-20 bg-cream/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="font-serif text-2xl lg:text-3xl font-bold text-flint mb-8">
-            Related <span className="italic text-leather">articles</span>
+            Related Articles
           </h2>
           <RelatedArticles
             currentId={article.id}

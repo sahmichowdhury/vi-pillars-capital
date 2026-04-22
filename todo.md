@@ -50,3 +50,11 @@
 - [x] Archive Team page, remove from nav
 - [x] Add Meet the Founder section at bottom of Home page with updated humble bio + background
 - [x] Replace all emojis with Lucide icons site-wide (deal screening diagram and elsewhere)
+
+## Site Structure & UX Improvements (Apr 22)
+- [x] Crop founder photo to reduce top empty space (zoom in, cut top wall)
+- [x] Reduce cursive/italic text site-wide (too much looks AI-generated)
+- [x] Create Investor Education page and move all educational "what is ___" content there
+- [x] Add in-page side navigation (anchor links) to long pages
+- [x] Remove repetitive content across pages
+- [x] Update navbar to include Investor Education page link

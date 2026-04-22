@@ -33,6 +33,7 @@ export default function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Dealflow", href: "/dealflow" },
+                { label: "Investor Education", href: "/investor-education" },
                 { label: "News & Insights", href: "/news" },
                 { label: "Contact", href: "/contact" },
               ].map((link) => (

@@ -13,6 +13,7 @@ import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
 import ArticleDetailPage from "./pages/ArticleDetailPage";
 import LPLoginPage from "./pages/LPLoginPage";
+import InvestorEducationPage from "./pages/InvestorEducationPage";
 import PortalLayout from "./components/PortalLayout";
 import PortalDashboard from "./pages/portal/PortalDashboard";
 import PortalInvestments from "./pages/portal/PortalInvestments";
@@ -49,6 +50,7 @@ function Router() {
       <Route path={"/news/:id"} component={ArticleDetailPage} />
       <Route path={"/contact"} component={ContactPage} />
       <Route path={"/lp-login"} component={LPLoginPage} />
+      <Route path={"/investor-education"} component={InvestorEducationPage} />
       <Route path="/portal" component={PortalDashboardPage} />
       <Route path="/portal/investments" component={PortalInvestmentsPage} />
       <Route path="/portal/documents" component={PortalDocumentsPage} />

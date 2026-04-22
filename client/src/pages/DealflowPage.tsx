@@ -374,8 +374,7 @@ function WhyInvestSection() {
             Why Invest With Us
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-            Your capital,{" "}
-            <span className="italic text-sandstone">our commitment.</span>
+            Your Capital, Our Commitment
           </h2>
           <p className="text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
             We treat every dollar entrusted to us as a responsibility. Here's why investors
@@ -440,7 +439,7 @@ export default function DealflowPage() {
               Dealflow
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-              Our <span className="italic text-sandstone">Dealflow</span>
+              Our Dealflow
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Explore our curated selection of ethically-screened investment

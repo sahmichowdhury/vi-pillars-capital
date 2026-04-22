@@ -124,8 +124,7 @@ export default function NewsPage() {
               News & Insights
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-              Knowledge is{" "}
-              <span className="italic text-sandstone">capital.</span>
+              Knowledge is Capital
             </h1>
             <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto">
               Insights on ethical investing, market analysis, real estate, and
