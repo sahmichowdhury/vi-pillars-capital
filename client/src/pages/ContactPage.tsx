@@ -6,7 +6,6 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Clock, Send } from "lucide-react";
 import { toast } from "sonner";
-import ScrollNav from "@/components/ScrollNav";
 
 export default function ContactPage() {
   const headerRef = useRef(null);
@@ -175,10 +174,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <ScrollNav sections={[
-        { id: "contact-hero", label: "Overview" },
-        { id: "contact-form", label: "Send a Message" },
-      ]} />
+
     </>
   );
 }

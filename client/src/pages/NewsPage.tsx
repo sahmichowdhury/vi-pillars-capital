@@ -16,7 +16,6 @@ import { Link } from "wouter";
 import { articles, filterCategories, categoryIcons } from "@/data/articles";
 import type { Article } from "@/data/articles";
 import CTASection from "@/components/CTASection";
-import ScrollNav from "@/components/ScrollNav";
 
 /* ---------- Article Card ---------- */
 function ArticleCard({
@@ -207,10 +206,7 @@ export default function NewsPage() {
         buttonText="Get in Touch"
         buttonHref="/contact"
       />
-      <ScrollNav sections={[
-        { id: "news-hero", label: "Overview" },
-        { id: "articles", label: "Articles" },
-      ]} />
+
     </>
   );
 }
