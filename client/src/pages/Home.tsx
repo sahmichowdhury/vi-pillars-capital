@@ -602,7 +602,7 @@ function MeetTheFounder() {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl max-w-md mx-auto lg:mx-0">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/sahmi-headshot-cropped_89f50869.png"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663361696775/Kkhk8Wg8B83BGiJVmmGpeT/option_B_seamless_8df73ab2.png"
                 alt="Sahmi Chowdhury — Founder, VI Pillars Capital"
                 className="w-full h-full object-cover"
                 style={{ objectPosition: '50% 5%' }}

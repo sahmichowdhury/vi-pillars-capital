@@ -12,8 +12,8 @@ import Logo from "./Logo";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Dealflow", href: "/dealflow" },
   { label: "Education", href: "/investor-education" },
+  { label: "Dealflow", href: "/dealflow" },
   { label: "News & Insights", href: "/news" },
   { label: "Contact", href: "/contact" },
 ];

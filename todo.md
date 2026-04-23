@@ -63,3 +63,9 @@
 - [ ] Remove % read counter and progress bar from ScrollNav, keep only section dots + labels
 - [ ] Add ScrollNav to all pages (Home, Dealflow, Contact, News, LP Login)
 - [ ] Remove right-side key/legend table from Dealflow page
+
+## Nav & Content Updates (Apr 22 - Round 2)
+- [x] Move Education nav link to after About and before Dealflow
+- [x] Update Tercer deal description: leading social club scene in Latin America, opening first location in Colombia
+- [x] Update InnerLens deal description: HQ in New York City, operations in Miami, Dubai, Abu Dhabi, Kuwait, Riyadh
+- [x] Crop founder headshot to chest level with more head room, no lower body, no Gemini star — provide options

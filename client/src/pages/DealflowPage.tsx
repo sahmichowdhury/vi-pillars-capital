@@ -64,7 +64,7 @@ const deals: Deal[] = [
   {
     name: "InnerLens Media",
     description:
-      "A creative media company specializing in storytelling, content production, and brand strategy. InnerLens Media delivers compelling visual narratives for brands, organizations, and individuals seeking authentic, high-impact media.",
+      "A creative media company specializing in storytelling, content production, and brand strategy. Headquartered in New York City, InnerLens Media has operations across Miami, Dubai, Abu Dhabi, Kuwait, and Riyadh — delivering compelling visual narratives for brands, organizations, and individuals seeking authentic, high-impact media.",
     category: "Consumer",
     industry: "Media & Entertainment",
     subIndustry: "Creative Media & Production",
@@ -105,7 +105,7 @@ const deals: Deal[] = [
   {
     name: "Tercer",
     description:
-      "An exclusive members-only social club redefining hospitality and leisure. Tercer offers a curated experience blending wellness, entertainment, and community in a sophisticated setting.",
+      "An exclusive members-only social club leading the social club scene in Latin America. Tercer offers a curated experience blending wellness, entertainment, and community in a sophisticated setting — and is opening its first location in Colombia.",
     category: "Consumer",
     industry: "Consumer & Leisure",
     subIndustry: "Members-Only Club",
