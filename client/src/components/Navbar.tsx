@@ -1,7 +1,7 @@
 /*
  * Navbar: Transparent with white logo on page load (hero shows through).
  * On scroll > 60px: transitions to white background with brown/leather logo.
- * Mobile menu always uses white background.
+ * Mobile menu: bar always goes opaque white when menu is open.
  */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
@@ -27,14 +27,12 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const hasDarkHero = DARK_HERO_PAGES.includes(location);
-  // When at top of a dark-hero page: transparent + white text/logo
-  // After scrolling: white bg + dark text/logo
-  const isTransparent = hasDarkHero && !scrolled;
+  // Transparent only when: dark hero page + not scrolled + mobile menu is closed
+  const isTransparent = hasDarkHero && !scrolled && !mobileOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
-    // Check initial scroll position (e.g. after navigation)
     setScrolled(window.scrollY > 60);
     return () => window.removeEventListener("scroll", onScroll);
   }, [location]);
@@ -45,7 +43,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isTransparent
           ? "bg-transparent"
           : "bg-white/97 backdrop-blur-md shadow-sm border-b border-sandstone/10"
@@ -53,7 +51,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-[72px]">
-          {/* Logo — light variant (white/sandstone) when transparent, dark (leather) when scrolled */}
+          {/* Logo — light variant (white/sandstone) when transparent, dark (leather) when scrolled or menu open */}
           <Link href="/" className="flex items-center shrink-0">
             <Logo variant={isTransparent ? "light" : "dark"} size="sm" />
           </Link>
@@ -89,7 +87,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* LP Login Button */}
+          {/* LP Login Button — desktop only */}
           <div className="hidden lg:flex items-center">
             <Link
               href="/lp-login"
@@ -107,7 +105,10 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden p-2 transition-colors ${isTransparent ? "text-white" : "text-flint"}`}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            className={`lg:hidden p-2 transition-colors ${
+              isTransparent ? "text-white" : "text-flint"
+            }`}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -142,7 +143,7 @@ export default function Navbar() {
               })}
               <Link
                 href="/lp-login"
-                className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-flint"
+                className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-flint hover:bg-cream/50 rounded-md transition-colors"
               >
                 <LogIn className="w-4 h-4" />
                 LP Login

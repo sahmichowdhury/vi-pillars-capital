@@ -69,3 +69,4 @@
 - [x] Update Tercer deal description: leading social club scene in Latin America, opening first location in Colombia
 - [x] Update InnerLens deal description: HQ in New York City, operations in Miami, Dubai, Abu Dhabi, Kuwait, Riyadh
 - [x] Crop founder headshot to chest level with more head room, no lower body, no Gemini star — provide options
+- [x] Fix mobile navbar: bar goes opaque white when hamburger menu is open (was transparent/dark at top of page)
