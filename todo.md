@@ -75,3 +75,12 @@
 - [x] Remove "1+ Deals Deployed" stat from StatsBar (or replace with something more accurate)
 - [x] Move Meet the Founder section to directly after How It Works
 - [x] Move Featured Deals section to the bottom of the home page
+
+## Deal Management System (Apr 29)
+- [x] Add deals table to drizzle schema with fields: id, name, category, status (active/deployed/passed/closed), description, minInvestment, targetReturn, assetClass, createdAt, updatedAt
+- [x] Push schema migration to database
+- [x] Add tRPC procedures: deals.list, deals.getActiveCount, deals.create (admin), deals.update (admin), deals.delete (admin)
+- [x] Build admin deal management page at /admin/deals with CRUD table
+- [x] Wire Home page stats bar Active Deals count to live tRPC query
+- [x] Seed existing deals (Tercer, InnerLens, 4-Plex Newark, SFH Montague) with correct statuses
+- [x] Write vitest tests for deal procedures

@@ -1,14 +1,16 @@
-import { eq, isNull, or } from "drizzle-orm";
+import { eq, isNull, or, count } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   InsertUser,
   InsertInvestorProfile,
   InsertInvestorDeal,
   InsertPortalDocument,
+  InsertDeal,
   users,
   investorProfiles,
   investorDeals,
   portalDocuments,
+  deals,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -212,4 +214,47 @@ export async function createDocument(doc: InsertPortalDocument) {
   const db = await getDb();
   if (!db) return;
   await db.insert(portalDocuments).values(doc);
+}
+
+// ---- Deals ----
+
+export async function getAllDeals() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(deals).orderBy(deals.sortOrder, deals.createdAt);
+}
+
+export async function getActiveDealsCount(): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+  const result = await db
+    .select({ count: count() })
+    .from(deals)
+    .where(eq(deals.status, "active"));
+  return result[0]?.count ?? 0;
+}
+
+export async function getDealById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(deals).where(eq(deals.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createDeal(deal: InsertDeal) {
+  const db = await getDb();
+  if (!db) return;
+  await db.insert(deals).values(deal);
+}
+
+export async function updateDeal(id: number, updates: Partial<InsertDeal>) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(deals).set(updates).where(eq(deals.id, id));
+}
+
+export async function deleteDeal(id: number) {
+  const db = await getDb();
+  if (!db) return;
+  await db.delete(deals).where(eq(deals.id, id));
 }

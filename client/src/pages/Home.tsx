@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import { trpc } from "@/lib/trpc";
 import WhySection from "@/components/WhySection";
 import CTASection from "@/components/CTASection";
 
@@ -66,12 +67,13 @@ function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number;
 function StatsBar() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const { data: activeCount } = trpc.deals.activeCount.useQuery();
 
   const stats = [
     { value: 3, suffix: "", label: "Asset Classes" },
     { value: 20000, prefix: "$", suffix: "+", label: "Minimum Investment" },
     { value: 100, suffix: "%", label: "Ethically Screened" },
-    { value: 2, suffix: "", label: "Active Deals" },
+    { value: activeCount ?? 2, suffix: "", label: "Active Deals" },
   ];
 
   return (

@@ -3,11 +3,11 @@
  */
 import { useState } from "react";
 import { DEALS, CUSTOM_DEAL_VALUE, type DealSummary } from "@/data/deals";
-import { Users, TrendingUp, FileText, CheckCircle2, XCircle, Clock, Plus, Trash2, Edit3, ChevronDown, ChevronUp } from "lucide-react";
+import { Users, TrendingUp, FileText, CheckCircle2, XCircle, Clock, Plus, Trash2, Edit3, ChevronDown, ChevronUp, Briefcase } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 
-type Tab = "users" | "deals" | "documents";
+type Tab = "users" | "deals" | "documents" | "catalogue";
 
 export default function AdminPanel() {
   const [tab, setTab] = useState<Tab>("users");
@@ -20,9 +20,10 @@ export default function AdminPanel() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-muted/50 rounded-xl p-1 mb-6 w-fit">
+      <div className="flex gap-1 bg-muted/50 rounded-xl p-1 mb-6 w-fit flex-wrap">
         {([
           { id: "users" as Tab, label: "Investors", icon: Users },
+          { id: "catalogue" as Tab, label: "Deal Catalogue", icon: Briefcase },
           { id: "deals" as Tab, label: "Deal Assignments", icon: TrendingUp },
           { id: "documents" as Tab, label: "Documents", icon: FileText },
         ]).map(t => (
@@ -42,6 +43,7 @@ export default function AdminPanel() {
       </div>
 
       {tab === "users" && <UsersTab />}
+      {tab === "catalogue" && <DealCatalogueTab />}
       {tab === "deals" && <DealsTab />}
       {tab === "documents" && <DocumentsTab />}
     </div>
@@ -331,6 +333,178 @@ function DealsTab() {
               <button onClick={() => deleteDeal.mutate({ dealId: deal.id })} disabled={deleteDeal.isPending} className="text-muted-foreground hover:text-red-500 transition-colors p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20">
                 <Trash2 className="w-4 h-4" />
               </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- Deal Catalogue Tab ---- */
+function DealCatalogueTab() {
+  const utils = trpc.useUtils();
+  const { data: catalogueDeals, isLoading } = trpc.deals.adminList.useQuery();
+  const createDeal = trpc.deals.create.useMutation({
+    onSuccess: () => { utils.deals.adminList.invalidate(); utils.deals.activeCount.invalidate(); toast.success("Deal added to catalogue"); setShowForm(false); resetForm(); },
+    onError: (e) => toast.error(e.message ?? "Failed to add deal"),
+  });
+  const updateDeal = trpc.deals.update.useMutation({
+    onSuccess: () => { utils.deals.adminList.invalidate(); utils.deals.activeCount.invalidate(); toast.success("Deal updated"); setEditId(null); },
+    onError: (e) => toast.error(e.message ?? "Failed to update deal"),
+  });
+  const deleteDeal = trpc.deals.delete.useMutation({
+    onSuccess: () => { utils.deals.adminList.invalidate(); utils.deals.activeCount.invalidate(); toast.success("Deal removed"); },
+    onError: (e) => toast.error(e.message ?? "Failed to remove deal"),
+  });
+
+  const emptyForm = { name: "", category: "Venture", assetClass: "Venture" as const, status: "active" as const, description: "", minInvestment: "", targetReturn: "", featured: false, sortOrder: 0 };
+  const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState(emptyForm);
+  const [editId, setEditId] = useState<number | null>(null);
+  const [editForm, setEditForm] = useState(emptyForm);
+  const resetForm = () => setForm(emptyForm);
+
+  const statusColors: Record<string, string> = {
+    active: "bg-emerald-100 text-emerald-700",
+    deployed: "bg-blue-100 text-blue-700",
+    passed: "bg-amber-100 text-amber-700",
+    closed: "bg-muted text-muted-foreground",
+  };
+
+  const startEdit = (deal: NonNullable<typeof catalogueDeals>[number]) => {
+    setEditId(deal.id);
+    setEditForm({
+      name: deal.name,
+      category: deal.category,
+      assetClass: deal.assetClass as typeof emptyForm.assetClass,
+      status: deal.status as typeof emptyForm.status,
+      description: deal.description ?? "",
+      minInvestment: deal.minInvestment ?? "",
+      targetReturn: deal.targetReturn ?? "",
+      featured: deal.featured,
+      sortOrder: deal.sortOrder,
+    });
+  };
+
+  const inputCls = "w-full text-sm border rounded-lg px-3 py-2 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sandstone/50";
+
+  const FormFields = ({ f, setF }: { f: typeof emptyForm; setF: React.Dispatch<React.SetStateAction<typeof emptyForm>> }) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Deal Name *</label>
+        <input className={inputCls} value={f.name} onChange={e => setF(p => ({ ...p, name: e.target.value }))} placeholder="e.g. Tercer" />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Category</label>
+        <input className={inputCls} value={f.category} onChange={e => setF(p => ({ ...p, category: e.target.value }))} placeholder="e.g. Consumer" />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Asset Class *</label>
+        <select className={inputCls} value={f.assetClass} onChange={e => setF(p => ({ ...p, assetClass: e.target.value as typeof f.assetClass }))}>
+          <option value="Private Equity">Private Equity</option>
+          <option value="Venture">Venture</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Consumer">Consumer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Status *</label>
+        <select className={inputCls} value={f.status} onChange={e => setF(p => ({ ...p, status: e.target.value as typeof f.status }))}>
+          <option value="active">Active</option>
+          <option value="deployed">Deployed</option>
+          <option value="passed">Passed</option>
+          <option value="closed">Closed</option>
+        </select>
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Min. Investment</label>
+        <input className={inputCls} value={f.minInvestment} onChange={e => setF(p => ({ ...p, minInvestment: e.target.value }))} placeholder="e.g. $20,000" />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Target Return</label>
+        <input className={inputCls} value={f.targetReturn} onChange={e => setF(p => ({ ...p, targetReturn: e.target.value }))} placeholder="e.g. 15-20% IRR" />
+      </div>
+      <div className="sm:col-span-2">
+        <label className="text-xs text-muted-foreground block mb-1">Description</label>
+        <textarea className={`${inputCls} resize-none`} rows={2} value={f.description} onChange={e => setF(p => ({ ...p, description: e.target.value }))} placeholder="Short deal description..." />
+      </div>
+      <div className="flex items-center gap-2">
+        <input type="checkbox" id="featured" checked={f.featured} onChange={e => setF(p => ({ ...p, featured: e.target.checked }))} className="rounded" />
+        <label htmlFor="featured" className="text-xs text-muted-foreground">Featured on home page</label>
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground block mb-1">Sort Order</label>
+        <input type="number" className={inputCls} value={f.sortOrder} onChange={e => setF(p => ({ ...p, sortOrder: Number(e.target.value) }))} />
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-sm text-muted-foreground">These are the canonical deals that drive the <strong>Active Deals</strong> stat on the home page.</p>
+        <button onClick={() => { setShowForm(!showForm); setEditId(null); }} className="flex items-center gap-2 text-sm bg-sandstone text-flint font-medium px-4 py-2 rounded-lg hover:bg-sandstone/90 transition-colors">
+          <Plus className="w-4 h-4" /> Add Deal
+        </button>
+      </div>
+
+      {showForm && (
+        <div className="bg-card border rounded-xl p-6 mb-6">
+          <h3 className="font-semibold text-foreground mb-4">New Deal</h3>
+          <FormFields f={form} setF={setForm} />
+          <div className="flex gap-2 mt-4">
+            <button onClick={() => createDeal.mutate(form)} disabled={!form.name || createDeal.isPending} className="text-sm bg-sandstone text-flint font-medium px-4 py-2 rounded-lg hover:bg-sandstone/90 transition-colors disabled:opacity-50">
+              {createDeal.isPending ? "Saving..." : "Save Deal"}
+            </button>
+            <button onClick={() => { setShowForm(false); resetForm(); }} className="text-sm border text-muted-foreground hover:text-foreground px-4 py-2 rounded-lg transition-colors">Cancel</button>
+          </div>
+        </div>
+      )}
+
+      {isLoading ? (
+        <div className="space-y-3">{[1,2,3].map(i => <div key={i} className="h-16 bg-muted/50 rounded-xl animate-pulse" />)}</div>
+      ) : (catalogueDeals ?? []).length === 0 ? (
+        <div className="text-center py-16 bg-card border rounded-xl">
+          <Briefcase className="w-10 h-10 text-muted-foreground/30 mx-auto mb-3" />
+          <p className="text-muted-foreground">No deals in the catalogue yet.</p>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          {(catalogueDeals ?? []).map(deal => (
+            <div key={deal.id} className="bg-card border rounded-xl overflow-hidden">
+              {editId === deal.id ? (
+                <div className="p-5">
+                  <FormFields f={editForm} setF={setEditForm} />
+                  <div className="flex gap-2 mt-4">
+                    <button onClick={() => updateDeal.mutate({ id: deal.id, data: editForm })} disabled={updateDeal.isPending} className="text-sm bg-sandstone text-flint font-medium px-4 py-2 rounded-lg hover:bg-sandstone/90 transition-colors disabled:opacity-50">
+                      {updateDeal.isPending ? "Saving..." : "Save Changes"}
+                    </button>
+                    <button onClick={() => setEditId(null)} className="text-sm border text-muted-foreground hover:text-foreground px-4 py-2 rounded-lg transition-colors">Cancel</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center gap-4 p-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+                      <p className="text-sm font-medium text-foreground">{deal.name}</p>
+                      <span className="text-xs text-muted-foreground">{deal.assetClass} · {deal.category}</span>
+                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize ${statusColors[deal.status] ?? "bg-muted text-muted-foreground"}`}>{deal.status}</span>
+                      {deal.featured && <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-sandstone/20 text-sandstone">Featured</span>}
+                    </div>
+                    {deal.description && <p className="text-xs text-muted-foreground truncate">{deal.description}</p>}
+                  </div>
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    <button onClick={() => startEdit(deal)} className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-lg hover:bg-muted">
+                      <Edit3 className="w-4 h-4" />
+                    </button>
+                    <button onClick={() => deleteDeal.mutate({ id: deal.id })} disabled={deleteDeal.isPending} className="text-muted-foreground hover:text-red-500 transition-colors p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -85,3 +85,25 @@ export const portalDocuments = mysqlTable("portal_documents", {
 
 export type PortalDocument = typeof portalDocuments.$inferSelect;
 export type InsertPortalDocument = typeof portalDocuments.$inferInsert;
+
+/**
+ * Deals — canonical deal records managed by the admin.
+ * The Active Deals stat on the home page is derived from this table.
+ */
+export const deals = mysqlTable("deals", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  category: varchar("category", { length: 64 }).notNull(),
+  assetClass: mysqlEnum("assetClass", ["Private Equity", "Venture", "Real Estate", "Consumer", "Other"]).notNull(),
+  status: mysqlEnum("status", ["active", "deployed", "passed", "closed"]).notNull().default("active"),
+  description: text("description"),
+  minInvestment: varchar("minInvestment", { length: 64 }),
+  targetReturn: varchar("targetReturn", { length: 64 }),
+  featured: boolean("featured").default(false).notNull(),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Deal = typeof deals.$inferSelect;
+export type InsertDeal = typeof deals.$inferInsert;
