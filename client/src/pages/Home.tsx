@@ -68,10 +68,10 @@ function StatsBar() {
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   const stats = [
-    { value: 1, suffix: "+", label: "Deals Deployed" },
     { value: 3, suffix: "", label: "Asset Classes" },
-    { value: 20000, prefix: "$", suffix: "", label: "Minimum Investment" },
+    { value: 20000, prefix: "$", suffix: "+", label: "Minimum Investment" },
     { value: 100, suffix: "%", label: "Ethically Screened" },
+    { value: 100, suffix: "%", label: "Deal-by-Deal Transparency" },
   ];
 
   return (
@@ -682,12 +682,11 @@ export default function Home() {
       <StatsBar />
       <WhySection />
       <HowItWorks />
-      <FeaturedDeals />
+      <MeetTheFounder />
       <EthicsBanner />
       <TrustSection />
-      <MeetTheFounder />
+      <FeaturedDeals />
       <CTASection />
-
     </>
   );
 }

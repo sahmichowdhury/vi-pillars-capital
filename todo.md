@@ -70,3 +70,8 @@
 - [x] Update InnerLens deal description: HQ in New York City, operations in Miami, Dubai, Abu Dhabi, Kuwait, Riyadh
 - [x] Crop founder headshot to chest level with more head room, no lower body, no Gemini star — provide options
 - [x] Fix mobile navbar: bar goes opaque white when hamburger menu is open (was transparent/dark at top of page)
+
+## Home Page Reorder (Apr 29)
+- [x] Remove "1+ Deals Deployed" stat from StatsBar (or replace with something more accurate)
+- [x] Move Meet the Founder section to directly after How It Works
+- [x] Move Featured Deals section to the bottom of the home page
